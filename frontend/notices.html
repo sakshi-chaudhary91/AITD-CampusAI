@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Notices | CampusAI</title>
+
+    <link rel="stylesheet"
+          href="css/notices.css">
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+</head>
+
+<body>
+
+<div class="dashboard-layout">
+
+
+    <!-- ==========================
+         SIDEBAR
+    =========================== -->
+
+    <aside class="sidebar">
+
+        <div class="sidebar-logo">
+
+            <img src="assets/logo.png"
+                 alt="CampusAI">
+
+            <h2>CampusAI</h2>
+
+        </div>
+
+
+        <nav class="sidebar-nav">
+
+            <a href="dashboard.html">
+
+                <i class="fa-solid fa-house"></i>
+
+                <span>Dashboard</span>
+
+            </a>
+
+            <a href="ai-assistant.html">
+
+                <i class="fa-solid fa-robot"></i>
+
+                <span>AI Assistant</span>
+
+            </a>
+
+            <a href="my-queries.html">
+
+                <i class="fa-solid fa-clock-rotate-left"></i>
+
+                <span>My Queries</span>
+
+            </a>
+
+            <a href="notices.html"
+               class="active">
+
+                <i class="fa-solid fa-bullhorn"></i>
+
+                <span>Notices</span>
+
+            </a>
+
+            <a href="admission.html">
+
+                <i class="fa-solid fa-graduation-cap"></i>
+
+                <span>Admission</span>
+
+            </a>
+
+            <a href="profile.html">
+
+                <i class="fa-solid fa-user"></i>
+
+                <span>Profile</span>
+
+            </a>
+
+            <a href="settings.html">
+
+                <i class="fa-solid fa-gear"></i>
+
+                <span>Settings</span>
+
+            </a>
+
+        </nav>
+
+
+        <div class="sidebar-bottom">
+
+            <button id="logoutBtn">
+
+                <i class="fa-solid fa-right-from-bracket"></i>
+
+                <span>Logout</span>
+
+            </button>
+
+        </div>
+
+    </aside>
+
+
+
+    <!-- ==========================
+         MAIN CONTENT
+    =========================== -->
+
+    <main class="main-content">
+
+
+        <!-- TOPBAR -->
+
+        <header class="topbar">
+
+            <div>
+
+                <h1>College Notices</h1>
+
+                <p>
+                    Stay updated with the latest announcements.
+                </p>
+
+            </div>
+
+
+            <div class="profile-area">
+
+                <div class="profile-icon">
+
+                    <i class="fa-solid fa-user"></i>
+
+                </div>
+
+                <div>
+
+                    <strong>Sakshi</strong>
+
+                    <span>Student</span>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+
+        <!-- SEARCH BAR -->
+
+        <section class="search-section">
+
+            <div class="search-box">
+
+                <i class="fa-solid fa-magnifying-glass"></i>
+
+                <input
+                    type="text"
+                    id="searchNotice"
+                    placeholder="Search notices..."
+                >
+
+            </div>
+
+        </section>
+
+
+
+        <!-- NOTICE LIST -->
+
+        <section
+            class="notice-container"
+            id="noticeContainer">
+
+            <!-- Notice cards JS se add honge -->
+
+        </section>
+
+
+
+        <!-- FOOTER -->
+
+        <footer class="footer">
+
+            © 2026 CampusAI. All Rights Reserved.
+
+        </footer>
+
+    </main>
+
+</div>
+
+<script src="js/notices.js"></script>
+
+</body>
+
+</html>

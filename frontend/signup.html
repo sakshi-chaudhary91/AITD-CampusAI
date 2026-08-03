@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Sign Up | AITD CampusAI</title>
+
+    <link rel="stylesheet" href="css/signup.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+</head>
+
+<body>
+    <div class="signup-page">
+        <div class="signup-container">
+
+    <!-- LEFT SIDE -->
+
+    <div class="left-panel">
+         <img src="assets/robot-login.png" alt="Robot">
+          <h1>Join AITD CampusAI</h1>
+           <p>
+            Create your Smart Campus account and
+            experience AI-powered education,
+            instant support and personalized learning.
+           </p>
+    </div>
+
+    <!-- RIGHT SIDE -->
+
+    <div class="right-panel">
+         <h2>Create Account</h2>
+         <p class="subtitle">
+             Fill your details to get started
+         </p>
+        <form id="signupForm">
+            <!-- Full Name -->
+             <div class="input-box">
+                 <i class="fa-solid fa-user"></i>
+                  <input type="text"
+                  id = "fullname"
+                   placeholder="Full Name"
+                   required>
+             </div>
+
+<!-- Enrollment Number -->
+
+    <div class="input-box">
+        <i class="fa-solid fa-id-card"></i>
+        <input type="text"
+        id = "enrollment"
+         placeholder="Enrollment Number"
+         required>
+    </div>
+
+<!-- Email -->
+
+    <div class="input-box">
+         <i class="fa-solid fa-envelope"></i>
+         <input type="email"
+         id = "email"
+         placeholder="Email Address"
+         required>
+    </div>
+
+<!-- Password -->
+
+    <div class="input-box">
+         <i class="fa-solid fa-lock"></i>
+         <input type="password"
+         id="password"
+          placeholder="Password"
+           required>
+           <span class="toggle-password">
+            <i class="fa-solid fa-eye"></i>
+           </span>
+    </div>
+
+<!-- Confirm Password -->
+
+    <div class="input-box">
+         <i class="fa-solid fa-lock"></i>
+         <input type="password"
+           id="confirmPassword"
+           placeholder="Confirm Password"
+           required>
+            <span class="toggle-password">
+                <i class="fa-solid fa-eye"></i>
+            </span>
+    </div>
+
+    <button type="submit" class="signup-btn">
+        Create Account
+    </button>
+
+    <p class="login-link">
+        Already have an account?
+        <a href="login.html">Login</a>
+     </p>
+    </form>
+     </div>
+</div>
+</div>
+
+<script src="js/signup.js"></script>
+
+</body>
+</html>

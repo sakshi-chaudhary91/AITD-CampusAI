@@ -1,0 +1,637 @@
+/* =========================
+   RESET
+========================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html,
+body{
+    width:100%;
+    min-height:100%;
+    margin: 0;
+    overflow-x: hidden;
+}
+
+body{
+    font-family:'Poppins',sans-serif;
+    background:#F5F7FB;
+    color:#0B1F3A;
+}
+
+
+/* =========================
+   LAYOUT
+========================= */
+
+.dashboard-layout{
+    min-height:100vh;
+    display:flex;
+}
+
+
+/* =========================
+   SIDEBAR
+========================= */
+
+.sidebar{
+
+    width:260px;
+    height:100vh;
+
+    position:fixed;
+    top:0;
+    left:0;
+
+    background:#0B1F3A;
+    color:#fff;
+
+    padding:25px 18px;
+
+    display:flex;
+    flex-direction:column;
+
+}
+
+
+.sidebar-logo{
+    display:flex;
+    align-items:center;
+    gap:12px;
+
+    padding:0 8px;
+    margin-bottom:35px;
+}
+
+.sidebar-logo img{
+    width:44px;
+    height:44px;
+    object-fit:contain;
+}
+
+.sidebar-logo h2{
+    color:#FFD54F;
+    font-size:22px;
+}
+
+
+/* =========================
+   NAVIGATION
+========================= */
+
+.sidebar-nav{
+    display:flex;
+    flex-direction:column;
+    gap:6px;
+}
+
+.sidebar-nav a{
+    display:flex;
+    align-items:center;
+    gap:13px;
+
+    padding:13px 14px;
+
+    color:#CBD5E1;
+    text-decoration:none;
+
+    border-radius:10px;
+
+    font-size:13px;
+    font-weight:500;
+
+    transition:.25s;
+}
+
+.sidebar-nav a i{
+    width:20px;
+    text-align:center;
+    font-size:15px;
+}
+
+.sidebar-nav a:hover{
+    background:rgba(255,255,255,.08);
+    color:#fff;
+}
+
+.sidebar-nav a.active{
+    background:#2563EB;
+    color:#fff;
+
+    box-shadow:0 6px 15px rgba(37,99,235,.25);
+}
+
+
+/* =========================
+   SIDEBAR BOTTOM
+========================= */
+
+.sidebar-bottom{
+    margin-top:auto;
+
+    padding-top:18px;
+
+    border-top:1px solid rgba(255,255,255,.1);
+}
+
+.sidebar-bottom button{
+    width:100%;
+
+    padding:13px 14px;
+
+    border:none;
+    border-radius:10px;
+
+    background:transparent;
+
+    color:#CBD5E1;
+
+    font-family:inherit;
+    font-size:13px;
+
+    display:flex;
+    align-items:center;
+    gap:13px;
+
+    cursor:pointer;
+
+    transition:.25s;
+}
+
+.sidebar-bottom button:hover{
+    background:rgba(255,255,255,.08);
+    color:#fff;
+}
+
+
+/* =========================
+   MAIN CONTENT
+========================= */
+
+.main-content{
+
+    margin-left:260px;
+
+    width:calc(100% - 260px);
+
+    min-height:100vh;
+
+    display:flex;
+    flex-direction:column;
+
+}
+
+
+/* =========================
+   TOPBAR
+========================= */
+
+.topbar{
+    min-height:82px;
+
+    padding:18px 35px;
+
+    background:#fff;
+
+    border-bottom:1px solid #E5E7EB;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.page-heading h1{
+    font-size:22px;
+    font-weight:600;
+    color:#0B1F3A;
+}
+
+.page-heading p{
+    margin-top:3px;
+
+    color:#64748B;
+    font-size:12px;
+}
+
+.profile-area{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.profile-icon{
+    width:40px;
+    height:40px;
+
+    border-radius:50%;
+
+    background:#EEF4FF;
+    color:#2563EB;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.profile-info{
+    display:flex;
+    flex-direction:column;
+}
+
+.profile-info strong{
+    font-size:12px;
+    color:#0B1F3A;
+}
+
+.profile-info span{
+    font-size:10px;
+    color:#64748B;
+}
+
+
+/* =========================
+   QUERIES SECTION
+========================= */
+
+.queries-section{
+    width:min(1000px,92%);
+
+    margin:35px auto;
+
+    flex:1;
+}
+
+
+/* =========================
+   QUERIES HEADER
+========================= */
+
+.queries-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    margin-bottom:20px;
+}
+
+.queries-header h2{
+    font-size:18px;
+    font-weight:600;
+    color:#0B1F3A;
+}
+
+.queries-header p{
+    margin-top:3px;
+
+    color:#64748B;
+    font-size:11px;
+}
+
+
+/* =========================
+   CLEAR BUTTON
+========================= */
+
+.clear-btn{
+    border:1px solid #FCA5A5;
+
+    background:#FEF2F2;
+    color:#DC2626;
+
+    padding:9px 14px;
+
+    border-radius:9px;
+
+    font-family:inherit;
+    font-size:11px;
+
+    cursor:pointer;
+
+    display:flex;
+    align-items:center;
+    gap:7px;
+
+    transition:.25s;
+}
+
+.clear-btn:hover{
+    background:#FEE2E2;
+}
+
+
+/* =========================
+   QUERY LIST
+========================= */
+
+.queries-list{
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+}
+
+
+/* =========================
+   QUERY CARD
+========================= */
+
+.query-card{
+    background:#fff;
+
+    border:1px solid #E5E7EB;
+
+    border-radius:14px;
+
+    padding:17px;
+
+    display:flex;
+    align-items:center;
+    gap:15px;
+
+    transition:.25s;
+}
+
+.query-card:hover{
+    border-color:#BFDBFE;
+
+    box-shadow:0 8px 22px rgba(15,23,42,.06);
+
+    transform:translateY(-2px);
+}
+
+
+/* =========================
+   QUERY ICON
+========================= */
+
+.query-icon{
+    width:44px;
+    height:44px;
+
+    flex-shrink:0;
+
+    border-radius:11px;
+
+    background:#EEF4FF;
+    color:#2563EB;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:16px;
+}
+
+
+/* =========================
+   QUERY INFO
+========================= */
+
+.query-info{
+    flex:1;
+    min-width:0;
+}
+
+.query-info h3{
+    font-size:13px;
+    font-weight:600;
+
+    color:#0B1F3A;
+
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+
+.query-info p{
+    margin-top:4px;
+
+    color:#64748B;
+    font-size:11px;
+
+    line-height:1.5;
+}
+
+.query-time{
+    display:inline-flex;
+    align-items:center;
+    gap:5px;
+
+    margin-top:7px;
+
+    color:#94A3B8;
+    font-size:10px;
+}
+
+
+/* =========================
+   VIEW BUTTON
+========================= */
+
+.view-query-btn{
+    width:36px;
+    height:36px;
+
+    flex-shrink:0;
+
+    border:none;
+    border-radius:50%;
+
+    background:#F1F5F9;
+    color:#2563EB;
+
+    cursor:pointer;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    transition:.25s;
+}
+
+.view-query-btn:hover{
+    background:#2563EB;
+    color:#fff;
+
+    transform:translateX(3px);
+}
+
+
+/* =========================
+   EMPTY STATE
+========================= */
+
+.empty-state{
+    min-height:330px;
+
+    background:#fff;
+
+    border:1px dashed #CBD5E1;
+
+    border-radius:16px;
+
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+
+    text-align:center;
+
+    padding:30px;
+}
+
+.empty-icon{
+    width:65px;
+    height:65px;
+
+    border-radius:50%;
+
+    background:#EEF4FF;
+    color:#2563EB;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:25px;
+
+    margin-bottom:15px;
+}
+
+.empty-state h3{
+    font-size:16px;
+    color:#0B1F3A;
+}
+
+.empty-state p{
+    margin-top:5px;
+
+    color:#64748B;
+    font-size:11px;
+}
+
+.empty-state a{
+    margin-top:18px;
+
+    padding:10px 16px;
+
+    border-radius:9px;
+
+    background:#2563EB;
+    color:#fff;
+
+    text-decoration:none;
+
+    font-size:11px;
+
+    display:flex;
+    align-items:center;
+    gap:7px;
+
+    transition:.25s;
+}
+
+.empty-state a:hover{
+    background:#1D4ED8;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+.footer{
+    text-align:center;
+
+    padding:15px 20px 20px;
+
+    color:#94A3B8;
+
+    font-size:10px;
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:850px){
+
+    .sidebar{
+        width:220px;
+    }
+
+    .topbar{
+        padding:18px 22px;
+    }
+
+    .queries-section{
+        width:94%;
+    }
+
+}
+
+@media(max-width:650px){
+
+    .sidebar{
+        display:none;
+    }
+
+    .topbar{
+        padding:15px 18px;
+    }
+
+    .page-heading h1{
+        font-size:19px;
+    }
+
+    .profile-area{
+        display:none;
+    }
+
+    .queries-section{
+        margin:25px auto;
+    }
+
+    .queries-header{
+        align-items:flex-start;
+        gap:12px;
+    }
+
+    .queries-header h2{
+        font-size:16px;
+    }
+
+    .clear-btn{
+        padding:8px 10px;
+    }
+
+    .clear-btn{
+        font-size:0;
+    }
+
+    .clear-btn i{
+        font-size:13px;
+    }
+
+    .query-card{
+        padding:13px;
+    }
+
+    .query-icon{
+        width:38px;
+        height:38px;
+        font-size:14px;
+    }
+
+    .query-info h3{
+        font-size:12px;
+    }
+
+    .query-info p{
+        font-size:10px;
+    }
+
+}

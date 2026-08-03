@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>Settings | CampusAI</title>
+
+    <link
+        rel="stylesheet"
+        href="css/settings.css">
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+</head>
+
+<body>
+
+<div class="dashboard-layout">
+
+<!-- =========================
+     SIDEBAR
+========================= -->
+
+<aside class="sidebar">
+
+    <div class="sidebar-logo">
+
+        <img
+            src="assets/logo.png"
+            alt="CampusAI">
+
+        <h2>CampusAI</h2>
+
+    </div>
+
+
+    <nav class="sidebar-nav">
+
+        <a href="dashboard.html">
+
+            <i class="fa-solid fa-house"></i>
+
+            <span>Dashboard</span>
+
+        </a>
+
+
+        <a href="ai-assistant.html">
+
+            <i class="fa-solid fa-robot"></i>
+
+            <span>AI Assistant</span>
+
+        </a>
+
+
+        <a href="my-queries.html">
+
+            <i class="fa-solid fa-clock-rotate-left"></i>
+
+            <span>My Queries</span>
+
+        </a>
+
+
+        <a href="notices.html">
+
+            <i class="fa-solid fa-bullhorn"></i>
+
+            <span>Notices</span>
+
+        </a>
+
+
+        <a href="admission.html">
+
+            <i class="fa-solid fa-graduation-cap"></i>
+
+            <span>Admission</span>
+
+        </a>
+
+
+        <a href="profile.html">
+
+            <i class="fa-solid fa-user"></i>
+
+            <span>Profile</span>
+
+        </a>
+
+
+        <a
+            href="settings.html"
+            class="active">
+
+            <i class="fa-solid fa-gear"></i>
+
+            <span>Settings</span>
+
+        </a>
+
+    </nav>
+
+
+    <div class="sidebar-bottom">
+
+        <button id="logoutBtn">
+
+            <i class="fa-solid fa-right-from-bracket"></i>
+
+            <span>Logout</span>
+
+        </button>
+
+    </div>
+
+</aside>
+
+
+
+<!-- =========================
+     MAIN CONTENT
+========================= -->
+
+<main class="main-content">
+
+
+<header class="topbar">
+
+<div class="page-heading">
+
+<h1>Settings</h1>
+
+<p>
+
+Manage your account preferences.
+
+</p>
+
+</div>
+
+
+<div class="profile-area">
+
+<div class="profile-icon">
+
+<i class="fa-solid fa-user"></i>
+
+</div>
+
+<div class="profile-info">
+
+<strong>Sakshi</strong>
+
+<span>Student</span>
+
+</div>
+
+</div>
+
+</header>
+
+
+
+<section class="settings-container">
+
+
+<!-- ACCOUNT -->
+
+<div class="settings-card">
+
+<h2>
+
+<i class="fa-solid fa-user-gear"></i>
+
+Account
+
+</h2>
+
+<div class="setting-row">
+
+<div>
+
+<h4>Name</h4>
+
+<p>Sakshi Chaudhary</p>
+
+</div>
+
+<button id="editBtn">
+
+Edit
+
+</button>
+
+</div>
+
+<div class="setting-row">
+
+<div>
+
+<h4>Email</h4>
+
+<p>sakshi@email.com</p>
+
+</div>
+
+</div>
+
+<div class="setting-row">
+
+<div>
+
+<h4>Phone</h4>
+
+<p>+91 XXXXXXXXXX</p>
+
+</div>
+
+</div>
+
+</div>
+
+
+
+<!-- APPEARANCE -->
+
+<div class="settings-card">
+
+<h2>
+
+<i class="fa-solid fa-palette"></i>
+
+Appearance
+
+</h2>
+
+<div class="setting-row">
+
+<div>
+
+<h4>Dark Mode</h4>
+
+<p>Enable dark theme</p>
+
+</div>
+
+<label class="switch">
+
+<input
+type="checkbox"
+id="darkMode">
+
+<span class="slider"></span>
+
+</label>
+
+</div>
+
+</div>
+
+<!-- NOTIFICATIONS -->
+
+        <div class="settings-card">
+
+            <h2>
+
+                <i class="fa-solid fa-bell"></i>
+
+                Notifications
+
+            </h2>
+
+            <div class="setting-row">
+
+                <div>
+
+                    <h4>Admission Updates</h4>
+
+                    <p>Receive admission related notifications</p>
+
+                </div>
+
+                <label class="switch">
+
+                    <input
+                        type="checkbox"
+                        checked>
+
+                    <span class="slider"></span>
+
+                </label>
+
+            </div>
+
+
+            <div class="setting-row">
+
+                <div>
+
+                    <h4>New Notices</h4>
+
+                    <p>Get notified about latest notices</p>
+
+                </div>
+
+                <label class="switch">
+
+                    <input
+                        type="checkbox"
+                        checked>
+
+                    <span class="slider"></span>
+
+                </label>
+
+            </div>
+
+
+            <div class="setting-row">
+
+                <div>
+
+                    <h4>AI Assistant Tips</h4>
+
+                    <p>Receive helpful CampusAI suggestions</p>
+
+                </div>
+
+                <label class="switch">
+
+                    <input
+                        type="checkbox">
+
+                    <span class="slider"></span>
+
+                </label>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- LANGUAGE -->
+
+        <div class="settings-card">
+
+            <h2>
+
+                <i class="fa-solid fa-language"></i>
+
+                Language
+
+            </h2>
+
+            <div class="setting-row">
+
+                <div>
+
+                    <h4>Application Language</h4>
+
+                    <p>Select your preferred language</p>
+
+                </div>
+
+                <select id="languageSelect">
+
+                    <option>English</option>
+
+                    <option>Hindi</option>
+
+                </select>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- PRIVACY -->
+
+        <div class="settings-card">
+
+            <h2>
+
+                <i class="fa-solid fa-shield-halved"></i>
+
+                Privacy & Security
+
+            </h2>
+
+            <div class="setting-row">
+
+                <button id="changePasswordBtn">
+
+                    <i class="fa-solid fa-lock"></i>
+
+                    Change Password
+
+                </button>
+
+            </div>
+
+            <div class="setting-row">
+
+                <button id="privacyBtn">
+
+                    <i class="fa-solid fa-user-shield"></i>
+
+                    Privacy Policy
+
+                </button>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- LOGOUT -->
+
+        <div class="settings-card danger-card">
+
+            <h2>
+
+                <i class="fa-solid fa-right-from-bracket"></i>
+
+                Logout
+
+            </h2>
+
+            <p>
+
+                Sign out from your CampusAI account safely.
+
+            </p>
+
+            <button id="logoutAccountBtn">
+
+                Logout
+
+            </button>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- FOOTER -->
+
+    <footer class="footer">
+
+        <p>
+
+            © 2026 CampusAI. All Rights Reserved.
+
+        </p>
+
+    </footer>
+
+</main>
+
+</div>
+
+<script src="js/settings.js"></script>
+
+</body>
+
+</html>

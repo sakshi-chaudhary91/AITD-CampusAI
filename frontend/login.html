@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Login | AITD CampusAI</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/login.css">
+</head>
+
+<body>
+
+<div class="login-page">
+
+    <div class="login-container">
+
+        <!-- ================= LEFT SIDE ================= -->
+
+        <div class="left-panel">
+
+            <img src="assets/robot-login.png" alt="CampusAI Robot">
+
+            <h1>Welcome Back!</h1>
+
+            <p>
+                Access your AI Powered Smart Campus Assistant and
+                continue your learning journey.
+            </p>
+
+        </div>
+
+
+
+        <!-- ================= RIGHT SIDE ================= -->
+
+        <div class="right-panel">
+
+            <!-- Logo -->
+
+            <div class="logo">
+
+                <img src="assets/logo.png" alt="AITD CampusAI Logo">
+
+                <span>AITD CampusAI</span>
+
+            </div>
+
+
+            <h2>Login</h2>
+
+            <p class="subtitle">
+                Choose your role and sign in
+            </p>
+
+
+
+            <!-- Role Toggle -->
+
+            <div class="role-toggle">
+
+                <button class="role-btn active" id="studentBtn">
+                    Student
+                </button>
+
+                <button class="role-btn" id="adminBtn">
+                    Admin
+                </button>
+
+            </div>
+
+
+
+            <!-- Login Form -->
+
+            <form id="loginForm">
+
+
+                <!-- Email -->
+
+                <div class="input-box">
+
+                    <i class="fa-solid fa-envelope"></i>
+
+                    <input
+                        type="email"
+                        placeholder="Email Address"
+                        required>
+
+                </div>
+
+
+
+                <!-- Password -->
+
+                <div class="input-box">
+
+                    <i class="fa-solid fa-lock"></i>
+
+                    <input
+                        type="password"
+                        id="password"
+                        placeholder="Password"
+                        required>
+
+                    <span id="togglePassword">
+
+                        <i class="fa-solid fa-eye"></i>
+
+                    </span>
+
+                </div>
+
+
+
+                <!-- Remember -->
+
+                <div class="options">
+
+                    <label>
+
+                        <input type="checkbox">
+
+                        Remember Me
+
+                    </label>
+
+                    <a href="#">
+
+                        Forgot Password?
+
+                    </a>
+
+                </div>
+
+
+
+                <!-- Login -->
+
+                <button class="login-btn" type="submit">
+
+                    Login
+
+                </button>
+                <p class="signup-link">
+                     Don't have an account?
+                     <a href="signup.html">Create Account</a>
+                    </p>
+
+            </form>
+
+
+
+            <!-- Divider -->
+
+            <div class="divider">
+
+                <span>OR</span>
+
+            </div>
+
+
+
+            <!-- Google -->
+
+            <button class="google-btn">
+
+                <img src="https://www.svgrepo.com/show/475656/google-color.svg">
+
+                Continue with Google
+
+            </button>
+
+
+
+            <!-- Footer -->
+
+            <p class="bottom-text">
+
+                © 2026 AITD CampusAI
+
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<script src="js/login.js"></script>
+
+</body>
+</html>

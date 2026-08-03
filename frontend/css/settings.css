@@ -1,0 +1,611 @@
+/* =========================
+   RESET
+========================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Poppins',sans-serif;
+    background:#F5F7FB;
+    color:#0B1F3A;
+    overflow-x:hidden;
+}
+
+.dashboard-layout{
+    display:flex;
+}
+
+
+/* =========================
+   SIDEBAR
+========================= */
+
+.sidebar{
+
+    width:260px;
+
+    height:100vh;
+
+    position:fixed;
+
+    left:0;
+    top:0;
+
+    background:#0B1F3A;
+
+    padding:25px 18px;
+
+    display:flex;
+
+    flex-direction:column;
+
+}
+
+.sidebar-logo{
+    display:flex;
+    align-items:center;
+    gap:12px;
+
+    padding:0 8px;
+    margin-bottom:35px;
+}
+
+.sidebar-logo img{
+    width:44px;
+    height:44px;
+    object-fit:contain;
+}
+
+.sidebar-logo h2{
+    color:#FFD54F;
+    font-size:22px;
+}
+
+
+/* =========================
+   NAVIGATION
+========================= */
+
+.sidebar-nav{
+    display:flex;
+    flex-direction:column;
+    gap:6px;
+}
+
+.sidebar-nav a{
+    display:flex;
+    align-items:center;
+    gap:13px;
+
+    padding:13px 14px;
+
+    color:#CBD5E1;
+    text-decoration:none;
+
+    border-radius:10px;
+
+    font-size:13px;
+    font-weight:500;
+
+    transition:.25s;
+}
+
+.sidebar-nav a i{
+    width:20px;
+    text-align:center;
+    font-size:15px;
+}
+
+.sidebar-nav a:hover{
+    background:rgba(255,255,255,.08);
+    color:#fff;
+}
+
+.sidebar-nav a.active{
+    background:#2563EB;
+    color:#fff;
+
+    box-shadow:0 6px 15px rgba(37,99,235,.25);
+}
+
+
+/* =========================
+   SIDEBAR BOTTOM
+========================= */
+
+.sidebar-bottom{
+    margin-top:auto;
+
+    padding-top:18px;
+
+    border-top:1px solid rgba(255,255,255,.1);
+}
+
+.sidebar-bottom button{
+    width:100%;
+
+    padding:13px 14px;
+
+    border:none;
+    border-radius:10px;
+
+    background:transparent;
+
+    color:#CBD5E1;
+
+    font-family:inherit;
+    font-size:13px;
+
+    display:flex;
+    align-items:center;
+    gap:13px;
+
+    cursor:pointer;
+
+    transition:.25s;
+}
+
+.sidebar-bottom button:hover{
+    background:rgba(255,255,255,.08);
+    color:#fff;
+}
+
+
+/* =========================
+   MAIN CONTENT
+========================= */
+
+.main-content{
+
+    margin-left:260px;
+
+    width:calc(100% - 260px);
+
+    min-height:100vh;
+
+    display:flex;
+    flex-direction:column;
+
+}
+
+
+/* =========================
+   TOPBAR
+========================= */
+
+.topbar{
+
+    background:#fff;
+
+    padding:22px 35px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    border-bottom:1px solid #E5E7EB;
+
+}
+
+.page-heading h1{
+
+    font-size:28px;
+
+}
+
+.page-heading p{
+
+    color:#64748B;
+
+    margin-top:6px;
+
+}
+
+.profile-area{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+}
+
+.profile-icon{
+
+    width:42px;
+    height:42px;
+
+    border-radius:50%;
+
+    background:#EEF4FF;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    color:#2563EB;
+
+}
+
+.profile-info{
+
+    display:flex;
+
+    flex-direction:column;
+
+}
+
+.profile-info span{
+
+    color:#64748B;
+
+    font-size:12px;
+
+}
+
+
+/* =========================
+   SETTINGS
+========================= */
+
+.settings-container{
+
+    padding:35px;
+
+}
+
+.settings-card{
+
+    background:#fff;
+
+    border-radius:18px;
+
+    padding:25px;
+
+    margin-bottom:22px;
+
+    box-shadow:0 8px 25px rgba(0,0,0,.05);
+
+}
+
+.settings-card h2{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    color:#2563EB;
+
+    margin-bottom:20px;
+
+}
+
+.setting-row{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:18px 0;
+
+    border-bottom:1px solid #EEF2F7;
+
+}
+
+.setting-row:last-child{
+
+    border-bottom:none;
+
+}
+
+.setting-row h4{
+
+    margin-bottom:4px;
+
+}
+
+.setting-row p{
+
+    color:#64748B;
+
+    font-size:14px;
+
+}
+
+/* =========================
+   TOGGLE SWITCH
+========================= */
+
+.switch{
+
+    position:relative;
+
+    display:inline-block;
+
+    width:52px;
+
+    height:28px;
+
+}
+
+.switch input{
+
+    opacity:0;
+
+    width:0;
+
+    height:0;
+
+}
+
+.slider{
+
+    position:absolute;
+
+    cursor:pointer;
+
+    inset:0;
+
+    background:#CBD5E1;
+
+    border-radius:30px;
+
+    transition:.3s;
+
+}
+
+.slider::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:22px;
+
+    height:22px;
+
+    left:3px;
+
+    top:3px;
+
+    background:#fff;
+
+    border-radius:50%;
+
+    transition:.3s;
+
+}
+
+input:checked + .slider{
+
+    background:#2563EB;
+
+}
+
+input:checked + .slider::before{
+
+    transform:translateX(24px);
+
+}
+
+
+/* =========================
+   SELECT BOX
+========================= */
+
+select{
+
+    padding:10px 15px;
+
+    border:1px solid #D1D5DB;
+
+    border-radius:8px;
+
+    font-family:inherit;
+
+    cursor:pointer;
+
+    background:#fff;
+
+    outline:none;
+
+}
+
+select:focus{
+
+    border-color:#2563EB;
+
+}
+
+
+/* =========================
+   BUTTONS
+========================= */
+
+.settings-card button{
+
+    padding:11px 20px;
+
+    border:none;
+
+    border-radius:8px;
+
+    font-family:inherit;
+
+    font-size:14px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+#editBtn{
+
+    background:#2563EB;
+
+    color:#fff;
+
+}
+
+#editBtn:hover{
+
+    background:#1D4ED8;
+
+}
+
+#changePasswordBtn{
+
+    background:#EEF4FF;
+
+    color:#2563EB;
+
+}
+
+#changePasswordBtn:hover{
+
+    background:#DBEAFE;
+
+}
+
+#privacyBtn{
+
+    background:#F8FAFC;
+
+    color:#0B1F3A;
+
+}
+
+#privacyBtn:hover{
+
+    background:#EEF2F7;
+
+}
+
+
+/* =========================
+   DANGER CARD
+========================= */
+
+.danger-card{
+
+    border-left:5px solid #EF4444;
+
+}
+
+.danger-card h2{
+
+    color:#EF4444;
+
+}
+
+.danger-card p{
+
+    margin-bottom:20px;
+
+    color:#64748B;
+
+}
+
+#logoutAccountBtn{
+
+    background:#EF4444;
+
+    color:#fff;
+
+}
+
+#logoutAccountBtn:hover{
+
+    background:#DC2626;
+
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+.footer{
+
+    margin-top:auto;
+
+    padding:20px;
+
+    text-align:center;
+
+    color:#94A3B8;
+
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:768px){
+
+    .sidebar{
+
+        display:none;
+
+    }
+
+    .main-content{
+
+        margin-left:0;
+
+        width:100%;
+
+    }
+
+    .topbar{
+
+        padding:20px;
+
+    }
+
+    .settings-container{
+
+        padding:20px;
+
+    }
+
+    .setting-row{
+
+        flex-direction:column;
+
+        align-items:flex-start;
+
+        gap:15px;
+
+    }
+
+    select{
+
+        width:100%;
+
+    }
+
+    .settings-card button{
+
+        width:100%;
+
+    }
+
+}

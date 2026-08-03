@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CampusAI Assistant</title>
+
+    <link rel="stylesheet" href="css/ai-assistant.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+</head>
+
+<body>
+
+<div class="chat-page">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+        <div class="logo">
+            <img src="assets/logo.png" alt="CampusAI">
+            <h2>CampusAI</h2>
+        </div>
+
+        <button class="new-chat-btn" id="newChatBtn">
+            <i class="fa-solid fa-plus"></i>
+            New Chat
+        </button>
+
+        <div class="chat-history">
+            <h3>Recent Chats</h3>
+
+            <div id="historyList"></div>
+        </div>
+
+        <div class="sidebar-bottom">
+
+            <a href="dashboard.html">
+                <i class="fa-solid fa-house"></i>
+                Dashboard
+            </a>
+
+            <button id="logoutBtn">
+                <i class="fa-solid fa-right-from-bracket"></i>
+                Logout
+            </button>
+
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN -->
+    <main class="main-content">
+
+        <!-- TOPBAR -->
+        <header class="topbar">
+
+            <div class="topbar-left">
+
+                <div class="assistant-icon">
+                    <i class="fa-solid fa-robot"></i>
+                </div>
+
+                <div>
+                    <h2>CampusAI Assistant</h2>
+
+                    <span class="assistant-status">
+                        <span class="status-dot"></span>
+                        Online
+                    </span>
+                </div>
+
+            </div>
+
+            <div class="topbar-right">
+
+                <div class="profile-box">
+
+                    <div class="profile-icon">
+                        <i class="fa-solid fa-user"></i>
+                    </div>
+
+                    <div>
+                        <h4>Sakshi</h4>
+                        <span>Student</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- CONTENT -->
+        <div class="assistant-content">
+
+            <!-- WELCOME -->
+            <section class="welcome-screen" id="welcomeScreen">
+
+                <img
+                    src="assets/robot-login.png"
+                    alt="CampusAI Robot"
+                    class="robot-image"
+                >
+
+                <h1>
+                    How can I help you today?
+                </h1>
+
+                <p>
+                    Ask me anything about AITD admissions, syllabus,
+                    notices, placements, scholarships and campus facilities.
+                </p>
+
+            </section>
+
+
+            <!-- SUGGESTIONS -->
+            <section class="suggestion-section" id="suggestionSection">
+
+                <button class="suggestion-card"
+                    data-question="What is the admission process?">
+
+                    <i class="fa-solid fa-user-graduate"></i>
+
+                    <span>
+                        <strong>Admission</strong>
+                        <small>Admission process & eligibility</small>
+                    </span>
+
+                </button>
+
+
+                <button class="suggestion-card"
+                    data-question="Show me the latest syllabus.">
+
+                    <i class="fa-solid fa-book-open"></i>
+
+                    <span>
+                        <strong>Syllabus</strong>
+                        <small>Latest semester syllabus</small>
+                    </span>
+
+                </button>
+
+
+                <button class="suggestion-card"
+                    data-question="Show me the latest college notices.">
+
+                    <i class="fa-solid fa-bullhorn"></i>
+
+                    <span>
+                        <strong>Notices</strong>
+                        <small>Latest college updates</small>
+                    </span>
+
+                </button>
+
+
+                <button class="suggestion-card"
+                    data-question="Tell me about placements.">
+
+                    <i class="fa-solid fa-briefcase"></i>
+
+                    <span>
+                        <strong>Placements</strong>
+                        <small>Placement information</small>
+                    </span>
+
+                </button>
+
+
+                <button class="suggestion-card"
+                    data-question="Tell me about hostel facilities.">
+
+                    <i class="fa-solid fa-house"></i>
+
+                    <span>
+                        <strong>Hostel</strong>
+                        <small>Hostel facilities & information</small>
+                    </span>
+
+                </button>
+
+
+                <button class="suggestion-card"
+                    data-question="What scholarships are available?">
+
+                    <i class="fa-solid fa-graduation-cap"></i>
+
+                    <span>
+                        <strong>Scholarships</strong>
+                        <small>Scholarship information</small>
+                    </span>
+
+                </button>
+
+            </section>
+
+
+            <!-- CHAT -->
+            <section class="chat-area">
+
+                <div class="chat-messages" id="chatMessages">
+
+                    <div class="empty-chat-message">
+
+                        <div class="message-avatar">
+                            <img src="assets/robot-login.png" alt="CampusAI">
+                        </div>
+
+                        <div class="message-content">
+
+                            <h4>CampusAI</h4>
+
+                            <p>
+                                Hello! 👋 I'm your CampusAI Assistant.
+                                How can I help you?
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </div>
+
+
+        <!-- INPUT -->
+        <section class="chat-input-section">
+
+            <div class="chat-input-box">
+
+                <button
+                    class="icon-btn attach-btn"
+                    id="attachBtn"
+                    title="Upload PDF">
+
+                    <i class="fa-solid fa-paperclip"></i>
+
+                </button>
+
+                <input
+                    type="file"
+                    id="pdfUpload"
+                    accept=".pdf"
+                    hidden
+                >
+
+                <input
+                    type="text"
+                    id="messageInput"
+                    placeholder="Message CampusAI..."
+                    autocomplete="off"
+                >
+
+                <button
+                    class="icon-btn mic-btn"
+                    id="micBtn"
+                    title="Voice">
+
+                    <i class="fa-solid fa-microphone"></i>
+
+                </button>
+
+                <button
+                    class="send-btn"
+                    id="sendBtn"
+                    title="Send">
+
+                    <i class="fa-solid fa-paper-plane"></i>
+
+                </button>
+
+            </div>
+
+            <p class="input-note">
+                CampusAI may make mistakes. Verify important information from official AITD sources.
+            </p>
+
+        </section>
+
+    </main>
+
+</div>
+
+<script src="js/ai-assistant.js"></script>
+
+</body>
+</html>

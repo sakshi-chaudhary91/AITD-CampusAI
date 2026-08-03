@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Student Dashboard | AITD CampusAI</title>
+
+    <link rel="stylesheet" href="css/dashboard.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+</head>
+
+<body>
+
+<div class="dashboard">
+
+    <!-- =========================
+     SIDEBAR
+========================= -->
+
+<aside class="sidebar">
+
+    <div class="sidebar-logo">
+
+        <img
+            src="assets/logo.png"
+            alt="CampusAI">
+
+        <h2>CampusAI</h2>
+
+    </div>
+
+
+    <nav class="sidebar-nav">
+
+        <a href="dashboard.html"
+           class="active">
+
+            <i class="fa-solid fa-house"></i>
+
+            <span>Dashboard</span>
+
+        </a>
+
+
+        <a href="ai-assistant.html">
+
+            <i class="fa-solid fa-robot"></i>
+
+            <span>AI Assistant</span>
+
+        </a>
+
+
+        <a href="my-queries.html">
+
+            <i class="fa-solid fa-clock-rotate-left"></i>
+
+            <span>My Queries</span>
+
+        </a>
+
+
+        <a href="notices.html">
+
+            <i class="fa-solid fa-bullhorn"></i>
+
+            <span>Notices</span>
+
+        </a>
+
+
+        <a href="admission.html">
+
+            <i class="fa-solid fa-graduation-cap"></i>
+
+            <span>Admission</span>
+
+        </a>
+
+
+        <a
+            href="profile.html">
+
+            <i class="fa-solid fa-user"></i>
+
+            <span>Profile</span>
+
+        </a>
+
+
+        <a href="settings.html">
+
+            <i class="fa-solid fa-gear"></i>
+
+            <span>Settings</span>
+
+        </a>
+
+    </nav>
+
+
+    <div class="sidebar-bottom">
+
+        <button id="logoutBtn">
+
+            <i class="fa-solid fa-right-from-bracket"></i>
+
+            <span>Logout</span>
+
+        </button>
+
+    </div>
+
+</aside>
+
+    
+
+    <!-- ==========================
+         MAIN CONTENT
+    =========================== -->
+
+    <main class="main-content">
+
+        <!-- ==========================
+             TOPBAR
+        =========================== -->
+
+        <header class="topbar">
+
+            <!-- Search Box -->
+
+            <div class="search-box">
+
+                <i class="fa-solid fa-magnifying-glass"></i>
+
+                <input
+                    type="text"
+                    placeholder="Search anything...">
+
+            </div>
+
+            <!-- Right Section -->
+
+            <div class="top-right">
+
+                <!-- Notification -->
+
+                <div class="notification">
+
+                    <i class="fa-regular fa-bell"></i>
+
+                    <span class="badge">1</span>
+
+                </div>
+
+                <!-- Profile -->
+
+                <div class="profile" id="profileBtn">
+
+                    <img
+                        src="assets/robot-login.png"
+                        alt="Profile">
+
+                    <span>Sakshi</span>
+
+                    <i class="fa-solid fa-chevron-down"></i>
+
+                    <!-- Dropdown -->
+
+                    <div
+                        class="profile-dropdown"
+                        id="profileDropdown">
+
+                        <div class="profile-header">
+
+                            <img
+                                src="assets/robot-login.png"
+                                alt="Profile">
+
+                            <div>
+
+                                <h4>Sakshi Chaudhary</h4>
+
+                                <p>Student</p>
+
+                            </div>
+
+                        </div>
+
+                        <hr>
+
+                        <a href="#">
+
+                            <i class="fa-solid fa-user"></i>
+
+                            My Profile
+
+                        </a>
+
+                        <a href="#">
+
+                            <i class="fa-solid fa-gear"></i>
+
+                            Settings
+
+                        </a>
+
+                        <a
+                            href="#"
+                            id="logoutBtn">
+
+                            <i class="fa-solid fa-right-from-bracket"></i>
+
+                            Logout
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </header>
+
+        <!-- ==========================
+             HERO SECTION
+        =========================== -->
+
+        <section class="hero-section">
+
+            <div class="hero-left">
+
+                <span class="welcome-tag">
+                    👋 Welcome Back
+                </span>
+
+                <h1>
+
+                    Hello,
+                    <span>Sakshi</span>
+
+                </h1>
+
+                <p>
+
+                    Welcome to your AI-powered Smart Campus Dashboard.
+                    Access study resources, chat with CampusAI,
+                    upload PDFs, check notices and manage your
+                    academic journey from one place.
+
+                </p>
+
+                <div class="hero-buttons">
+
+                    <button class="primary-btn" id = "askAiBtn">
+
+                        <i class="fa-solid fa-robot"></i>
+
+                        Ask AI
+
+                    </button>
+
+                    <button class="secondary-btn">
+
+                        <i class="fa-solid fa-file-arrow-up"></i>
+
+                        Upload PDF
+
+                    </button>
+
+                </div>
+
+            </div>
+
+            <div class="hero-right">
+
+                <img
+                    src="assets/robot-login.png"
+                    alt="CampusAI Robot">
+
+            </div>
+
+        </section>
+
+        <!-- ==========================
+             QUICK ACTIONS
+        =========================== -->
+
+        <section class="quick-actions">
+
+            <div class="action-card" id = "aiCard">
+
+                <i class="fa-solid fa-robot"></i>
+
+                <h3>AI Assistant</h3>
+
+                <p>Ask academic questions instantly.</p>
+
+            </div>
+
+            <div class="action-card" id = "uploadCard">
+
+                <i class="fa-solid fa-file-arrow-up"></i>
+
+                <h3>Upload Notes</h3>
+
+                <p>Upload PDFs for AI analysis.</p>
+
+            </div>
+
+            <div class="action-card" id = "noticeCard">
+
+                <i class="fa-solid fa-bullhorn"></i>
+
+                <h3>Latest Notices</h3>
+
+                <p>Stay updated with campus news.</p>
+
+            </div>
+
+            <div class="action-card" id = "eventCard">
+
+                <i class="fa-solid fa-calendar-days"></i>
+
+                <h3>Events</h3>
+
+                <p>Check upcoming campus events.</p>
+
+            </div>
+
+        </section>
+
+        <!-- ==========================
+             STATISTICS
+        =========================== -->
+
+        <section class="stats-section">
+
+            <div class="stat-card">
+
+                <div class="stat-icon blue">
+                    <i class="fa-solid fa-file-pdf"></i>
+                </div>
+
+                <div class="stat-info">
+                    <h2>24</h2>
+                    <p>PDF Uploaded</p>
+                </div>
+
+            </div>
+
+            <div class="stat-card">
+
+                <div class="stat-icon green">
+                    <i class="fa-solid fa-comments"></i>
+                </div>
+
+                <div class="stat-info">
+                    <h2>183</h2>
+                    <p>AI Chats</p>
+                </div>
+
+            </div>
+
+            <div class="stat-card">
+
+                <div class="stat-icon orange">
+                    <i class="fa-solid fa-bell"></i>
+                </div>
+
+                <div class="stat-info">
+                    <h2>8</h2>
+                    <p>New Notices</p>
+                </div>
+
+            </div>
+
+            <div class="stat-card">
+
+                <div class="stat-icon purple">
+                    <i class="fa-solid fa-calendar-check"></i>
+                </div>
+
+                <div class="stat-info">
+                    <h2>5</h2>
+                    <p>Upcoming Events</p>
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- ==========================
+             RECENT ACTIVITY
+        =========================== -->
+
+        <section class="recent-activity">
+
+            <div class="section-header">
+
+                <h2>Recent Activity</h2>
+
+                <a href="#">View All</a>
+
+            </div>
+            <div id = "activityContainer">
+
+            </div>
+
+        </section>
+
+        <!-- ==========================
+     BOTTOM GRID
+=========================== -->
+
+<section class="bottom-grid">
+
+    <!-- Latest Notices -->
+
+    <div class="notice-box">
+
+        <div class="section-header">
+
+            <h2>Latest Notices</h2>
+
+            <a href="notices.html">View All</a>
+
+        </div>
+
+        <div id="latestNoticeContainer">
+
+        </div>
+
+    </div>
+
+    <!-- Upcoming Events -->
+
+    <div class="event-box">
+
+        <div class="section-header">
+
+            <h2>Upcoming Events</h2>
+
+            <a href="#">Calendar</a>
+
+        </div>
+
+        <div id="eventContainer">
+
+        </div>
+
+    </div>
+
+</section>
+
+        <!-- ==========================
+                  FOOTER
+        ========================== -->
+
+    <footer class="dashboard-footer">
+         <div class="footer-left">
+        <p>
+            © 2026 AITD CampusAI. All Rights Reserved.
+        </p>
+        </div>
+         <div class="footer-right">
+             <a href="#">Privacy Policy</a>
+              <a href="#">Terms</a>
+               <a href="#">Support</a>
+         </div>
+    </footer>
+
+    
+         
+    </main>
+
+</div>
+
+<script src="js/dashboard.js"></script>
+
+</body>
+
+</html>

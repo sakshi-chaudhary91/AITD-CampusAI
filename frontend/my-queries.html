@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>My Queries | CampusAI</title>
+
+    <link
+        rel="stylesheet"
+        href="css/my-queries.css"
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    >
+
+</head>
+
+
+<body>
+
+<div class="dashboard-layout">
+
+
+    <!-- =========================
+         SIDEBAR
+    ========================== -->
+
+    <aside class="sidebar">
+
+        <div class="sidebar-logo">
+
+            <img
+                src="assets/logo.png"
+                alt="CampusAI"
+            >
+
+            <h2>CampusAI</h2>
+
+        </div>
+
+
+        <nav class="sidebar-nav">
+
+            <a href="dashboard.html">
+
+                <i class="fa-solid fa-house"></i>
+
+                <span>Dashboard</span>
+
+            </a>
+
+
+            <a href="ai-assistant.html">
+
+                <i class="fa-solid fa-robot"></i>
+
+                <span>AI Assistant</span>
+
+            </a>
+
+
+            <a
+                href="my-queries.html"
+                class="active"
+            >
+
+                <i class="fa-solid fa-clock-rotate-left"></i>
+
+                <span>My Queries</span>
+
+            </a>
+
+
+            <a href="notices.html">
+
+                <i class="fa-solid fa-bullhorn"></i>
+
+                <span>Notices</span>
+
+            </a>
+
+
+            <a href="admission.html">
+
+                <i class="fa-solid fa-graduation-cap"></i>
+
+                <span>Admission</span>
+
+            </a>
+
+
+            <a href="profile.html">
+
+                <i class="fa-solid fa-user"></i>
+
+                <span>Profile</span>
+
+            </a>
+
+
+            <a href="settings.html">
+
+                <i class="fa-solid fa-gear"></i>
+
+                <span>Settings</span>
+
+            </a>
+
+        </nav>
+
+
+        <div class="sidebar-bottom">
+
+            <button id="logoutBtn">
+
+                <i class="fa-solid fa-right-from-bracket"></i>
+
+                <span>Logout</span>
+
+            </button>
+
+        </div>
+
+    </aside>
+
+
+
+    <!-- =========================
+         MAIN CONTENT
+    ========================== -->
+
+    <main class="main-content">
+
+
+        <!-- =========================
+             TOPBAR
+        ========================== -->
+
+        <header class="topbar">
+
+            <div class="page-heading">
+
+                <h1>My Queries</h1>
+
+                <p>
+                    View your previous questions and conversations.
+                </p>
+
+            </div>
+
+
+            <div class="profile-area">
+
+                <div class="profile-icon">
+
+                    <i class="fa-solid fa-user"></i>
+
+                </div>
+
+
+                <div class="profile-info">
+
+                    <strong>Sakshi</strong>
+
+                    <span>Student</span>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+
+        <!-- =========================
+             PAGE CONTENT
+        ========================== -->
+
+        <section class="queries-section">
+
+
+            <!-- =========================
+                 QUERIES HEADER
+            ========================== -->
+
+            <div class="queries-header">
+
+                <div>
+
+                    <h2>Recent Queries</h2>
+
+                    <p>
+                        Your recent questions asked to CampusAI.
+                    </p>
+
+                </div>
+
+
+                <button
+                    class="clear-btn"
+                    id="clearQueriesBtn"
+                >
+
+                    <i class="fa-solid fa-trash"></i>
+
+                    Clear History
+
+                </button>
+
+            </div>
+
+
+
+            <!-- =========================
+                 QUERY LIST
+            ========================== -->
+
+            <div
+                class="queries-list"
+                id="queriesList"
+            >
+
+                <!--
+                    Real queries will be added here
+                    automatically using JavaScript.
+                -->
+
+
+                <!-- =========================
+                     EMPTY STATE
+                ========================== -->
+
+                <div
+                    class="empty-state"
+                    id="emptyState"
+                    style="display:none;"
+                >
+
+                    <div class="empty-icon">
+
+                        <i class="fa-regular fa-comments"></i>
+
+                    </div>
+
+
+                    <h3>No queries yet</h3>
+
+
+                    <p>
+
+                        Your conversations with CampusAI
+                        will appear here.
+
+                    </p>
+
+
+                    <a href="ai-assistant.html">
+
+                        <i class="fa-solid fa-robot"></i>
+
+                        Ask CampusAI
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================
+             FOOTER
+        ========================== -->
+
+        <footer class="footer">
+
+            <p>
+                © 2026 CampusAI. All rights reserved.
+            </p>
+
+        </footer>
+
+    </main>
+
+</div>
+
+
+
+<!-- =========================
+     JAVASCRIPT
+========================= -->
+
+<script src="js/my-queries.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,580 @@
+/* ===========================
+        GOOGLE FONT
+=========================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(135deg,#2563EB,#38BDF8);
+}
+
+.login-page{
+    width:100%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:40px;
+}
+
+.login-container{
+    width:1100px;
+    min-height:650px;
+    display:flex;
+    background:#fff;
+    border-radius:30px;
+    overflow:hidden;
+    box-shadow:0 25px 60px rgba(0,0,0,.18);
+}
+
+/* ===========================
+        LEFT PANEL
+=========================== */
+
+.left-panel{
+    width:50%;
+    background:linear-gradient(135deg,#2563EB,#38BDF8);
+    color:#fff;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    padding:60px;
+    text-align:center;
+    position:relative;
+}
+
+.left-panel::before{
+    content:"";
+    position:absolute;
+    width:350px;
+    height:350px;
+    background:rgba(255,255,255,.08);
+    border-radius:50%;
+    top:-120px;
+    right:-120px;
+}
+
+.left-panel::after{
+    content:"";
+    position:absolute;
+    width:250px;
+    height:250px;
+    background:rgba(255,255,255,.08);
+    border-radius:50%;
+    bottom:-100px;
+    left:-80px;
+}
+
+.left-panel img{
+    width:360px;
+    max-width:100%;
+    margin-bottom:35px;
+    z-index:2;
+}
+
+.left-panel h1{
+    font-size:42px;
+    font-weight:700;
+    margin-bottom:18px;
+    z-index:2;
+}
+
+.left-panel p{
+    font-size:17px;
+    line-height:1.8;
+    opacity:.95;
+    z-index:2;
+}
+
+/* ===========================
+        RIGHT PANEL
+=========================== */
+
+.right-panel{
+    width:50%;
+    background:#fff;
+    padding:60px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    margin-bottom:35px;
+}
+
+.logo img{
+    width:48px;
+}
+
+.logo span{
+    font-size:24px;
+    font-weight:700;
+    color:#0F172A;
+}
+
+.right-panel h2{
+    font-size:36px;
+    color:#0F172A;
+    margin-bottom:10px;
+}
+
+.subtitle{
+    color:#64748B;
+    margin-bottom:30px;
+}
+
+/* ===========================
+      ROLE BUTTON
+=========================== */
+
+.role-toggle{
+    display:flex;
+    background:#EEF5FF;
+    border-radius:50px;
+    padding:5px;
+    margin-bottom:30px;
+}
+
+.role-btn{
+    flex:1;
+    padding:12px;
+    border:none;
+    background:transparent;
+    border-radius:50px;
+    cursor:pointer;
+    font-size:15px;
+    font-weight:600;
+    transition:.3s;
+}
+
+.role-btn.active{
+    background:#2563EB;
+    color:#fff;
+}
+
+/* ===========================
+        INPUT BOX
+=========================== */
+
+.input-box{
+    position:relative;
+    margin-bottom:20px;
+}
+
+.input-box input{
+    width:100%;
+    height:55px;
+    padding:0 50px;
+    border:2px solid #E5E7EB;
+    border-radius:14px;
+    font-size:15px;
+    outline:none;
+    transition:.3s;
+    background:#fff;
+}
+
+.input-box input:focus{
+    border-color:#2563EB;
+    box-shadow:0 0 0 4px rgba(37,99,235,.12);
+}
+
+.input-box i{
+    position:absolute;
+    left:18px;
+    top:50%;
+    transform:translateY(-50%);
+    color:#64748B;
+}
+
+#togglePassword{
+    position:absolute;
+    right:18px;
+    top:50%;
+    transform:translateY(-50%);
+    cursor:pointer;
+    color:#64748B;
+}
+
+/* ===========================
+        OPTIONS
+=========================== */
+
+.options{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin:18px 0 28px;
+    font-size:14px;
+}
+
+.options label{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    color:#475569;
+}
+
+.options a{
+    text-decoration:none;
+    color:#2563EB;
+    font-weight:500;
+}
+
+.options a:hover{
+    text-decoration:underline;
+}
+
+/* ===========================
+      LOGIN BUTTON
+=========================== */
+
+.login-btn{
+    width:100%;
+    height:55px;
+    border:none;
+    border-radius:14px;
+    background:#2563EB;
+    color:#fff;
+    font-size:16px;
+    font-weight:600;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.login-btn:hover{
+    background:#1D4ED8;
+    transform:translateY(-2px);
+    box-shadow:0 12px 25px rgba(37,99,235,.25);
+}
+
+/* ===========================
+        DIVIDER
+=========================== */
+
+.divider{
+    text-align:center;
+    margin:28px 0;
+    position:relative;
+}
+
+.divider::before{
+    content:"";
+    position:absolute;
+    left:0;
+    top:50%;
+    width:100%;
+    height:1px;
+    background:#E5E7EB;
+}
+
+.divider span{
+    background:#fff;
+    padding:0 15px;
+    position:relative;
+    color:#94A3B8;
+    font-size:14px;
+}
+
+/* ===========================
+      GOOGLE BUTTON
+=========================== */
+
+.google-btn{
+    width:100%;
+    height:55px;
+    border:2px solid #E5E7EB;
+    border-radius:14px;
+    background:#fff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:12px;
+    cursor:pointer;
+    font-size:15px;
+    font-weight:600;
+    transition:.3s;
+}
+
+.google-btn img{
+    width:22px;
+}
+
+.google-btn:hover{
+    border-color:#2563EB;
+    transform:translateY(-2px);
+}
+
+/* ===========================
+        FOOTER
+=========================== */
+
+.bottom-text{
+    text-align:center;
+    margin-top:30px;
+    color:#94A3B8;
+    font-size:14px;
+}
+
+/* ===========================
+        ANIMATIONS
+=========================== */
+
+.login-container{
+    animation:fadeIn .8s ease;
+}
+
+.left-panel img{
+    animation:float 4s ease-in-out infinite;
+}
+
+@keyframes fadeIn{
+
+    from{
+        opacity:0;
+        transform:translateY(30px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+@keyframes float{
+
+    0%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-15px);
+    }
+
+    100%{
+        transform:translateY(0);
+    }
+}
+
+/* ===========================
+      HOVER EFFECTS
+=========================== */
+
+.logo img{
+    transition:.3s;
+}
+
+.logo img:hover{
+    transform:rotate(-8deg) scale(1.08);
+}
+
+.role-btn:hover{
+    background:#DCEBFF;
+}
+
+.role-btn.active:hover{
+    background:#1D4ED8;
+    color:#fff;
+}
+
+.input-box:hover input{
+    border-color:#2563EB;
+}
+
+/* ===========================
+      RESPONSIVE
+=========================== */
+
+@media(max-width:992px){
+
+.login-container{
+
+    width:95%;
+
+    flex-direction:column;
+}
+
+.left-panel{
+
+    width:100%;
+
+    padding:40px 30px;
+}
+
+.left-panel img{
+
+    width:260px;
+}
+
+.left-panel h1{
+
+    font-size:32px;
+}
+
+.left-panel p{
+
+    font-size:15px;
+}
+
+.right-panel{
+
+    width:100%;
+
+    padding:40px 30px;
+}
+
+.logo{
+
+    justify-content:center;
+}
+
+.right-panel h2{
+
+    text-align:center;
+}
+
+.subtitle{
+
+    text-align:center;
+}
+
+}
+
+@media(max-width:768px){
+
+body{
+
+    padding:20px;
+}
+
+.login-container{
+
+    border-radius:22px;
+}
+
+.left-panel{
+
+    display:none;
+}
+
+.right-panel{
+
+    padding:35px 25px;
+}
+
+.logo img{
+
+    width:42px;
+}
+
+.logo span{
+
+    font-size:22px;
+}
+
+.right-panel h2{
+
+    font-size:30px;
+}
+
+.subtitle{
+
+    font-size:14px;
+}
+
+.role-btn{
+
+    font-size:14px;
+}
+
+.login-btn{
+
+    font-size:15px;
+}
+
+.google-btn{
+
+    font-size:14px;
+}
+
+}
+
+@media(max-width:480px){
+
+.right-panel{
+
+    padding:28px 18px;
+}
+
+.input-box input{
+
+    height:50px;
+    font-size:14px;
+}
+
+.login-btn,
+.google-btn{
+
+    height:50px;
+}
+
+.logo span{
+
+    font-size:20px;
+}
+
+.bottom-text{
+
+    font-size:13px;
+}
+
+}
+
+/* ===========================
+      SCROLLBAR
+=========================== */
+
+::-webkit-scrollbar{
+    width:8px;
+}
+
+::-webkit-scrollbar-thumb{
+    background:#2563EB;
+    border-radius:10px;
+}
+
+::-webkit-scrollbar-track{
+    background:#F1F5F9;
+}
+
+.signup-link{
+    text-align:center;
+    margin-top:20px;
+    color:#64748B;
+    font-size:15px;
+}
+
+.signup-link a{
+    color:#2563EB;
+    text-decoration:none;
+    font-weight:600;
+    transition:.3s;
+}
+
+.signup-link a:hover{
+    text-decoration:underline;
+}

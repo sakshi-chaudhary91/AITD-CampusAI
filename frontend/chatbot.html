@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CampusAI Demo Chat</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/chatbot.css">
+
+</head>
+
+<body>
+
+<div class="chat-container">
+
+    <!-- ================= Sidebar ================= -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+
+            <img src="assets/logo.png" alt="">
+
+            <h2>CampusAI</h2>
+
+        </div>
+
+        <button class="new-chat">
+
+            <i class="fa-solid fa-plus"></i>
+
+            New Chat
+
+        </button>
+
+        <div class="sidebar-menu">
+
+            <div class="menu-item">
+
+                <i class="fa-solid fa-user-graduate"></i>
+
+                Admissions
+
+            </div>
+
+            <div class="menu-item">
+
+                <i class="fa-solid fa-book"></i>
+
+                Courses
+
+            </div>
+
+            <div class="menu-item">
+
+                <i class="fa-solid fa-money-bill"></i>
+
+                Fees
+
+            </div>
+
+            <div class="menu-item">
+
+                <i class="fa-solid fa-award"></i>
+
+                Scholarships
+
+            </div>
+
+            <div class="menu-item">
+
+                <i class="fa-solid fa-bullhorn"></i>
+
+                Notices
+
+            </div>
+
+        </div>
+
+        <div class="login-box">
+
+            <p>
+
+                🔒 Unlock Full CampusAI
+
+            </p>
+
+            <a href="login.html">
+
+                Login
+
+            </a>
+
+        </div>
+
+    </aside>
+
+    <!-- ================= Chat Section ================= -->
+
+    <main class="chat-area">
+
+        <!-- Header -->
+
+        <header class="chat-header">
+
+            <div>
+
+                <h2>CampusAI Demo</h2>
+
+                <span>AI Powered Campus Assistant</span>
+
+            </div>
+
+        </header>
+
+        <!-- Chat Messages -->
+
+        <div class="chat-body" id="chatBody">
+
+            <!-- Bot Message -->
+
+            <div class="message bot">
+
+                <div class="avatar">
+
+                    🤖
+
+                </div>
+
+                <div class="message-content">
+
+                    <h4>CampusAI</h4>
+
+                    <p>
+
+                        Hello 👋
+
+                        <br><br>
+
+                        Welcome to CampusAI Demo.
+
+                        <br><br>
+
+                        Ask me about:
+
+                    </p>
+
+                    <div class="quick-questions">
+
+                        <button class="quick-btn">
+
+                            Admission
+
+                        </button>
+
+                        <button class="quick-btn">
+
+                            Courses
+
+                        </button>
+
+                        <button class="quick-btn">
+
+                            Fees
+
+                        </button>
+
+                        <button class="quick-btn">
+
+                            Scholarships
+
+                        </button>
+
+                        <button class="quick-btn">
+
+                            Notices
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Input -->
+
+        <div class="chat-input">
+
+            <input
+                type="text"
+                id="userInput"
+                placeholder="Ask something...">
+
+            <button id="sendBtn">
+
+                <i class="fa-solid fa-paper-plane"></i>
+
+            </button>
+
+        </div>
+
+    </main>
+
+</div>
+
+<script src="js/chatbot.js"></script>
+
+</body>
+</html>

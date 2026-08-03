@@ -176,7 +176,7 @@ nav{
 .hero-container{
     display:flex;
     justify-content:space-between;
-    align-items:center;
+    align-items:flex-start;
     gap:60px;
 }
 
@@ -216,7 +216,9 @@ nav{
 
 .hero-buttons{
     display:flex;
-    gap:20px;
+    gap:25px;
+    justify-content: center;
+    flex-wrap: wrap;
 }
 
 /* Buttons */

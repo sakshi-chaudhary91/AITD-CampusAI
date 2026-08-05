@@ -131,25 +131,17 @@ body{
 
 .sidebar-bottom button{
     width:100%;
-
     padding:13px 14px;
-
     border:none;
     border-radius:10px;
-
     background:transparent;
-
     color:#CBD5E1;
-
     font-family:inherit;
     font-size:13px;
-
     display:flex;
     align-items:center;
     gap:13px;
-
     cursor:pointer;
-
     transition:.25s;
 }
 

@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CampusAI Admin Dashboard</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/admin.css">
+
+</head>
+
+<body>
+
+<div class="dashboard">
+
+    <!-- ================= SIDEBAR ================= -->
+
+    <aside class="sidebar">
+
+        <div class="sidebar-top">
+
+            <div class="logo">
+
+                <img src="assets/logo.png" alt="">
+
+                <div>
+                    <h2>CampusAI</h2>
+                    <span>Admin Panel</span>
+                </div>
+
+            </div>
+
+            <nav class="sidebar-menu">
+
+                <a href="#" class="menu-item active">
+                    <i class="fas fa-table-columns"></i>
+                    <span>Dashboard</span>
+                </a>
+
+                <a href="#" class="menu-item">
+                    <i class="fas fa-users"></i>
+                    <span>Students</span>
+                </a>
+
+                <a href="#" class="menu-item">
+                    <i class="fas fa-user-plus"></i>
+                    <span>Admissions</span>
+                </a>
+
+                <a href="#" class="menu-item">
+                    <i class="fas fa-book-open"></i>
+                    <span>Courses</span>
+                </a>
+
+                <a href="#" class="menu-item">
+                    <i class="fas fa-bullhorn"></i>
+                    <span>Notices</span>
+                </a>
+
+                <a href="#" class="menu-item">
+                    <i class="fas fa-graduation-cap"></i>
+                    <span>Scholarships</span>
+                </a>
+
+                <a href="#" class="menu-item">
+                    <i class="fas fa-file-pdf"></i>
+                    <span>PDF Upload</span>
+                </a>
+
+                <a href="#" class="menu-item">
+                    <i class="fas fa-database"></i>
+                    <span>Knowledge Base</span>
+                </a>
+
+                <a href="#" class="menu-item">
+                    <i class="fas fa-robot"></i>
+                    <span>AI Chat Logs</span>
+                </a>
+
+                <a href="#" class="menu-item">
+                    <i class="fas fa-gear"></i>
+                    <span>Settings</span>
+                </a>
+
+            </nav>
+
+        </div>
+
+        <div class="sidebar-bottom">
+
+            <div class="admin-card">
+
+                <img src="assets/robot-login.png" alt="Admin">
+
+                <h4>Admin</h4>
+
+                <p>CampusAI Administrator</p>
+
+            </div>
+
+            <button class="logout-btn">
+
+                <i class="fas fa-right-from-bracket"></i>
+
+                Logout
+
+            </button>
+
+        </div>
+
+    </aside>
+
+    <!-- ================= MAIN ================= -->
+
+    <main class="main-content">
+
+        <!-- Topbar -->
+
+        <header class="topbar">
+
+            <div class="search-box">
+
+                <i class="fas fa-search"></i>
+
+                <input
+                    type="text"
+                    placeholder="Search students, notices, courses..."
+                >
+
+            </div>
+
+            <div class="top-right">
+
+                <button class="icon-btn">
+
+                    <i class="fas fa-bell"></i>
+
+                    <span class="badge">3</span>
+
+                </button>
+
+                <button class="icon-btn">
+
+                    <i class="fas fa-envelope"></i>
+
+                    <span class="badge">5</span>
+
+                </button>
+
+                <div class="profile">
+
+                    <img src="assets/robot-login.png" alt="">
+
+                    <div>
+
+                        <h4>Admin</h4>
+
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </header>
+
+        <!-- Dashboard Content -->
+
+        <section class="dashboard-content">
+
+            <div class="welcome-banner">
+
+                <div>
+
+                    <h1>Welcome Back 👋</h1>
+
+                    <p>
+                        Manage admissions, students, notices,
+                        courses and AI knowledge base from one place.
+                    </p>
+
+                </div>
+
+            </div>
+
+            <!-- Statistics Cards -->
+
+            <div class="stats-grid">
+
+                <div class="stat-card">
+
+                    <div class="stat-icon blue">
+                        <i class="fas fa-users"></i>
+                    </div>
+
+                    <div>
+                        <h2>1,248</h2>
+                        <p>Total Students</p>
+                    </div>
+
+                </div>
+
+                <div class="stat-card">
+
+                    <div class="stat-icon green">
+                        <i class="fas fa-user-check"></i>
+                    </div>
+
+                    <div>
+                        <h2>142</h2>
+                        <p>New Admissions</p>
+                    </div>
+
+                </div>
+
+                <div class="stat-card">
+
+                    <div class="stat-icon orange">
+                        <i class="fas fa-file-lines"></i>
+                    </div>
+
+                    <div>
+                        <h2>18</h2>
+                        <p>Active Notices</p>
+                    </div>
+
+                </div>
+
+                <div class="stat-card">
+
+                    <div class="stat-icon purple">
+                        <i class="fas fa-robot"></i>
+                    </div>
+
+                    <div>
+                        <h2>5,421</h2>
+                        <p>AI Queries</p>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- Quick Actions -->
+
+            <section class="quick-actions">
+
+                <div class="section-header">
+
+                    <h2>Quick Actions</h2>
+
+                </div>
+
+                <div class="action-grid">
+
+                    <button class="action-card">
+                        <i class="fas fa-user-plus"></i>
+                        <span>Add Student</span>
+                    </button>
+
+                    <button class="action-card">
+                        <i class="fas fa-bullhorn"></i>
+                        <span>Add Notice</span>
+                    </button>
+
+                    <button class="action-card">
+                        <i class="fas fa-book"></i>
+                        <span>Add Course</span>
+                    </button>
+
+                    <button class="action-card">
+                        <i class="fas fa-file-arrow-up"></i>
+                        <span>Upload PDF</span>
+                    </button>
+
+                    <button class="action-card">
+                        <i class="fas fa-graduation-cap"></i>
+                        <span>Scholarship</span>
+                    </button>
+
+                    <button class="action-card">
+                        <i class="fas fa-gear"></i>
+                        <span>Settings</span>
+                    </button>
+
+                </div>
+
+            </section>
+
+            <!-- Bottom Grid -->
+
+            <div class="bottom-grid">
+
+                <!-- Recent Activity -->
+
+                <div class="dashboard-card">
+
+                    <div class="section-header">
+                        <h2>Recent Activity</h2>
+                    </div>
+
+                    <div class="activity-list">
+
+                        <div class="activity-item">
+                            <i class="fas fa-user-plus"></i>
+                            <div>
+                                <h4>New Student Registered</h4>
+                                <span>10 minutes ago</span>
+                            </div>
+                        </div>
+
+                        <div class="activity-item">
+                            <i class="fas fa-file-pdf"></i>
+                            <div>
+                                <h4>Syllabus PDF Uploaded</h4>
+                                <span>35 minutes ago</span>
+                            </div>
+                        </div>
+
+                        <div class="activity-item">
+                            <i class="fas fa-bullhorn"></i>
+                            <div>
+                                <h4>Notice Published</h4>
+                                <span>1 hour ago</span>
+                            </div>
+                        </div>
+
+                        <div class="activity-item">
+                            <i class="fas fa-robot"></i>
+                            <div>
+                                <h4>Knowledge Base Updated</h4>
+                                <span>Today</span>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- AI Status -->
+
+                <div class="dashboard-card">
+
+                    <div class="section-header">
+
+                        <h2>AI Assistant Status</h2>
+
+                    </div>
+
+                    <div class="ai-status">
+
+                        <div class="status-item">
+
+                            <span>System Status</span>
+
+                            <strong class="online">● Online</strong>
+
+                        </div>
+
+                        <div class="status-item">
+
+                            <span>Vector Database</span>
+
+                            <strong>Ready</strong>
+
+                        </div>
+
+                        <div class="status-item">
+
+                            <span>Knowledge PDFs</span>
+
+                            <strong>28 Files</strong>
+
+                        </div>
+
+                        <div class="status-item">
+
+                            <span>Today's Queries</span>
+
+                            <strong>312</strong>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- Recent Notices -->
+
+            <div class="dashboard-card">
+
+                <div class="section-header">
+
+                    <h2>Latest Notices</h2>
+
+                    <a href="#">View All</a>
+
+                </div>
+
+                <div class="notice-list">
+
+                    <div class="notice-item">
+
+                        <i class="fas fa-bullhorn"></i>
+
+                        <div>
+
+                            <h4>Semester Examination Schedule Released</h4>
+
+                            <span>Today</span>
+
+                        </div>
+
+                    </div>
+
+                    <div class="notice-item">
+
+                        <i class="fas fa-bullhorn"></i>
+
+                        <div>
+
+                            <h4>Scholarship Verification Started</h4>
+
+                            <span>Yesterday</span>
+
+                        </div>
+
+                    </div>
+
+                    <div class="notice-item">
+
+                        <i class="fas fa-bullhorn"></i>
+
+                        <div>
+
+                            <h4>Placement Registration Open</h4>
+
+                            <span>2 days ago</span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Recent Uploads -->
+
+            <div class="dashboard-card">
+
+                <div class="section-header">
+
+                    <h2>Recent Uploads</h2>
+
+                    <a href="#">View All</a>
+
+                </div>
+
+                <div class="upload-list">
+
+                    <div class="upload-item">
+
+                        <i class="fas fa-file-pdf"></i>
+
+                        <div>
+
+                            <h4>CSE AI&ML Syllabus.pdf</h4>
+
+                            <span>Uploaded Today</span>
+
+                        </div>
+
+                    </div>
+
+                    <div class="upload-item">
+
+                        <i class="fas fa-file-pdf"></i>
+
+                        <div>
+
+                            <h4>Admission Brochure.pdf</h4>
+
+                            <span>Yesterday</span>
+
+                        </div>
+
+                    </div>
+
+                    <div class="upload-item">
+
+                        <i class="fas fa-file-pdf"></i>
+
+                        <div>
+
+                            <h4>Scholarship Guidelines.pdf</h4>
+
+                            <span>2 days ago</span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- Footer -->
+
+        <footer class="dashboard-footer">
+
+            <p>
+
+                © 2026 AITD CampusAI Admin Panel |
+                Built with ❤️ by Team CampusAI
+
+            </p>
+
+        </footer>
+
+    </main>
+
+</div>
+
+<script src="js/admin.js"></script>
+
+</body>
+
+</html>

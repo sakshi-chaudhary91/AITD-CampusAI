@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Students | AITD CampusAI Admin</title>
+
+<link rel="stylesheet" href="css/admin-students.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+</head>
+
+<body>
+
+<div class="dashboard">
+
+    <!-- ================= SIDEBAR ================= -->
+
+    <aside class="sidebar">
+
+        <div>
+
+            <div class="sidebar-logo">
+
+                <img src="assets/logo.png">
+
+                <h2>CampusAI</h2>
+
+            </div>
+
+            <nav class="sidebar-nav">
+
+                <a href="admin-dashboard.html">
+
+                    <i class="fa-solid fa-house"></i>
+
+                    Dashboard
+
+                </a>
+
+                <a class="active" href="admin-students.html">
+
+                    <i class="fas fa-users"></i>
+
+                    Students
+
+                </a>
+
+                <a href="admin-admissions.html">
+
+                    <i class="fas fa-user-plus"></i>
+
+                    Admissions
+
+                </a>
+
+                <a href="admin-courses.html">
+
+                    <i class="fas fa-book-open"></i>
+
+                    Courses
+
+                </a>
+
+                <a href="admin-notices.html">
+
+                    <i class="fas fa-bullhorn"></i>
+
+                    Notices
+
+                </a>
+
+                <a href="admin-scholarships.html">
+
+                    <i class="fas fa-graduation-cap"></i>
+
+                    Scholarships
+
+                </a>
+
+                <a href="admin-pdf-upload.html">
+
+                    <i class="fas fa-file-pdf"></i>
+
+                    PDF Upload
+
+                </a>
+
+                <a href="admin-knowledge-base.html">
+
+                    <i class="fas fa-database"></i>
+
+                    Knowledge Base
+
+                </a>
+                <a href="#" class="menu-item">
+                    <i class="fas fa-robot"></i>
+                    <span>AI Chat Logs</span>
+                </a>
+
+                <a href="admin-settings.html">
+
+                    <i class="fas fa-gear"></i>
+
+                    Settings
+
+                </a>
+
+            </nav>
+
+        </div>
+
+        <div class="sidebar-bottom">
+
+            <button>
+
+                <i class="fas fa-right-from-bracket"></i>
+
+                Logout
+
+            </button>
+
+        </div>
+
+    </aside>
+
+    <!-- ================= MAIN ================= -->
+
+    <main class="main-content">
+
+        <div class="topbar">
+
+            <div class="search-box">
+
+                <i class="fa-solid fa-magnifying-glass"></i>
+
+                <input type="text" placeholder="Search student...">
+
+            </div>
+
+            <div class="top-right">
+
+                <button class="add-btn">
+
+                    <i class="fa-solid fa-plus"></i>
+
+                    Add Student
+
+                </button>
+
+            </div>
+
+        </div>
+        <!-- ================= PAGE TITLE ================= -->
+
+        <div class="page-header">
+
+            <h1>Students Management</h1>
+
+            <p>Manage all registered students from one place.</p>
+
+        </div>
+
+        <!-- ================= STATS ================= -->
+
+        <div class="stats-grid">
+
+            <div class="stat-card">
+
+                <div class="stat-icon blue">
+                    <i class="fa-solid fa-users"></i>
+                </div>
+
+                <div>
+                    <h2>1,245</h2>
+                    <p>Total Students</p>
+                </div>
+
+            </div>
+
+            <div class="stat-card">
+
+                <div class="stat-icon green">
+                    <i class="fa-solid fa-user-check"></i>
+                </div>
+
+                <div>
+                    <h2>1,180</h2>
+                    <p>Active Students</p>
+                </div>
+
+            </div>
+
+            <div class="stat-card">
+
+                <div class="stat-icon orange">
+                    <i class="fa-solid fa-user-clock"></i>
+                </div>
+
+                <div>
+                    <h2>45</h2>
+                    <p>Pending Approval</p>
+                </div>
+
+            </div>
+
+            <div class="stat-card">
+
+                <div class="stat-icon purple">
+                    <i class="fa-solid fa-user-plus"></i>
+                </div>
+
+                <div>
+                    <h2>20</h2>
+                    <p>New This Week</p>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- ================= STUDENT TABLE ================= -->
+
+        <div class="dashboard-card">
+
+            <div class="section-header">
+
+                <h2>Student List</h2>
+
+                <a href="#">View All</a>
+
+            </div>
+
+            <table class="student-table">
+
+                <thead>
+
+                    <tr>
+
+                        <th>ID</th>
+
+                        <th>Student</th>
+
+                        <th>Branch</th>
+
+                        <th>Year</th>
+
+                        <th>Status</th>
+
+                        <th>Actions</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    <tr>
+
+                        <td>ST001</td>
+
+                        <td>
+
+                            <div class="student-info">
+
+                                <img src="assets/profile.png" alt="">
+
+                                <div>
+
+                                    <h4>Sakshi Chaudhary</h4>
+
+                                    <span>sakshi@email.com</span>
+
+                                </div>
+
+                            </div>
+
+                        </td>
+
+                        <td>AI & ML</td>
+
+                        <td>Final Year</td>
+
+                        <td>
+
+                            <span class="status active">
+
+                                Active
+
+                            </span>
+
+                        </td>
+
+                        <td>
+
+                            <div class="action-buttons">
+
+                                <button class="view-btn">
+
+                                    <i class="fa-solid fa-eye"></i>
+
+                                </button>
+
+                                <button class="edit-btn">
+
+                                    <i class="fa-solid fa-pen"></i>
+
+                                </button>
+
+                                <button class="delete-btn">
+
+                                    <i class="fa-solid fa-trash"></i>
+
+                                </button>
+
+                            </div>
+
+                        </td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>ST002</td>
+
+                        <td>
+
+                            <div class="student-info">
+
+                                <img src="assets/profile.png" alt="">
+
+                                <div>
+
+                                    <h4>Rahul Sharma</h4>
+
+                                    <span>rahul@email.com</span>
+
+                                </div>
+
+                            </div>
+
+                        </td>
+
+                        <td>CSE</td>
+
+                        <td>3rd Year</td>
+
+                        <td>
+
+                            <span class="status pending">
+
+                                Pending
+
+                            </span>
+
+                        </td>
+
+                        <td>
+
+                            <div class="action-buttons">
+
+                                <button class="view-btn">
+
+                                    <i class="fa-solid fa-eye"></i>
+
+                                </button>
+
+                                <button class="edit-btn">
+
+                                    <i class="fa-solid fa-pen"></i>
+
+                                </button>
+
+                                <button class="delete-btn">
+
+                                    <i class="fa-solid fa-trash"></i>
+
+                                </button>
+
+                            </div>
+
+                        </td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>ST003</td>
+
+                        <td>
+
+                            <div class="student-info">
+
+                                <img src="assets/profile.png" alt="">
+
+                                <div>
+
+                                    <h4>Priya Singh</h4>
+
+                                    <span>priya@email.com</span>
+
+                                </div>
+
+                            </div>
+
+                        </td>
+
+                        <td>IT</td>
+
+                        <td>2nd Year</td>
+
+                        <td>
+
+                            <span class="status inactive">
+
+                                Inactive
+
+                            </span>
+
+                        </td>
+
+                        <td>
+
+                            <div class="action-buttons">
+
+                                <button class="view-btn">
+
+                                    <i class="fa-solid fa-eye"></i>
+
+                                </button>
+
+                                <button class="edit-btn">
+
+                                    <i class="fa-solid fa-pen"></i>
+
+                                </button>
+
+                                <button class="delete-btn">
+
+                                    <i class="fa-solid fa-trash"></i>
+
+                                </button>
+
+                            </div>
+
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+            <!-- Pagination -->
+
+            <div class="table-pagination">
+
+                <button>
+
+                    <i class="fa-solid fa-angle-left"></i>
+
+                </button>
+
+                <button class="active-page">1</button>
+
+                <button>2</button>
+
+                <button>3</button>
+
+                <button>
+
+                    <i class="fa-solid fa-angle-right"></i>
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </main>
+
+</div>
+
+<script src="js/admin-students.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Admissions | AITD CampusAI Admin</title>
+
+<link rel="stylesheet" href="css/admin-students.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+</head>
+
+<body>
+
+<div class="dashboard">
+
+    <!-- ================= SIDEBAR ================= -->
+
+    <aside class="sidebar">
+
+        <div>
+
+            <div class="sidebar-logo">
+
+                <img src="assets/logo.png" alt="CampusAI Logo">
+
+                <h2>CampusAI</h2>
+
+            </div>
+
+            <nav class="sidebar-nav">
+
+                <a href="admin-home.html">
+
+                    <i class="fa-solid fa-house"></i>
+
+                    Dashboard
+
+                </a>
+
+                <a href="admin-students.html">
+
+                    <i class="fas fa-users"></i>
+
+                    Students
+
+                </a>
+
+                <a class="active" href="admin-admissions.html">
+
+                    <i class="fas fa-user-plus"></i>
+
+                    Admissions
+
+                </a>
+
+                <a href="admin-courses.html">
+
+                    <i class="fas fa-book-open"></i>
+
+                    Courses
+
+                </a>
+
+                <a href="admin-notices.html">
+
+                    <i class="fas fa-bullhorn"></i>
+
+                    Notices
+
+                </a>
+
+                <a href="admin-scholarships.html">
+
+                    <i class="fas fa-graduation-cap"></i>
+
+                    Scholarships
+
+                </a>
+
+                <a href="admin-pdf-upload.html">
+
+                    <i class="fas fa-file-pdf"></i>
+
+                    PDF Upload
+
+                </a>
+
+                <a href="admin-knowledge-base.html">
+
+                   <i class="fas fa-database"></i>
+
+                    Knowledge Base
+
+                </a>
+
+                <a href="admin-settings.html">
+
+                    <i class="fas fa-gear"></i>
+
+                    Settings
+
+                </a>
+
+            </nav>
+
+        </div>
+
+        <!-- ================= LOGOUT ================= -->
+
+        <div class="sidebar-bottom">
+
+            <button id="logoutBtn">
+
+                <i class="fas fa-right-from-bracket"></i>
+
+                Logout
+
+            </button>
+
+        </div>
+
+    </aside>
+
+
+    <!-- ================= MAIN CONTENT ================= -->
+
+    <main class="main-content">
+
+
+        <!-- ================= TOPBAR ================= -->
+
+        <div class="topbar">
+
+            <div class="search-box">
+
+                <i class="fa-solid fa-magnifying-glass"></i>
+
+                <input
+                    type="text"
+                    id="admissionSearch"
+                    placeholder="Search applicant..."
+                >
+
+            </div>
+
+
+            <div class="top-right">
+
+                <button class="add-btn" id="newAdmissionBtn">
+
+                    <i class="fa-solid fa-plus"></i>
+
+                    New Admission
+
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- ================= PAGE HEADER ================= -->
+
+        <div class="page-header">
+
+            <h1>Admissions Management</h1>
+
+            <p>
+                Review, manage and track student admission applications.
+            </p>
+
+        </div>
+
+
+        <!-- ================= STATS ================= -->
+
+        <div class="stats-grid">
+
+
+            <!-- TOTAL APPLICATIONS -->
+
+            <div class="stat-card">
+
+                <div class="stat-icon blue">
+
+                    <i class="fa-solid fa-file-lines"></i>
+
+                </div>
+
+                <div>
+
+                    <h2>486</h2>
+
+                    <p>Total Applications</p>
+
+                </div>
+
+            </div>
+
+
+            <!-- PENDING -->
+
+            <div class="stat-card">
+
+                <div class="stat-icon orange">
+
+                    <i class="fa-solid fa-hourglass-half"></i>
+
+                </div>
+
+                <div>
+
+                    <h2>72</h2>
+
+                    <p>Pending Review</p>
+
+                </div>
+
+            </div>
+
+
+            <!-- APPROVED -->
+
+            <div class="stat-card">
+
+                <div class="stat-icon green">
+
+                    <i class="fa-solid fa-circle-check"></i>
+
+                </div>
+
+                <div>
+
+                    <h2>358</h2>
+
+                    <p>Approved</p>
+
+                </div>
+
+            </div>
+
+
+            <!-- REJECTED -->
+
+            <div class="stat-card">
+
+                <div class="stat-icon red">
+
+                    <i class="fa-solid fa-circle-xmark"></i>
+
+                </div>
+
+                <div>
+
+                    <h2>56</h2>
+
+                    <p>Rejected</p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ================= FILTER BAR ================= -->
+
+        <div class="filter-card">
+
+            <div class="filter-left">
+
+                <div class="filter-group">
+
+                    <label for="statusFilter">
+
+                        Status
+
+                    </label>
+
+                    <select id="statusFilter">
+
+                        <option value="all">All Applications</option>
+
+                        <option value="pending">Pending</option>
+
+                        <option value="approved">Approved</option>
+
+                        <option value="rejected">Rejected</option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="filter-group">
+
+                    <label for="courseFilter">
+
+                        Course
+
+                    </label>
+
+                    <select id="courseFilter">
+
+                        <option value="all">All Courses</option>
+
+                        <option value="cse">Computer Science</option>
+
+                        <option value="aiml">AI & ML</option>
+
+                        <option value="ece">Electronics</option>
+
+                        <option value="other">Other</option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="filter-group">
+
+                    <label for="yearFilter">
+
+                        Admission Year
+
+                    </label>
+
+                    <select id="yearFilter">
+
+                        <option value="2026">2026-27</option>
+
+                        <option value="2025">2025-26</option>
+
+                        <option value="2024">2024-25</option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+
+            <button class="reset-btn" id="resetFilters">
+
+                <i class="fa-solid fa-rotate-left"></i>
+
+                Reset
+
+            </button>
+
+        </div>
+
+
+        <!-- ================= ADMISSION TABLE ================= -->
+
+        <div class="dashboard-card">
+
+
+            <!-- SECTION HEADER -->
+
+            <div class="section-header">
+
+                <div>
+
+                    <h2>Admission Applications</h2>
+
+                    <p>Recently submitted admission applications</p>
+
+                </div>
+
+                <a href="#" id="viewAllAdmissions">
+
+                    View All
+
+                </a>
+
+            </div>
+
+
+            <!-- TABLE -->
+
+            <table class="admission-table">
+
+
+                <thead>
+
+                    <tr>
+
+                        <th>Application ID</th>
+
+                        <th>Applicant</th>
+
+                        <th>Course</th>
+
+                        <th>Applied On</th>
+
+                        <th>Status</th>
+
+                        <th>Actions</th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody id="admissionTableBody">
+
+
+                    <!-- APPLICATION 1 -->
+
+                    <tr>
+
+                        <td>
+
+                            <span class="application-id">
+
+                                ADM001
+
+                            </span>
+
+                        </td>
+
+
+                        <td>
+
+                            <div class="applicant-info">
+
+                                <img
+                                    src="assets/profile.png"
+                                    alt="Applicant"
+                                >
+
+                                <div>
+
+                                    <h4>Sakshi Chaudhary</h4>
+
+                                    <span>
+
+                                        sakshi@email.com
+
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+                        </td>
+
+
+                        <td>
+
+                            <span class="course-name">
+
+                                AI & ML
+
+                            </span>
+
+                        </td>
+
+
+                        <td>
+
+                            03 Aug 2026
+
+                        </td>
+
+
+                        <td>
+
+                            <span class="status pending">
+
+                                Pending
+
+                            </span>
+
+                        </td>
+
+
+                        <td>
+
+                            <div class="action-buttons">
+
+                                <button
+                                    class="view-btn"
+                                    title="View Application"
+                                >
+
+                                    <i class="fa-solid fa-eye"></i>
+
+                                </button>
+
+                                <button
+                                    class="approve-btn"
+                                    title="Approve"
+                                >
+
+                                    <i class="fa-solid fa-check"></i>
+
+                                </button>
+
+                                <button
+                                    class="reject-btn"
+                                    title="Reject"
+                                >
+
+                                    <i class="fa-solid fa-xmark"></i>
+
+                                </button>
+
+                            </div>
+
+                        </td>
+
+                    </tr>
+
+
+                    <!-- APPLICATION 2 -->
+
+                    <tr>
+
+                        <td>
+
+                            <span class="application-id">
+
+                                ADM002
+
+                            </span>
+
+                        </td>
+
+
+                        <td>
+
+                            <div class="applicant-info">
+
+                                <img
+                                    src="assets/profile.png"
+                                    alt="Applicant"
+                                >
+
+                                <div>
+
+                                    <h4>Rahul Sharma</h4>
+
+                                    <span>
+
+                                        rahul@email.com
+
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+                        </td>
+
+
+                        <td>
+
+                            <span class="course-name">
+
+                                Computer Science
+
+                            </span>
+
+                        </td>
+
+
+                        <td>
+
+                            02 Aug 2026
+
+                        </td>
+
+
+                        <td>
+
+                            <span class="status approved">
+
+                                Approved
+
+                            </span>
+
+                        </td>
+
+
+                        <td>
+
+                            <div class="action-buttons">
+
+                                <button
+                                    class="view-btn"
+                                    title="View Application"
+                                >
+
+                                    <i class="fa-solid fa-eye"></i>
+
+                                </button>
+
+                                <button
+                                    class="edit-btn"
+                                    title="Edit"
+                                >
+
+                                    <i class="fa-solid fa-pen"></i>
+
+                                </button>
+
+                            </div>
+
+                        </td>
+
+                    </tr>
+
+
+                    <!-- APPLICATION 3 -->
+
+                    <tr>
+
+                        <td>
+
+                            <span class="application-id">
+
+                                ADM003
+
+                            </span>
+
+                        </td>
+
+
+                        <td>
+
+                            <div class="applicant-info">
+
+                                <img
+                                    src="assets/profile.png"
+                                    alt="Applicant"
+                                >
+
+                                <div>
+
+                                    <h4>Priya Singh</h4>
+
+                                    <span>
+
+                                        priya@email.com
+
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+                        </td>
+
+
+                        <td>
+
+                            <span class="course-name">
+
+                                Electronics
+
+                            </span>
+
+                        </td>
+
+
+                        <td>
+
+                            01 Aug 2026
+
+                        </td>
+
+
+                        <td>
+
+                            <span class="status rejected">
+
+                                Rejected
+
+                            </span>
+
+                        </td>
+
+
+                        <td>
+
+                            <div class="action-buttons">
+
+                                <button
+                                    class="view-btn"
+                                    title="View Application"
+                                >
+
+                                    <i class="fa-solid fa-eye"></i>
+
+                                </button>
+
+                                <button
+                                    class="edit-btn"
+                                    title="Edit"
+                                >
+
+                                    <i class="fa-solid fa-pen"></i>
+
+                                </button>
+
+                            </div>
+
+                        </td>
+
+                    </tr>
+
+
+                    <!-- APPLICATION 4 -->
+
+                    <tr>
+
+                        <td>
+
+                            <span class="application-id">
+
+                                ADM004
+
+                            </span>
+
+                        </td>
+
+
+                        <td>
+
+                            <div class="applicant-info">
+
+                                <img
+                                    src="assets/profile.png"
+                                    alt="Applicant"
+                                >
+
+                                <div>
+
+                                    <h4>Ankit Verma</h4>
+
+                                    <span>
+
+                                        ankit@email.com
+
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+                        </td>
+
+
+                        <td>
+
+                            <span class="course-name">
+
+                                AI & ML
+
+                            </span>
+
+                        </td>
+
+
+                        <td>
+
+                            31 Jul 2026
+
+                        </td>
+
+
+                        <td>
+
+                            <span class="status pending">
+
+                                Pending
+
+                            </span>
+
+                        </td>
+
+
+                        <td>
+
+                            <div class="action-buttons">
+
+                                <button
+                                    class="view-btn"
+                                    title="View Application"
+                                >
+
+                                    <i class="fa-solid fa-eye"></i>
+
+                                </button>
+
+                                <button
+                                    class="approve-btn"
+                                    title="Approve"
+                                >
+
+                                    <i class="fa-solid fa-check"></i>
+
+                                </button>
+
+                                <button
+                                    class="reject-btn"
+                                    title="Reject"
+                                >
+
+                                    <i class="fa-solid fa-xmark"></i>
+
+                                </button>
+
+                            </div>
+
+                        </td>
+
+                    </tr>
+
+
+                </tbody>
+
+            </table>
+
+
+            <!-- ================= PAGINATION ================= -->
+
+            <div class="table-pagination">
+
+                <button id="prevPage">
+
+                    <i class="fa-solid fa-angle-left"></i>
+
+                </button>
+
+                <button class="active-page">1</button>
+
+                <button>2</button>
+
+                <button>3</button>
+
+                <button id="nextPage">
+
+                    <i class="fa-solid fa-angle-right"></i>
+
+                </button>
+
+            </div>
+
+
+        </div>
+
+    </main>
+
+</div>
+
+
+<script src="admin-admissions.js"></script>
+
+</body>
+
+</html>

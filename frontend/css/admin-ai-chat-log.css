@@ -1,0 +1,1403 @@
+/* ==========================================
+        GOOGLE FONT & RESET
+========================================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+:root{
+
+    --primary:#2563EB;
+    --secondary:#0B1F3A;
+
+    --background:#F5F7FB;
+    --white:#FFFFFF;
+
+    --text:#1E293B;
+    --gray:#64748B;
+
+    --border:#E2E8F0;
+
+    --blue-light:#EFF6FF;
+
+    --success:#22C55E;
+    --warning:#F59E0B;
+    --danger:#EF4444;
+    --purple:#8B5CF6;
+
+    --shadow:0 10px 30px rgba(0,0,0,.08);
+
+}
+
+body{
+
+    background:var(--background);
+    color:var(--text);
+    overflow-x:hidden;
+
+}
+
+a{
+
+    text-decoration:none;
+
+}
+
+button{
+
+    font-family:inherit;
+
+}
+
+.dashboard{
+
+    display:flex;
+    min-height:100vh;
+
+}
+
+/* ==========================================
+            SIDEBAR
+========================================== */
+
+.sidebar{
+
+    width:260px;
+    height:100vh;
+
+    position:fixed;
+    left:0;
+    top:0;
+
+    background:#0B1F3A;
+
+    padding:25px 18px;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    color:#fff;
+    overflow-y:auto;
+    
+
+}
+
+/* ---------- LOGO ---------- */
+
+.sidebar-logo{
+
+    display:flex;
+    align-items:center;
+    gap:12px;
+    padding:0 8px;
+    margin-bottom:35px; 
+
+}
+
+.sidebar-logo img{
+
+    width:45px;
+    height:45px;
+    object-fit:contain;
+
+}
+
+.sidebar-logo h2{
+
+    color:#FFD54F;
+    font-size:22px;
+    font-weight:700;
+
+}
+
+/* ---------- NAVIGATION ---------- */
+
+.sidebar-nav{
+
+    display:flex;
+    flex-direction:column;
+    gap:6px;
+
+}
+
+.sidebar-nav a{
+
+    display:flex;
+    align-items:center;
+    gap:13px;
+    padding:13px 14px;
+    color:#CBD5E1;
+    text-decoration:none;
+    border-radius:10px;
+    font-size:13px;
+    font-weight:500;
+    transition:.25s;
+
+}
+
+.sidebar-nav a i{
+
+    width:20px;
+    text-align:center;
+    font-size:15px;
+
+}
+
+.sidebar-nav a:hover{
+
+    background:rgba(255,255,255,.08);
+    color:#fff;
+
+}
+
+.sidebar-nav a.active{
+
+    background:#2563EB;
+    color:#fff;
+    box-shadow:0 6px 15px rgba(37,99,235,.25);
+
+}
+
+/* ---------- LOGOUT ---------- */
+
+.sidebar-bottom{
+
+    border-top:1px solid rgba(255,255,255,.08);
+
+    padding-top:18px;
+
+}
+
+.sidebar-bottom button{
+
+    width:100%;
+
+    border:none;
+
+    background:transparent;
+
+    color:#CBD5E1;
+
+    padding:13px 14px;
+
+    border-radius:12px;
+
+    display:flex;
+    align-items:center;
+    gap:12px;
+
+    cursor:pointer;
+
+    font-size:14px;
+
+    transition:.3s;
+
+}
+
+.sidebar-bottom button:hover{
+
+    background:rgba(255,255,255,.08);
+
+    color:#fff;
+
+}
+
+
+/* ==========================================
+              MAIN CONTENT
+========================================== */
+
+.main-content{
+
+    margin-left:260px;
+
+    width:calc(100% - 260px);
+
+    padding:30px;
+
+}
+
+
+/* ==========================================
+                 TOPBAR
+========================================== */
+
+.topbar{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:35px;
+
+}
+
+
+/* ---------- SEARCH BOX ---------- */
+
+.search-box{
+
+    width:380px;
+
+    background:var(--white);
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    padding:14px 18px;
+
+    border-radius:14px;
+
+    box-shadow:var(--shadow);
+
+    transition:.3s;
+
+}
+
+.search-box:focus-within{
+
+    box-shadow:0 10px 30px rgba(37,99,235,.15);
+
+}
+
+.search-box i{
+
+    color:var(--primary);
+
+    font-size:17px;
+
+}
+
+.search-box input{
+
+    width:100%;
+
+    border:none;
+
+    outline:none;
+
+    background:transparent;
+
+    color:var(--text);
+
+    font-size:15px;
+
+}
+
+.search-box input::placeholder{
+
+    color:#94A3B8;
+
+}
+
+
+/* ---------- TOP RIGHT ---------- */
+
+.top-right{
+
+    display:flex;
+
+    align-items:center;
+
+}
+
+
+/* ---------- CLEAR BUTTON ---------- */
+
+.clear-btn{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    border:1px solid #FECACA;
+
+    background:#FEF2F2;
+
+    color:#DC2626;
+
+    padding:13px 20px;
+
+    border-radius:12px;
+
+    cursor:pointer;
+
+    font-size:14px;
+
+    font-weight:600;
+
+    transition:.3s;
+
+}
+
+.clear-btn:hover{
+
+    background:#DC2626;
+
+    color:#fff;
+
+    border-color:#DC2626;
+
+    transform:translateY(-2px);
+
+}
+
+.clear-btn i{
+
+    font-size:14px;
+
+}
+
+
+/* ==========================================
+               PAGE HEADER
+========================================== */
+
+.page-header{
+
+    margin-bottom:30px;
+
+}
+
+.page-header h1{
+
+    font-size:30px;
+
+    color:var(--secondary);
+
+    margin-bottom:8px;
+
+    font-weight:700;
+
+}
+
+.page-header p{
+
+    color:var(--gray);
+
+    font-size:15px;
+
+}
+
+
+/* ==========================================
+                STATS GRID
+========================================== */
+
+.stats-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(4,1fr);
+
+    gap:22px;
+
+    margin-bottom:30px;
+
+}
+
+
+/* ---------- STAT CARD ---------- */
+
+.stat-card{
+
+    background:var(--white);
+
+    border-radius:18px;
+
+    padding:22px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:18px;
+
+    box-shadow:var(--shadow);
+
+    transition:.3s;
+
+}
+
+.stat-card:hover{
+
+    transform:translateY(-5px);
+
+    box-shadow:0 15px 35px rgba(0,0,0,.10);
+
+}
+
+
+/* ---------- STAT ICON ---------- */
+
+.stat-icon{
+
+    width:58px;
+
+    height:58px;
+
+    min-width:58px;
+
+    border-radius:16px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    color:#fff;
+
+    font-size:22px;
+
+}
+
+.stat-icon.blue{
+
+    background:#2563EB;
+
+}
+
+.stat-icon.green{
+
+    background:#22C55E;
+
+}
+
+.stat-icon.purple{
+
+    background:#8B5CF6;
+
+}
+
+.stat-icon.orange{
+
+    background:#F59E0B;
+
+}
+
+
+/* ---------- STAT TEXT ---------- */
+
+.stat-card h2{
+
+    font-size:27px;
+
+    color:var(--secondary);
+
+    margin-bottom:4px;
+
+    font-weight:700;
+
+}
+
+.stat-card p{
+
+    color:var(--gray);
+
+    font-size:14px;
+
+}
+
+
+/* ==========================================
+              FILTER CARD
+========================================== */
+
+.filter-card{
+
+    background:var(--white);
+
+    border-radius:18px;
+
+    padding:22px 25px;
+
+    box-shadow:var(--shadow);
+
+    margin-bottom:30px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:20px;
+
+}
+
+
+/* ---------- FILTER TITLE ---------- */
+
+.filter-title{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    color:var(--secondary);
+
+    font-size:16px;
+
+    font-weight:600;
+
+}
+
+.filter-title i{
+
+    color:var(--primary);
+
+    font-size:17px;
+
+}
+
+
+/* ---------- FILTER CONTROLS ---------- */
+
+.filter-controls{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+}
+
+.filter-controls select{
+
+    min-width:155px;
+
+    padding:11px 14px;
+
+    border:1px solid var(--border);
+
+    border-radius:10px;
+
+    background:#fff;
+
+    color:var(--text);
+
+    outline:none;
+
+    cursor:pointer;
+
+    font-size:13px;
+
+}
+
+.filter-controls select:focus{
+
+    border-color:var(--primary);
+
+}
+
+
+/* ---------- RESET FILTER ---------- */
+
+.reset-filter{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    padding:11px 16px;
+
+    border:1px solid var(--border);
+
+    border-radius:10px;
+
+    background:#fff;
+
+    color:var(--gray);
+
+    cursor:pointer;
+
+    font-size:13px;
+
+    font-weight:500;
+
+    transition:.3s;
+
+}
+
+.reset-filter:hover{
+
+    background:#EFF6FF;
+
+    color:var(--primary);
+
+    border-color:#BFDBFE;
+
+}
+
+
+/* ==========================================
+              DASHBOARD CARD
+========================================== */
+
+.dashboard-card{
+
+    background:var(--white);
+
+    border-radius:18px;
+
+    padding:25px;
+
+    box-shadow:var(--shadow);
+
+}
+
+
+/* ==========================================
+              SECTION HEADER
+========================================== */
+
+.section-header{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    margin-bottom:25px;
+
+}
+
+.section-header h2{
+
+    color:var(--secondary);
+
+    font-size:22px;
+
+    margin-bottom:5px;
+
+}
+
+.section-header p{
+
+    color:var(--gray);
+
+    font-size:13px;
+
+}
+
+
+/* ---------- LOG COUNT ---------- */
+
+.log-count{
+
+    background:#EFF6FF;
+
+    color:var(--primary);
+
+    padding:8px 15px;
+
+    border-radius:50px;
+
+    font-size:13px;
+
+    font-weight:600;
+
+}
+
+
+/* ==========================================
+               TABLE WRAPPER
+========================================== */
+
+.table-wrapper{
+
+    width:100%;
+
+    overflow-x:auto;
+
+}
+
+
+/* ==========================================
+                CHAT TABLE
+========================================== */
+
+.chat-table{
+
+    width:100%;
+
+    min-width:1050px;
+
+    border-collapse:collapse;
+
+}
+
+
+/* ---------- TABLE HEAD ---------- */
+
+.chat-table thead{
+
+    background:#F8FAFC;
+
+}
+
+.chat-table th{
+
+    text-align:left;
+
+    padding:16px;
+
+    color:var(--gray);
+
+    font-size:13px;
+
+    font-weight:600;
+
+    border-bottom:1px solid var(--border);
+
+    white-space:nowrap;
+
+}
+
+
+/* ---------- TABLE BODY ---------- */
+
+.chat-table td{
+
+    padding:18px 16px;
+
+    border-bottom:1px solid #EDF2F7;
+
+    vertical-align:middle;
+
+    font-size:13px;
+
+    color:var(--text);
+
+}
+
+.chat-table tbody tr{
+
+    transition:.3s;
+
+}
+
+.chat-table tbody tr:hover{
+
+    background:#F8FBFF;
+
+}
+
+
+/* ==========================================
+             CONVERSATION ID
+========================================== */
+
+.conversation-id{
+
+    color:var(--primary);
+
+    font-weight:600;
+
+    font-size:13px;
+
+}
+
+
+/* ==========================================
+              STUDENT INFO
+========================================== */
+
+.student-info{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    min-width:170px;
+
+}
+
+.student-info img{
+
+    width:42px;
+
+    height:42px;
+
+    border-radius:50%;
+
+    object-fit:cover;
+
+}
+
+.student-info h4{
+
+    color:var(--secondary);
+
+    font-size:14px;
+
+    font-weight:600;
+
+    margin-bottom:3px;
+
+}
+
+.student-info span{
+
+    color:var(--gray);
+
+    font-size:12px;
+
+}
+
+
+/* ==========================================
+              MESSAGE PREVIEW
+========================================== */
+
+.message-preview{
+
+    max-width:300px;
+
+    color:var(--gray);
+
+    font-size:13px;
+
+    line-height:1.6;
+
+}
+
+.message-preview strong{
+
+    color:var(--secondary);
+
+    font-weight:600;
+
+}
+
+
+/* ==========================================
+              MESSAGE COUNT
+========================================== */
+
+.message-count{
+
+    width:34px;
+
+    height:34px;
+
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    border-radius:10px;
+
+    background:#F1F5F9;
+
+    color:var(--secondary);
+
+    font-size:13px;
+
+    font-weight:600;
+
+}
+
+
+/* ==========================================
+                DATE TIME
+========================================== */
+
+.date-time{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:3px;
+
+    white-space:nowrap;
+
+}
+
+.date-time span{
+
+    color:var(--text);
+
+    font-size:12px;
+
+    font-weight:500;
+
+}
+
+.date-time small{
+
+    color:var(--gray);
+
+    font-size:11px;
+
+}
+
+
+/* ==========================================
+               CHAT STATUS
+========================================== */
+
+.chat-status{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:7px;
+
+    padding:7px 13px;
+
+    border-radius:50px;
+
+    font-size:12px;
+
+    font-weight:600;
+
+    white-space:nowrap;
+
+}
+
+.chat-status i{
+
+    font-size:6px;
+
+}
+
+
+/* ---------- RESOLVED ---------- */
+
+.chat-status.resolved{
+
+    background:#DCFCE7;
+
+    color:#16A34A;
+
+}
+
+
+/* ---------- ACTIVE ---------- */
+
+.chat-status.active-status{
+
+    background:#DBEAFE;
+
+    color:#2563EB;
+
+}
+
+
+/* ---------- FLAGGED ---------- */
+
+.chat-status.flagged{
+
+    background:#FEE2E2;
+
+    color:#DC2626;
+
+}
+
+
+/* ==========================================
+             ACTION BUTTONS
+========================================== */
+
+.action-buttons{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+
+}
+
+.action-buttons button{
+
+    width:36px;
+
+    height:36px;
+
+    border:none;
+
+    border-radius:10px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+
+/* ---------- VIEW ---------- */
+
+.view-btn{
+
+    background:#DBEAFE;
+
+    color:#2563EB;
+
+}
+
+.view-btn:hover{
+
+    background:#2563EB;
+
+    color:#fff;
+
+    transform:translateY(-2px);
+
+}
+
+
+/* ---------- DELETE ---------- */
+
+.delete-btn{
+
+    background:#FEE2E2;
+
+    color:#DC2626;
+
+}
+
+.delete-btn:hover{
+
+    background:#DC2626;
+
+    color:#fff;
+
+    transform:translateY(-2px);
+
+}
+
+
+/* ==========================================
+               PAGINATION
+========================================== */
+
+.table-pagination{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:flex-end;
+
+    gap:9px;
+
+    margin-top:25px;
+
+}
+
+.table-pagination button{
+
+    width:40px;
+
+    height:40px;
+
+    border:1px solid var(--border);
+
+    background:#fff;
+
+    color:var(--secondary);
+
+    border-radius:10px;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+    font-size:13px;
+
+}
+
+.table-pagination button:hover{
+
+    background:var(--primary);
+
+    color:#fff;
+
+    border-color:var(--primary);
+
+}
+
+.table-pagination button.active-page{
+
+    background:var(--primary);
+
+    color:#fff;
+
+    border-color:var(--primary);
+
+}
+
+
+/* ==========================================
+              CUSTOM SCROLLBAR
+========================================== */
+
+::-webkit-scrollbar{
+
+    width:8px;
+
+    height:8px;
+
+}
+
+::-webkit-scrollbar-track{
+
+    background:#F1F5F9;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+    background:#CBD5E1;
+
+    border-radius:20px;
+
+}
+
+::-webkit-scrollbar-thumb:hover{
+
+    background:#94A3B8;
+
+}
+
+
+/* ==========================================
+                RESPONSIVE
+========================================== */
+
+@media(max-width:1200px){
+
+    .stats-grid{
+
+        grid-template-columns:repeat(2,1fr);
+
+    }
+
+    .filter-card{
+
+        flex-direction:column;
+
+        align-items:flex-start;
+
+    }
+
+    .filter-controls{
+
+        width:100%;
+
+    }
+
+}
+
+
+@media(max-width:992px){
+
+    .sidebar{
+
+        width:220px;
+
+    }
+
+    .main-content{
+
+        margin-left:220px;
+
+        width:calc(100% - 220px);
+
+        padding:25px;
+
+    }
+
+    .search-box{
+
+        width:280px;
+
+    }
+
+}
+
+
+@media(max-width:768px){
+
+    .sidebar{
+
+        left:-220px;
+
+        transition:.3s;
+
+    }
+
+    .sidebar.active{
+
+        left:0;
+
+    }
+
+    .main-content{
+
+        margin-left:0;
+
+        width:100%;
+
+        padding:20px;
+
+    }
+
+    .topbar{
+
+        flex-direction:column;
+
+        align-items:flex-start;
+
+        gap:18px;
+
+    }
+
+    .search-box{
+
+        width:100%;
+
+    }
+
+    .top-right{
+
+        width:100%;
+
+    }
+
+    .clear-btn{
+
+        width:100%;
+
+        justify-content:center;
+
+    }
+
+    .stats-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .page-header h1{
+
+        font-size:26px;
+
+    }
+
+    .filter-controls{
+
+        flex-direction:column;
+
+        align-items:stretch;
+
+    }
+
+    .filter-controls select,
+    .reset-filter{
+
+        width:100%;
+
+    }
+
+    .section-header{
+
+        flex-direction:column;
+
+        align-items:flex-start;
+
+        gap:12px;
+
+    }
+
+    .table-pagination{
+
+        justify-content:center;
+
+    }
+
+}
+
+
+@media(max-width:500px){
+
+    .main-content{
+
+        padding:15px;
+
+    }
+
+    .dashboard-card{
+
+        padding:18px;
+
+    }
+
+    .filter-card{
+
+        padding:18px;
+
+    }
+
+    .stat-card{
+
+        padding:18px;
+
+    }
+
+    .stat-card h2{
+
+        font-size:23px;
+
+    }
+
+    .stat-icon{
+
+        width:50px;
+
+        height:50px;
+
+        min-width:50px;
+
+        font-size:19px;
+
+    }
+
+    .page-header h1{
+
+        font-size:23px;
+
+    }
+
+}

@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Knowledge Base | AITD CampusAI Admin</title>
+
+<link rel="stylesheet" href="css/admin-knowledge-base.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+</head>
+
+<body>
+
+<div class="dashboard">
+
+    <!-- ================= SIDEBAR ================= -->
+
+    <aside class="sidebar">
+
+        <div>
+
+            <div class="sidebar-logo">
+
+                <img src="assets/logo.png">
+
+                <h2>CampusAI</h2>
+
+            </div>
+
+            <nav class="sidebar-nav">
+
+                <a href="admin-dashboard.html">
+
+                    <i class="fa-solid fa-house"></i>
+
+                    Dashboard
+
+                </a>
+
+                <a href="admin-students.html">
+
+                    <i class="fas fa-users"></i>
+
+                    Students
+
+                </a>
+
+                <a href="admin-admission.html">
+
+                    <i class="fas fa-user-plus"></i>
+
+                    Admissions
+
+                </a>
+
+                <a href="admin-courses.html">
+
+                    <i class="fas fa-book-open"></i>
+
+                    Courses
+
+                </a>
+
+                <a href="admin-notices.html">
+
+                    <i class="fas fa-bullhorn"></i>
+
+                    Notices
+
+                </a>
+
+                <a href="admin-scholarships.html">
+
+                    <i class="fas fa-graduation-cap"></i>
+
+                    Scholarships
+
+                </a>
+
+                <a href="admin-pdf-upload.html">
+
+                    <i class="fas fa-file-pdf"></i>
+
+                    PDF Upload
+
+                </a>
+
+                <a class="active" href="admin-knowledge-base.html">
+
+                    <i class="fas fa-database"></i>
+
+                    Knowledge Base
+
+                </a>
+                <a href="#" class="menu-item">
+                    <i class="fas fa-robot"></i>
+                    <span>AI Chat Logs</span>
+                </a>
+
+                <a href="admin-settings.html">
+
+                    <i class="fas fa-gear"></i>
+
+                    Settings
+
+                </a>
+
+            </nav>
+
+        </div>
+
+        <div class="sidebar-bottom">
+
+            <button>
+
+                <i class="fas fa-right-from-bracket"></i>
+
+                Logout
+
+            </button>
+
+        </div>
+
+    </aside>
+
+
+    <!-- ================= MAIN CONTENT ================= -->
+
+    <main class="main-content">
+
+
+        <!-- ================= TOPBAR ================= -->
+
+        <div class="topbar">
+
+            <div class="search-box">
+
+                <i class="fa-solid fa-magnifying-glass"></i>
+
+                <input
+                    type="text"
+                    placeholder="Search knowledge..."
+                >
+
+            </div>
+
+            <div class="top-right">
+
+                <button
+                    class="rebuild-btn"
+                    type="button"
+                    id="rebuildKnowledge"
+                >
+
+                    <i class="fa-solid fa-rotate"></i>
+
+                    Rebuild Knowledge
+
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- ================= PAGE HEADER ================= -->
+
+        <div class="page-header">
+
+            <h1>Knowledge Base</h1>
+
+            <p>
+                Manage the information used by CampusAI to answer student queries.
+            </p>
+
+        </div>
+
+
+        <!-- ================= STATS ================= -->
+
+        <div class="stats-grid">
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon blue">
+
+                    <i class="fa-solid fa-database"></i>
+
+                </div>
+
+                <div>
+
+                    <h2>48</h2>
+
+                    <p>Total Documents</p>
+
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon green">
+
+                    <i class="fa-solid fa-layer-group"></i>
+
+                </div>
+
+                <div>
+
+                    <h2>2,846</h2>
+
+                    <p>Total Chunks</p>
+
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon orange">
+
+                    <i class="fa-solid fa-vector-square"></i>
+
+                </div>
+
+                <div>
+
+                    <h2>2,846</h2>
+
+                    <p>Embeddings</p>
+
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon purple">
+
+                    <i class="fa-solid fa-circle-check"></i>
+
+                </div>
+
+                <div>
+
+                    <h2>98.6%</h2>
+
+                    <p>Index Health</p>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+        <!-- ================= KNOWLEDGE STATUS ================= -->
+
+        <div class="knowledge-grid">
+
+
+            <div class="knowledge-status-card">
+
+                <div class="section-header">
+
+                    <div>
+
+                        <h2>Knowledge Base Status</h2>
+
+                        <p>
+                            Current vector database and processing status.
+                        </p>
+
+                    </div>
+
+                    <span class="health-badge">
+
+                        <i class="fa-solid fa-circle"></i>
+
+                        Healthy
+
+                    </span>
+
+                </div>
+
+
+                <div class="status-content">
+
+
+                    <div class="status-row">
+
+                        <span>Vector Database</span>
+
+                        <strong>FAISS</strong>
+
+                    </div>
+
+
+                    <div class="status-row">
+
+                        <span>Embedding Model</span>
+
+                        <strong>Sentence Transformer</strong>
+
+                    </div>
+
+
+                    <div class="status-row">
+
+                        <span>Index File</span>
+
+                        <strong>faiss_index.bin</strong>
+
+                    </div>
+
+
+                    <div class="status-row">
+
+                        <span>Last Updated</span>
+
+                        <strong>30 Aug 2026, 08:42 PM</strong>
+
+                    </div>
+
+
+                </div>
+
+
+                <div class="index-progress">
+
+                    <div class="progress-header">
+
+                        <span>Index Health</span>
+
+                        <strong>98.6%</strong>
+
+                    </div>
+
+                    <div class="progress-bar">
+
+                        <div class="progress-fill"></div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================= QUICK ACTIONS ================= -->
+
+            <div class="quick-actions-card">
+
+                <div class="section-header">
+
+                    <div>
+
+                        <h2>Quick Actions</h2>
+
+                        <p>
+                            Manage your AI knowledge system.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    class="quick-action upload-action"
+                    id="uploadDocument"
+                >
+
+                    <span class="quick-icon blue">
+
+                        <i class="fa-solid fa-cloud-arrow-up"></i>
+
+                    </span>
+
+                    <span>
+
+                        <strong>Upload Document</strong>
+
+                        <small>
+                            Add a new PDF to knowledge base
+                        </small>
+
+                    </span>
+
+                    <i class="fa-solid fa-chevron-right"></i>
+
+                </button>
+
+
+                <button
+                    type="button"
+                    class="quick-action rebuild-action"
+                    id="rebuildIndex"
+                >
+
+                    <span class="quick-icon green">
+
+                        <i class="fa-solid fa-arrows-rotate"></i>
+
+                    </span>
+
+                    <span>
+
+                        <strong>Rebuild Index</strong>
+
+                        <small>
+                            Generate embeddings again
+                        </small>
+
+                    </span>
+
+                    <i class="fa-solid fa-chevron-right"></i>
+
+                </button>
+
+
+                <button
+                    type="button"
+                    class="quick-action clear-action"
+                    id="clearCache"
+                >
+
+                    <span class="quick-icon orange">
+
+                        <i class="fa-solid fa-broom"></i>
+
+                    </span>
+
+                    <span>
+
+                        <strong>Clear Cache</strong>
+
+                        <small>
+                            Remove temporary processing data
+                        </small>
+
+                    </span>
+
+                    <i class="fa-solid fa-chevron-right"></i>
+
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- ================= DOCUMENT SOURCES ================= -->
+
+        <div class="dashboard-card">
+
+
+            <div class="section-header">
+
+                <div>
+
+                    <h2>Knowledge Sources</h2>
+
+                    <p>
+                        Documents currently available to CampusAI.
+                    </p>
+
+                </div>
+
+                <a href="admin-pdf-upload.html">
+                    Manage PDFs
+                </a>
+
+            </div>
+
+
+            <table class="knowledge-table">
+
+                <thead>
+
+                    <tr>
+
+                        <th>Source</th>
+
+                        <th>Category</th>
+
+                        <th>Chunks</th>
+
+                        <th>Embeddings</th>
+
+                        <th>Updated</th>
+
+                        <th>Status</th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody>
+
+
+                    <tr>
+
+                        <td>
+
+                            <div class="source-info">
+
+                                <div class="source-icon red">
+
+                                    <i class="fa-solid fa-file-pdf"></i>
+
+                                </div>
+
+                                <div>
+
+                                    <h4>
+                                        Admission Brochure 2026
+                                    </h4>
+
+                                    <span>
+                                        admission-brochure-2026.pdf
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+                        </td>
+
+
+                        <td>
+
+                            <span class="category admission">
+                                Admission
+                            </span>
+
+                        </td>
+
+
+                        <td>
+                            486
+                        </td>
+
+
+                        <td>
+                            486
+                        </td>
+
+
+                        <td>
+                            30 Aug 2026
+                        </td>
+
+
+                        <td>
+
+                            <span class="status ready">
+
+                                <i class="fa-solid fa-circle-check"></i>
+
+                                Ready
+
+                            </span>
+
+                        </td>
+
+                    </tr>
+
+
+                    <tr>
+
+                        <td>
+
+                            <div class="source-info">
+
+                                <div class="source-icon blue">
+
+                                    <i class="fa-solid fa-file-pdf"></i>
+
+                                </div>
+
+                                <div>
+
+                                    <h4>
+                                        B.Tech Course Structure
+                                    </h4>
+
+                                    <span>
+                                        btech-course-structure.pdf
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+                        </td>
+
+
+                        <td>
+
+                            <span class="category academic">
+                                Academic
+                            </span>
+
+                        </td>
+
+
+                        <td>
+                            328
+                        </td>
+
+
+                        <td>
+                            328
+                        </td>
+
+
+                        <td>
+                            29 Aug 2026
+                        </td>
+
+
+                        <td>
+
+                            <span class="status ready">
+
+                                <i class="fa-solid fa-circle-check"></i>
+
+                                Ready
+
+                            </span>
+
+                        </td>
+
+                    </tr>
+
+
+                    <tr>
+
+                        <td>
+
+                            <div class="source-info">
+
+                                <div class="source-icon purple">
+
+                                    <i class="fa-solid fa-file-pdf"></i>
+
+                                </div>
+
+                                <div>
+
+                                    <h4>
+                                        Scholarship Guidelines
+                                    </h4>
+
+                                    <span>
+                                        scholarship-guidelines.pdf
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+                        </td>
+
+
+                        <td>
+
+                            <span class="category scholarship">
+                                Scholarship
+                            </span>
+
+                        </td>
+
+
+                        <td>
+                            214
+                        </td>
+
+
+                        <td>
+                            214
+                        </td>
+
+
+                        <td>
+                            28 Aug 2026
+                        </td>
+
+
+                        <td>
+
+                            <span class="status processing">
+
+                                <i class="fa-solid fa-spinner"></i>
+
+                                Processing
+
+                            </span>
+
+                        </td>
+
+                    </tr>
+
+
+                </tbody>
+
+            </table>
+
+
+            <!-- ================= PAGINATION ================= -->
+
+            <div class="table-pagination">
+
+                <button type="button">
+
+                    <i class="fa-solid fa-angle-left"></i>
+
+                </button>
+
+                <button
+                    type="button"
+                    class="active-page"
+                >
+                    1
+                </button>
+
+                <button type="button">
+                    2
+                </button>
+
+                <button type="button">
+                    3
+                </button>
+
+                <button type="button">
+
+                    <i class="fa-solid fa-angle-right"></i>
+
+                </button>
+
+            </div>
+
+
+        </div>
+
+    </main>
+
+</div>
+
+
+<script src="js/admin-knowledge-base.js"></script>
+
+</body>
+
+</html>

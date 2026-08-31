@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Scholarships | AITD CampusAI Admin</title>
+
+<link rel="stylesheet" href="css/admin-scholarships.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+</head>
+
+<body>
+
+<div class="dashboard">
+
+    <!-- ================= SIDEBAR ================= -->
+
+    <aside class="sidebar">
+
+        <div>
+
+            <div class="sidebar-logo">
+
+                <img src="assets/logo.png">
+
+                <h2>CampusAI</h2>
+
+            </div>
+
+            <nav class="sidebar-nav">
+
+                <a href="admin-dashboard.html">
+
+                    <i class="fa-solid fa-house"></i>
+
+                    Dashboard
+
+                </a>
+
+                <a  href="admin-students.html">
+
+                    <i class="fas fa-users"></i>
+
+                    Students
+
+                </a>
+
+                <a href="admin-admission.html">
+
+                    <i class="fas fa-user-plus"></i>
+
+                    Admissions
+
+                </a>
+
+                <a href="admin-courses.html">
+
+                    <i class="fas fa-book-open"></i>
+
+                    Courses
+
+                </a>
+
+                <a href="admin-notices.html">
+
+                    <i class="fas fa-bullhorn"></i>
+
+                    Notices
+
+                </a>
+
+                <a class="active" href="admin-scholarships.html">
+
+                    <i class="fas fa-graduation-cap"></i>
+
+                    Scholarships
+
+                </a>
+
+                <a href="admin-pdf-upload.html">
+
+                    <i class="fas fa-file-pdf"></i>
+
+                    PDF Upload
+
+                </a>
+
+                <a href="admin-knowledge-base.html">
+
+                    <i class="fas fa-database"></i>
+
+                    Knowledge Base
+
+                </a>
+                <a href="#" class="menu-item">
+                    <i class="fas fa-robot"></i>
+                    <span>AI Chat Logs</span>
+                </a>
+
+                <a href="admin-settings.html">
+
+                    <i class="fas fa-gear"></i>
+
+                    Settings
+
+                </a>
+
+            </nav>
+
+        </div>
+
+        <div class="sidebar-bottom">
+
+            <button>
+
+                <i class="fas fa-right-from-bracket"></i>
+
+                Logout
+
+            </button>
+
+        </div>
+
+    </aside>
+
+
+    <!-- ================= MAIN CONTENT ================= -->
+
+    <main class="main-content">
+
+
+        <!-- ================= TOPBAR ================= -->
+
+        <div class="topbar">
+
+            <div class="search-box">
+
+                <i class="fa-solid fa-magnifying-glass"></i>
+
+                <input
+                    type="text"
+                    placeholder="Search scholarship..."
+                >
+
+            </div>
+
+
+            <div class="top-right">
+
+                <button class="add-btn">
+
+                    <i class="fa-solid fa-plus"></i>
+
+                    Add Scholarship
+
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- ================= PAGE HEADER ================= -->
+
+        <div class="page-header">
+
+            <h1>Scholarship Management</h1>
+
+            <p>
+                Manage scholarship opportunities and eligibility details.
+            </p>
+
+        </div>
+
+
+        <!-- ================= STATS ================= -->
+
+        <div class="stats-grid">
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon blue">
+
+                    <i class="fa-solid fa-award"></i>
+
+                </div>
+
+                <div>
+
+                    <h2>24</h2>
+
+                    <p>Total Scholarships</p>
+
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon green">
+
+                    <i class="fa-solid fa-circle-check"></i>
+
+                </div>
+
+                <div>
+
+                    <h2>18</h2>
+
+                    <p>Active Scholarships</p>
+
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon orange">
+
+                    <i class="fa-solid fa-clock"></i>
+
+                </div>
+
+                <div>
+
+                    <h2>4</h2>
+
+                    <p>Closing Soon</p>
+
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon purple">
+
+                    <i class="fa-solid fa-users"></i>
+
+                </div>
+
+                <div>
+
+                    <h2>486</h2>
+
+                    <p>Total Applicants</p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ================= FILTER CARD ================= -->
+
+        <div class="filter-card">
+
+            <div class="filter-left">
+
+
+                <div class="filter-group">
+
+                    <label for="scholarshipCategory">
+                        Category
+                    </label>
+
+                    <select id="scholarshipCategory">
+
+                        <option value="all">
+                            All Categories
+                        </option>
+
+                        <option value="merit">
+                            Merit Based
+                        </option>
+
+                        <option value="government">
+                            Government
+                        </option>
+
+                        <option value="private">
+                            Private
+                        </option>
+
+                        <option value="minority">
+                            Minority
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="filter-group">
+
+                    <label for="scholarshipStatus">
+                        Status
+                    </label>
+
+                    <select id="scholarshipStatus">
+
+                        <option value="all">
+                            All Status
+                        </option>
+
+                        <option value="active">
+                            Active
+                        </option>
+
+                        <option value="closing">
+                            Closing Soon
+                        </option>
+
+                        <option value="closed">
+                            Closed
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <button class="reset-btn">
+
+                    <i class="fa-solid fa-rotate-left"></i>
+
+                    Reset
+
+                </button>
+
+
+            </div>
+
+        </div>
+
+
+        <!-- ================= SCHOLARSHIP LIST ================= -->
+
+        <div class="dashboard-card">
+
+
+            <div class="section-header">
+
+                <div>
+
+                    <h2>Scholarship List</h2>
+
+                    <p>
+                        View and manage available scholarships.
+                    </p>
+
+                </div>
+
+                <a href="#">
+                    View All
+                </a>
+
+            </div>
+
+
+            <table class="scholarship-table">
+
+
+                <thead>
+
+                    <tr>
+
+                        <th>ID</th>
+
+                        <th>Scholarship</th>
+
+                        <th>Category</th>
+
+                        <th>Amount</th>
+
+                        <th>Deadline</th>
+
+                        <th>Status</th>
+
+                        <th>Actions</th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody>
+
+
+                    <!-- SCHOLARSHIP 1 -->
+
+                    <tr>
+
+                        <td>
+
+                            <span class="scholarship-id">
+                                SCH001
+                            </span>
+
+                        </td>
+
+
+                        <td>
+
+                            <div class="scholarship-info">
+
+                                <div class="scholarship-icon blue">
+
+                                    <i class="fa-solid fa-graduation-cap"></i>
+
+                                </div>
+
+                                <div>
+
+                                    <h4>
+                                        National Merit Scholarship
+                                    </h4>
+
+                                    <span>
+                                        Academic excellence scholarship
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+                        </td>
+
+
+                        <td>
+
+                            <span class="category merit">
+                                Merit Based
+                            </span>
+
+                        </td>
+
+
+                        <td>
+
+                            <strong>
+                                ₹50,000
+                            </strong>
+
+                        </td>
+
+
+                        <td>
+                            30 Sep 2026
+                        </td>
+
+
+                        <td>
+
+                            <span class="status active">
+                                Active
+                            </span>
+
+                        </td>
+
+
+                        <td>
+
+                            <div class="action-buttons">
+
+                                <button class="view-btn">
+                                    <i class="fa-solid fa-eye"></i>
+                                </button>
+
+                                <button class="edit-btn">
+                                    <i class="fa-solid fa-pen"></i>
+                                </button>
+
+                                <button class="delete-btn">
+                                    <i class="fa-solid fa-trash"></i>
+                                </button>
+
+                            </div>
+
+                        </td>
+
+                    </tr>
+
+
+                    <!-- SCHOLARSHIP 2 -->
+
+                    <tr>
+
+                        <td>
+
+                            <span class="scholarship-id">
+                                SCH002
+                            </span>
+
+                        </td>
+
+
+                        <td>
+
+                            <div class="scholarship-info">
+
+                                <div class="scholarship-icon green">
+
+                                    <i class="fa-solid fa-landmark"></i>
+
+                                </div>
+
+                                <div>
+
+                                    <h4>
+                                        UP Government Scholarship
+                                    </h4>
+
+                                    <span>
+                                        State government financial support
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+                        </td>
+
+
+                        <td>
+
+                            <span class="category government">
+                                Government
+                            </span>
+
+                        </td>
+
+
+                        <td>
+
+                            <strong>
+                                ₹35,000
+                            </strong>
+
+                        </td>
+
+
+                        <td>
+                            15 Oct 2026
+                        </td>
+
+
+                        <td>
+
+                            <span class="status active">
+                                Active
+                            </span>
+
+                        </td>
+
+
+                        <td>
+
+                            <div class="action-buttons">
+
+                                <button class="view-btn">
+                                    <i class="fa-solid fa-eye"></i>
+                                </button>
+
+                                <button class="edit-btn">
+                                    <i class="fa-solid fa-pen"></i>
+                                </button>
+
+                                <button class="delete-btn">
+                                    <i class="fa-solid fa-trash"></i>
+                                </button>
+
+                            </div>
+
+                        </td>
+
+                    </tr>
+
+
+                    <!-- SCHOLARSHIP 3 -->
+
+                    <tr>
+
+                        <td>
+
+                            <span class="scholarship-id">
+                                SCH003
+                            </span>
+
+                        </td>
+
+
+                        <td>
+
+                            <div class="scholarship-info">
+
+                                <div class="scholarship-icon purple">
+
+                                    <i class="fa-solid fa-book"></i>
+
+                                </div>
+
+                                <div>
+
+                                    <h4>
+                                        Private Education Grant
+                                    </h4>
+
+                                    <span>
+                                        Financial assistance for students
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+                        </td>
+
+
+                        <td>
+
+                            <span class="category private">
+                                Private
+                            </span>
+
+                        </td>
+
+
+                        <td>
+
+                            <strong>
+                                ₹25,000
+                            </strong>
+
+                        </td>
+
+
+                        <td>
+                            08 Sep 2026
+                        </td>
+
+
+                        <td>
+
+                            <span class="status closing">
+                                Closing Soon
+                            </span>
+
+                        </td>
+
+
+                        <td>
+
+                            <div class="action-buttons">
+
+                                <button class="view-btn">
+                                    <i class="fa-solid fa-eye"></i>
+                                </button>
+
+                                <button class="edit-btn">
+                                    <i class="fa-solid fa-pen"></i>
+                                </button>
+
+                                <button class="delete-btn">
+                                    <i class="fa-solid fa-trash"></i>
+                                </button>
+
+                            </div>
+
+                        </td>
+
+                    </tr>
+
+
+                    <!-- SCHOLARSHIP 4 -->
+
+                    <tr>
+
+                        <td>
+
+                            <span class="scholarship-id">
+                                SCH004
+                            </span>
+
+                        </td>
+
+
+                        <td>
+
+                            <div class="scholarship-info">
+
+                                <div class="scholarship-icon orange">
+
+                                    <i class="fa-solid fa-users"></i>
+
+                                </div>
+
+                                <div>
+
+                                    <h4>
+                                        Minority Student Scholarship
+                                    </h4>
+
+                                    <span>
+                                        Financial assistance program
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+                        </td>
+
+
+                        <td>
+
+                            <span class="category minority">
+                                Minority
+                            </span>
+
+                        </td>
+
+
+                        <td>
+
+                            <strong>
+                                ₹30,000
+                            </strong>
+
+                        </td>
+
+
+                        <td>
+                            20 Aug 2026
+                        </td>
+
+
+                        <td>
+
+                            <span class="status closed">
+                                Closed
+                            </span>
+
+                        </td>
+
+
+                        <td>
+
+                            <div class="action-buttons">
+
+                                <button class="view-btn">
+                                    <i class="fa-solid fa-eye"></i>
+                                </button>
+
+                                <button class="edit-btn">
+                                    <i class="fa-solid fa-pen"></i>
+                                </button>
+
+                                <button class="delete-btn">
+                                    <i class="fa-solid fa-trash"></i>
+                                </button>
+
+                            </div>
+
+                        </td>
+
+                    </tr>
+
+
+                </tbody>
+
+            </table>
+
+
+            <!-- ================= PAGINATION ================= -->
+
+            <div class="table-pagination">
+
+                <button>
+
+                    <i class="fa-solid fa-angle-left"></i>
+
+                </button>
+
+                <button class="active-page">
+                    1
+                </button>
+
+                <button>
+                    2
+                </button>
+
+                <button>
+                    3
+                </button>
+
+                <button>
+
+                    <i class="fa-solid fa-angle-right"></i>
+
+                </button>
+
+            </div>
+
+
+        </div>
+
+
+    </main>
+
+</div>
+
+
+<script src="js/admin-scholarships.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>PDF Upload | AITD CampusAI Admin</title>
+
+<link rel="stylesheet" href="css/admin-pdf-upload.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+</head>
+
+<body>
+
+<div class="dashboard">
+
+    <!-- ================= SIDEBAR ================= -->
+
+    <aside class="sidebar">
+
+        <div>
+
+            <div class="sidebar-logo">
+
+                <img src="assets/logo.png">
+
+                <h2>CampusAI</h2>
+
+            </div>
+
+            <nav class="sidebar-nav">
+
+                <a href="admin-dashboard.html">
+
+                    <i class="fa-solid fa-house"></i>
+
+                    Dashboard
+
+                </a>
+
+                <a  href="admin-students.html">
+
+                    <i class="fas fa-users"></i>
+
+                    Students
+
+                </a>
+
+                <a href="admin-admission.html">
+
+                    <i class="fas fa-user-plus"></i>
+
+                    Admissions
+
+                </a>
+
+                <a href="admin-courses.html">
+
+                    <i class="fas fa-book-open"></i>
+
+                    Courses
+
+                </a>
+
+                <a href="admin-notices.html">
+
+                    <i class="fas fa-bullhorn"></i>
+
+                    Notices
+
+                </a>
+
+                <a href="admin-scholarships.html">
+
+                    <i class="fas fa-graduation-cap"></i>
+
+                    Scholarships
+
+                </a>
+
+                <a class="active" href="admin-pdf-upload.html">
+
+                    <i class="fas fa-file-pdf"></i>
+
+                    PDF Upload
+
+                </a>
+
+                <a href="admin-knowledge-base.html">
+
+                    <i class="fas fa-database"></i>
+
+                    Knowledge Base
+
+                </a>
+                <a href="#" class="menu-item">
+                    <i class="fas fa-robot"></i>
+                    <span>AI Chat Logs</span>
+                </a>
+
+                <a href="admin-settings.html">
+
+                    <i class="fas fa-gear"></i>
+
+                    Settings
+
+                </a>
+
+            </nav>
+
+        </div>
+
+        <div class="sidebar-bottom">
+
+            <button>
+
+                <i class="fas fa-right-from-bracket"></i>
+
+                Logout
+
+            </button>
+
+        </div>
+
+    </aside>
+
+
+    <!-- ================= MAIN CONTENT ================= -->
+
+    <main class="main-content">
+
+
+        <!-- ================= TOPBAR ================= -->
+
+        <div class="topbar">
+
+            <div class="search-box">
+
+                <i class="fa-solid fa-magnifying-glass"></i>
+
+                <input
+                    type="text"
+                    placeholder="Search uploaded PDFs..."
+                >
+
+            </div>
+
+
+            <div class="top-right">
+
+                <button class="upload-top-btn" type="button">
+
+                    <i class="fa-solid fa-cloud-arrow-up"></i>
+
+                    Upload PDF
+
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- ================= PAGE HEADER ================= -->
+
+        <div class="page-header">
+
+            <h1>PDF Upload Management</h1>
+
+            <p>
+                Upload and manage official documents for CampusAI knowledge.
+            </p>
+
+        </div>
+
+
+        <!-- ================= STATS ================= -->
+
+        <div class="stats-grid">
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon blue">
+
+                    <i class="fa-solid fa-file-pdf"></i>
+
+                </div>
+
+                <div>
+
+                    <h2>48</h2>
+
+                    <p>Total PDFs</p>
+
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon green">
+
+                    <i class="fa-solid fa-circle-check"></i>
+
+                </div>
+
+                <div>
+
+                    <h2>42</h2>
+
+                    <p>Processed</p>
+
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon orange">
+
+                    <i class="fa-solid fa-clock"></i>
+
+                </div>
+
+                <div>
+
+                    <h2>4</h2>
+
+                    <p>Processing</p>
+
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon purple">
+
+                    <i class="fa-solid fa-database"></i>
+
+                </div>
+
+                <div>
+
+                    <h2>2.8 GB</h2>
+
+                    <p>Storage Used</p>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+        <!-- ================= UPLOAD AREA ================= -->
+
+        <div class="upload-card">
+
+
+            <div class="section-header">
+
+                <div>
+
+                    <h2>Upload New PDF</h2>
+
+                    <p>
+                        Add official college documents to the CampusAI system.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="upload-area" id="uploadArea">
+
+                <div class="upload-icon">
+
+                    <i class="fa-solid fa-cloud-arrow-up"></i>
+
+                </div>
+
+
+                <h3>Drop your PDF here</h3>
+
+                <p>
+                    or click below to browse files
+                </p>
+
+
+                <button
+                    type="button"
+                    class="browse-btn"
+                    id="browseBtn"
+                >
+
+                    <i class="fa-solid fa-folder-open"></i>
+
+                    Browse PDF
+
+                </button>
+
+
+                <input
+                    type="file"
+                    id="pdfInput"
+                    accept=".pdf,application/pdf"
+                    hidden
+                >
+
+
+                <span class="upload-note">
+
+                    Maximum file size: 20 MB · PDF only
+
+                </span>
+
+            </div>
+
+
+            <!-- Selected File -->
+
+            <div
+                class="selected-file"
+                id="selectedFile"
+                style="display:none;"
+            >
+
+                <div class="file-icon">
+
+                    <i class="fa-solid fa-file-pdf"></i>
+
+                </div>
+
+
+                <div class="file-details">
+
+                    <h4 id="fileName">
+                        document.pdf
+                    </h4>
+
+                    <span id="fileSize">
+                        0 MB
+                    </span>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    class="remove-file"
+                    id="removeFile"
+                >
+
+                    <i class="fa-solid fa-xmark"></i>
+
+                </button>
+
+            </div>
+
+
+            <div class="upload-form">
+
+                <div class="form-group">
+
+                    <label for="documentTitle">
+                        Document Title
+                    </label>
+
+                    <input
+                        type="text"
+                        id="documentTitle"
+                        placeholder="Enter document title"
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="documentCategory">
+                        Category
+                    </label>
+
+                    <select id="documentCategory">
+
+                        <option value="">
+                            Select category
+                        </option>
+
+                        <option value="admission">
+                            Admission
+                        </option>
+
+                        <option value="academic">
+                            Academic
+                        </option>
+
+                        <option value="course">
+                            Courses
+                        </option>
+
+                        <option value="scholarship">
+                            Scholarship
+                        </option>
+
+                        <option value="notice">
+                            Notices
+                        </option>
+
+                        <option value="general">
+                            General
+                        </option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+
+            <div class="upload-action">
+
+                <button
+                    type="button"
+                    class="cancel-btn"
+                    id="cancelUpload"
+                >
+
+                    Cancel
+
+                </button>
+
+                <button
+                    type="button"
+                    class="process-btn"
+                    id="processPdf"
+                >
+
+                    <i class="fa-solid fa-upload"></i>
+
+                    Upload & Process
+
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- ================= UPLOADED DOCUMENTS ================= -->
+
+        <div class="dashboard-card">
+
+
+            <div class="section-header">
+
+                <div>
+
+                    <h2>Uploaded Documents</h2>
+
+                    <p>
+                        Recently uploaded PDF documents.
+                    </p>
+
+                </div>
+
+                <a href="#">
+                    View All
+                </a>
+
+            </div>
+
+
+            <table class="pdf-table">
+
+                <thead>
+
+                    <tr>
+
+                        <th>Document</th>
+
+                        <th>Category</th>
+
+                        <th>Size</th>
+
+                        <th>Uploaded</th>
+
+                        <th>Status</th>
+
+                        <th>Actions</th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody>
+
+
+                    <tr>
+
+                        <td>
+
+                            <div class="document-info">
+
+                                <div class="document-icon red">
+
+                                    <i class="fa-solid fa-file-pdf"></i>
+
+                                </div>
+
+                                <div>
+
+                                    <h4>
+                                        Admission Brochure 2026
+                                    </h4>
+
+                                    <span>
+                                        admission-brochure-2026.pdf
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+                        </td>
+
+
+                        <td>
+
+                            <span class="category admission">
+                                Admission
+                            </span>
+
+                        </td>
+
+
+                        <td>
+                            4.8 MB
+                        </td>
+
+
+                        <td>
+                            30 Aug 2026
+                        </td>
+
+
+                        <td>
+
+                            <span class="status processed">
+
+                                <i class="fa-solid fa-circle-check"></i>
+
+                                Processed
+
+                            </span>
+
+                        </td>
+
+
+                        <td>
+
+                            <div class="action-buttons">
+
+                                <button
+                                    class="view-btn"
+                                    type="button"
+                                    title="View"
+                                >
+
+                                    <i class="fa-solid fa-eye"></i>
+
+                                </button>
+
+
+                                <button
+                                    class="delete-btn"
+                                    type="button"
+                                    title="Delete"
+                                >
+
+                                    <i class="fa-solid fa-trash"></i>
+
+                                </button>
+
+                            </div>
+
+                        </td>
+
+                    </tr>
+
+
+                    <tr>
+
+                        <td>
+
+                            <div class="document-info">
+
+                                <div class="document-icon blue">
+
+                                    <i class="fa-solid fa-file-pdf"></i>
+
+                                </div>
+
+                                <div>
+
+                                    <h4>
+                                        B.Tech Course Structure
+                                    </h4>
+
+                                    <span>
+                                        btech-course-structure.pdf
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+                        </td>
+
+
+                        <td>
+
+                            <span class="category academic">
+                                Academic
+                            </span>
+
+                        </td>
+
+
+                        <td>
+                            2.4 MB
+                        </td>
+
+
+                        <td>
+                            29 Aug 2026
+                        </td>
+
+
+                        <td>
+
+                            <span class="status processed">
+
+                                <i class="fa-solid fa-circle-check"></i>
+
+                                Processed
+
+                            </span>
+
+                        </td>
+
+
+                        <td>
+
+                            <div class="action-buttons">
+
+                                <button
+                                    class="view-btn"
+                                    type="button"
+                                >
+
+                                    <i class="fa-solid fa-eye"></i>
+
+                                </button>
+
+
+                                <button
+                                    class="delete-btn"
+                                    type="button"
+                                >
+
+                                    <i class="fa-solid fa-trash"></i>
+
+                                </button>
+
+                            </div>
+
+                        </td>
+
+                    </tr>
+
+
+                    <tr>
+
+                        <td>
+
+                            <div class="document-info">
+
+                                <div class="document-icon purple">
+
+                                    <i class="fa-solid fa-file-pdf"></i>
+
+                                </div>
+
+                                <div>
+
+                                    <h4>
+                                        Scholarship Guidelines
+                                    </h4>
+
+                                    <span>
+                                        scholarship-guidelines.pdf
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+                        </td>
+
+
+                        <td>
+
+                            <span class="category scholarship">
+                                Scholarship
+                            </span>
+
+                        </td>
+
+
+                        <td>
+                            1.7 MB
+                        </td>
+
+
+                        <td>
+                            28 Aug 2026
+                        </td>
+
+
+                        <td>
+
+                            <span class="status processing">
+
+                                <i class="fa-solid fa-spinner"></i>
+
+                                Processing
+
+                            </span>
+
+                        </td>
+
+
+                        <td>
+
+                            <div class="action-buttons">
+
+                                <button
+                                    class="view-btn"
+                                    type="button"
+                                >
+
+                                    <i class="fa-solid fa-eye"></i>
+
+                                </button>
+
+
+                                <button
+                                    class="delete-btn"
+                                    type="button"
+                                >
+
+                                    <i class="fa-solid fa-trash"></i>
+
+                                </button>
+
+                            </div>
+
+                        </td>
+
+                    </tr>
+
+
+                </tbody>
+
+            </table>
+
+
+            <!-- Pagination -->
+
+            <div class="table-pagination">
+
+                <button type="button">
+
+                    <i class="fa-solid fa-angle-left"></i>
+
+                </button>
+
+                <button
+                    type="button"
+                    class="active-page"
+                >
+                    1
+                </button>
+
+                <button type="button">
+                    2
+                </button>
+
+                <button type="button">
+                    3
+                </button>
+
+                <button type="button">
+
+                    <i class="fa-solid fa-angle-right"></i>
+
+                </button>
+
+            </div>
+
+
+        </div>
+
+    </main>
+
+</div>
+
+
+<script src="js/admin-pdf-upload.js"></script>
+
+</body>
+
+</html>

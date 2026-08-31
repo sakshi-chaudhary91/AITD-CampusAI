@@ -3,17 +3,17 @@
 
 <head>
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Admissions | AITD CampusAI Admin</title>
+    <title>Admissions | AITD CampusAI Admin</title>
 
-<link rel="stylesheet" href="css/admin-students.css">
+    <link rel="stylesheet" href="css/admin-admission.css">
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-<link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 
 </head>
 
@@ -29,7 +29,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
 
             <div class="sidebar-logo">
 
-                <img src="assets/logo.png" alt="CampusAI Logo">
+                <img src="assets/logo.png">
 
                 <h2>CampusAI</h2>
 
@@ -37,7 +37,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
 
             <nav class="sidebar-nav">
 
-                <a href="admin-home.html">
+                <a href="admin-dashboard.html">
 
                     <i class="fa-solid fa-house"></i>
 
@@ -53,7 +53,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
 
                 </a>
 
-                <a class="active" href="admin-admissions.html">
+                <a class="active"  href="admin-admission.html">
 
                     <i class="fas fa-user-plus"></i>
 
@@ -95,10 +95,14 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
 
                 <a href="admin-knowledge-base.html">
 
-                   <i class="fas fa-database"></i>
+                    <i class="fas fa-database"></i>
 
                     Knowledge Base
 
+                </a>
+                <a href="#" class="menu-item">
+                    <i class="fas fa-robot"></i>
+                    <span>AI Chat Logs</span>
                 </a>
 
                 <a href="admin-settings.html">
@@ -113,11 +117,9 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
 
         </div>
 
-        <!-- ================= LOGOUT ================= -->
-
         <div class="sidebar-bottom">
 
-            <button id="logoutBtn">
+            <button>
 
                 <i class="fas fa-right-from-bracket"></i>
 
@@ -174,7 +176,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
             <h1>Admissions Management</h1>
 
             <p>
-                Review, manage and track student admission applications.
+                Review, approve and manage student admission applications.
             </p>
 
         </div>
@@ -185,7 +187,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
         <div class="stats-grid">
 
 
-            <!-- TOTAL APPLICATIONS -->
+            <!-- TOTAL -->
 
             <div class="stat-card">
 
@@ -197,7 +199,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
 
                 <div>
 
-                    <h2>486</h2>
+                    <h2 id="totalAdmissions">328</h2>
 
                     <p>Total Applications</p>
 
@@ -212,13 +214,13 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
 
                 <div class="stat-icon orange">
 
-                    <i class="fa-solid fa-hourglass-half"></i>
+                    <i class="fa-solid fa-clock"></i>
 
                 </div>
 
                 <div>
 
-                    <h2>72</h2>
+                    <h2 id="pendingAdmissions">45</h2>
 
                     <p>Pending Review</p>
 
@@ -239,7 +241,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
 
                 <div>
 
-                    <h2>358</h2>
+                    <h2 id="approvedAdmissions">248</h2>
 
                     <p>Approved</p>
 
@@ -260,7 +262,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
 
                 <div>
 
-                    <h2>56</h2>
+                    <h2 id="rejectedAdmissions">35</h2>
 
                     <p>Rejected</p>
 
@@ -268,93 +270,124 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
 
             </div>
 
+
         </div>
 
 
-        <!-- ================= FILTER BAR ================= -->
+        <!-- ================= FILTER CARD ================= -->
 
         <div class="filter-card">
 
+
             <div class="filter-left">
 
-                <div class="filter-group">
 
-                    <label for="statusFilter">
-
-                        Status
-
-                    </label>
-
-                    <select id="statusFilter">
-
-                        <option value="all">All Applications</option>
-
-                        <option value="pending">Pending</option>
-
-                        <option value="approved">Approved</option>
-
-                        <option value="rejected">Rejected</option>
-
-                    </select>
-
-                </div>
-
+                <!-- COURSE FILTER -->
 
                 <div class="filter-group">
 
                     <label for="courseFilter">
-
                         Course
-
                     </label>
 
                     <select id="courseFilter">
 
-                        <option value="all">All Courses</option>
+                        <option value="all">
+                            All Courses
+                        </option>
 
-                        <option value="cse">Computer Science</option>
+                        <option value="aiml">
+                            AI & ML
+                        </option>
 
-                        <option value="aiml">AI & ML</option>
+                        <option value="cse">
+                            Computer Science
+                        </option>
 
-                        <option value="ece">Electronics</option>
+                        <option value="ece">
+                            Electronics & Communication
+                        </option>
 
-                        <option value="other">Other</option>
+                        <option value="it">
+                            Information Technology
+                        </option>
 
                     </select>
 
                 </div>
 
+
+                <!-- STATUS FILTER -->
+
+                <div class="filter-group">
+
+                    <label for="statusFilter">
+                        Status
+                    </label>
+
+                    <select id="statusFilter">
+
+                        <option value="all">
+                            All Status
+                        </option>
+
+                        <option value="pending">
+                            Pending
+                        </option>
+
+                        <option value="approved">
+                            Approved
+                        </option>
+
+                        <option value="rejected">
+                            Rejected
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- YEAR FILTER -->
 
                 <div class="filter-group">
 
                     <label for="yearFilter">
-
                         Admission Year
-
                     </label>
 
                     <select id="yearFilter">
 
-                        <option value="2026">2026-27</option>
+                        <option value="all">
+                            2026-27
+                        </option>
 
-                        <option value="2025">2025-26</option>
+                        <option value="2025">
+                            2025-26
+                        </option>
 
-                        <option value="2024">2024-25</option>
+                        <option value="2024">
+                            2024-25
+                        </option>
 
                     </select>
 
                 </div>
 
+
             </div>
 
+
+            <!-- RESET -->
 
             <button class="reset-btn" id="resetFilters">
 
                 <i class="fa-solid fa-rotate-left"></i>
 
-                Reset
+                Reset Filters
 
             </button>
+
 
         </div>
 
@@ -364,28 +397,24 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
         <div class="dashboard-card">
 
 
-            <!-- SECTION HEADER -->
-
             <div class="section-header">
 
                 <div>
 
                     <h2>Admission Applications</h2>
 
-                    <p>Recently submitted admission applications</p>
+                    <p>
+                        Recent admission applications received by the institute.
+                    </p>
 
                 </div>
 
                 <a href="#" id="viewAllAdmissions">
-
                     View All
-
                 </a>
 
             </div>
 
-
-            <!-- TABLE -->
 
             <table class="admission-table">
 
@@ -400,7 +429,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
 
                         <th>Course</th>
 
-                        <th>Applied On</th>
+                        <th>Year</th>
 
                         <th>Status</th>
 
@@ -414,16 +443,18 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
                 <tbody id="admissionTableBody">
 
 
-                    <!-- APPLICATION 1 -->
+                    <!-- ================= APPLICATION 1 ================= -->
 
-                    <tr>
+                    <tr
+                        data-course="aiml"
+                        data-status="pending"
+                        data-year="2026"
+                    >
 
                         <td>
 
                             <span class="application-id">
-
                                 ADM001
-
                             </span>
 
                         </td>
@@ -440,12 +471,12 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
 
                                 <div>
 
-                                    <h4>Sakshi Chaudhary</h4>
+                                    <h4>
+                                        Ananya Verma
+                                    </h4>
 
                                     <span>
-
-                                        sakshi@email.com
-
+                                        ananya@email.com
                                     </span>
 
                                 </div>
@@ -458,27 +489,21 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
                         <td>
 
                             <span class="course-name">
-
                                 AI & ML
-
                             </span>
 
                         </td>
 
 
                         <td>
-
-                            03 Aug 2026
-
+                            2026-27
                         </td>
 
 
                         <td>
 
                             <span class="status pending">
-
                                 Pending
-
                             </span>
 
                         </td>
@@ -492,27 +517,21 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
                                     class="view-btn"
                                     title="View Application"
                                 >
-
                                     <i class="fa-solid fa-eye"></i>
-
                                 </button>
 
                                 <button
                                     class="approve-btn"
                                     title="Approve"
                                 >
-
                                     <i class="fa-solid fa-check"></i>
-
                                 </button>
 
                                 <button
                                     class="reject-btn"
                                     title="Reject"
                                 >
-
                                     <i class="fa-solid fa-xmark"></i>
-
                                 </button>
 
                             </div>
@@ -522,16 +541,18 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
                     </tr>
 
 
-                    <!-- APPLICATION 2 -->
+                    <!-- ================= APPLICATION 2 ================= -->
 
-                    <tr>
+                    <tr
+                        data-course="cse"
+                        data-status="approved"
+                        data-year="2026"
+                    >
 
                         <td>
 
                             <span class="application-id">
-
                                 ADM002
-
                             </span>
 
                         </td>
@@ -548,12 +569,12 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
 
                                 <div>
 
-                                    <h4>Rahul Sharma</h4>
+                                    <h4>
+                                        Rahul Sharma
+                                    </h4>
 
                                     <span>
-
                                         rahul@email.com
-
                                     </span>
 
                                 </div>
@@ -566,27 +587,21 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
                         <td>
 
                             <span class="course-name">
-
                                 Computer Science
-
                             </span>
 
                         </td>
 
 
                         <td>
-
-                            02 Aug 2026
-
+                            2026-27
                         </td>
 
 
                         <td>
 
                             <span class="status approved">
-
                                 Approved
-
                             </span>
 
                         </td>
@@ -600,18 +615,14 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
                                     class="view-btn"
                                     title="View Application"
                                 >
-
                                     <i class="fa-solid fa-eye"></i>
-
                                 </button>
 
                                 <button
                                     class="edit-btn"
                                     title="Edit"
                                 >
-
                                     <i class="fa-solid fa-pen"></i>
-
                                 </button>
 
                             </div>
@@ -621,16 +632,18 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
                     </tr>
 
 
-                    <!-- APPLICATION 3 -->
+                    <!-- ================= APPLICATION 3 ================= -->
 
-                    <tr>
+                    <tr
+                        data-course="ece"
+                        data-status="rejected"
+                        data-year="2026"
+                    >
 
                         <td>
 
                             <span class="application-id">
-
                                 ADM003
-
                             </span>
 
                         </td>
@@ -647,12 +660,12 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
 
                                 <div>
 
-                                    <h4>Priya Singh</h4>
+                                    <h4>
+                                        Priya Singh
+                                    </h4>
 
                                     <span>
-
                                         priya@email.com
-
                                     </span>
 
                                 </div>
@@ -665,27 +678,21 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
                         <td>
 
                             <span class="course-name">
-
-                                Electronics
-
+                                Electronics & Communication
                             </span>
 
                         </td>
 
 
                         <td>
-
-                            01 Aug 2026
-
+                            2026-27
                         </td>
 
 
                         <td>
 
                             <span class="status rejected">
-
                                 Rejected
-
                             </span>
 
                         </td>
@@ -699,18 +706,14 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
                                     class="view-btn"
                                     title="View Application"
                                 >
-
                                     <i class="fa-solid fa-eye"></i>
-
                                 </button>
 
                                 <button
                                     class="edit-btn"
                                     title="Edit"
                                 >
-
                                     <i class="fa-solid fa-pen"></i>
-
                                 </button>
 
                             </div>
@@ -720,16 +723,18 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
                     </tr>
 
 
-                    <!-- APPLICATION 4 -->
+                    <!-- ================= APPLICATION 4 ================= -->
 
-                    <tr>
+                    <tr
+                        data-course="it"
+                        data-status="pending"
+                        data-year="2026"
+                    >
 
                         <td>
 
                             <span class="application-id">
-
                                 ADM004
-
                             </span>
 
                         </td>
@@ -746,12 +751,12 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
 
                                 <div>
 
-                                    <h4>Ankit Verma</h4>
+                                    <h4>
+                                        Arjun Kumar
+                                    </h4>
 
                                     <span>
-
-                                        ankit@email.com
-
+                                        arjun@email.com
                                     </span>
 
                                 </div>
@@ -764,27 +769,21 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
                         <td>
 
                             <span class="course-name">
-
-                                AI & ML
-
+                                Information Technology
                             </span>
 
                         </td>
 
 
                         <td>
-
-                            31 Jul 2026
-
+                            2026-27
                         </td>
 
 
                         <td>
 
                             <span class="status pending">
-
                                 Pending
-
                             </span>
 
                         </td>
@@ -798,27 +797,21 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
                                     class="view-btn"
                                     title="View Application"
                                 >
-
                                     <i class="fa-solid fa-eye"></i>
-
                                 </button>
 
                                 <button
                                     class="approve-btn"
                                     title="Approve"
                                 >
-
                                     <i class="fa-solid fa-check"></i>
-
                                 </button>
 
                                 <button
                                     class="reject-btn"
                                     title="Reject"
                                 >
-
                                     <i class="fa-solid fa-xmark"></i>
-
                                 </button>
 
                             </div>
@@ -843,11 +836,17 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
 
                 </button>
 
-                <button class="active-page">1</button>
+                <button class="active-page">
+                    1
+                </button>
 
-                <button>2</button>
+                <button>
+                    2
+                </button>
 
-                <button>3</button>
+                <button>
+                    3
+                </button>
 
                 <button id="nextPage">
 
@@ -860,13 +859,5 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
 
         </div>
 
+
     </main>
-
-</div>
-
-
-<script src="admin-admissions.js"></script>
-
-</body>
-
-</html>

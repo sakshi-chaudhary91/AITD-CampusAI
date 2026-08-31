@@ -22,6 +22,8 @@
 
     --border:#E2E8F0;
 
+    --blue-light:#EFF6FF;
+
     --success:#22C55E;
     --warning:#F59E0B;
     --danger:#EF4444;
@@ -35,17 +37,20 @@ body{
 
     background:var(--background);
     color:var(--text);
-
     overflow-x:hidden;
 
 }
 
 a{
+
     text-decoration:none;
+
 }
 
 button{
+
     font-family:inherit;
+
 }
 
 .dashboard{
@@ -54,7 +59,6 @@ button{
     min-height:100vh;
 
 }
-
 
 /* ==========================================
             SIDEBAR
@@ -66,21 +70,21 @@ button{
     height:100vh;
 
     position:fixed;
-
     left:0;
     top:0;
 
-    background:var(--secondary);
+    background:#0B1F3A;
 
     padding:25px 18px;
 
     display:flex;
     flex-direction:column;
-
     justify-content:space-between;
+    color:#fff;
+    overflow-y:auto;
+    
 
 }
-
 
 /* ---------- LOGO ---------- */
 
@@ -88,10 +92,9 @@ button{
 
     display:flex;
     align-items:center;
-
     gap:12px;
-
-    margin-bottom:35px;
+    padding:0 8px;
+    margin-bottom:35px; 
 
 }
 
@@ -99,7 +102,6 @@ button{
 
     width:45px;
     height:45px;
-
     object-fit:contain;
 
 }
@@ -107,22 +109,17 @@ button{
 .sidebar-logo h2{
 
     color:#FFD54F;
-
     font-size:22px;
-
     font-weight:700;
 
 }
-
 
 /* ---------- NAVIGATION ---------- */
 
 .sidebar-nav{
 
     display:flex;
-
     flex-direction:column;
-
     gap:6px;
 
 }
@@ -131,29 +128,21 @@ button{
 
     display:flex;
     align-items:center;
-
     gap:13px;
-
     padding:13px 14px;
-
     color:#CBD5E1;
-
-    border-radius:12px;
-
-    font-size:14px;
-
+    text-decoration:none;
+    border-radius:10px;
+    font-size:13px;
     font-weight:500;
-
-    transition:.3s;
+    transition:.25s;
 
 }
 
 .sidebar-nav a i{
 
     width:20px;
-
     text-align:center;
-
     font-size:15px;
 
 }
@@ -161,31 +150,23 @@ button{
 .sidebar-nav a:hover{
 
     background:rgba(255,255,255,.08);
-
     color:#fff;
 
 }
 
 .sidebar-nav a.active{
 
-    background:var(--primary);
-
+    background:#2563EB;
     color:#fff;
-
-    box-shadow:
-        0 8px 20px rgba(37,99,235,.35);
+    box-shadow:0 6px 15px rgba(37,99,235,.25);
 
 }
 
-
-/* ==========================================
-            LOGOUT
-========================================== */
+/* ---------- LOGOUT ---------- */
 
 .sidebar-bottom{
 
-    border-top:
-        1px solid rgba(255,255,255,.08);
+    border-top:1px solid rgba(255,255,255,.08);
 
     padding-top:18px;
 
@@ -206,9 +187,7 @@ button{
     border-radius:12px;
 
     display:flex;
-
     align-items:center;
-
     gap:12px;
 
     cursor:pointer;
@@ -229,7 +208,7 @@ button{
 
 
 /* ==========================================
-            MAIN CONTENT
+        MAIN CONTENT
 ========================================== */
 
 .main-content{
@@ -238,16 +217,20 @@ button{
 
     width:calc(100% - 260px);
 
+    min-height:100vh;
+
     padding:30px;
 
 }
 
 
 /* ==========================================
-            TOPBAR
+        TOPBAR
 ========================================== */
 
 .topbar{
+
+    width:100%;
 
     display:flex;
 
@@ -260,21 +243,24 @@ button{
 }
 
 
-/* ---------- SEARCH ---------- */
+/* ==========================================
+        SEARCH BOX
+========================================== */
 
 .search-box{
 
     width:380px;
 
+    height:52px;
+
     background:var(--white);
 
     display:flex;
-
     align-items:center;
 
     gap:12px;
 
-    padding:14px 18px;
+    padding:0 18px;
 
     border-radius:14px;
 
@@ -288,11 +274,15 @@ button{
 
     font-size:17px;
 
+    flex-shrink:0;
+
 }
 
 .search-box input{
 
     width:100%;
+
+    height:100%;
 
     border:none;
 
@@ -302,18 +292,20 @@ button{
 
     color:var(--text);
 
-    font-size:15px;
+    font-size:14px;
 
 }
 
 .search-box input::placeholder{
 
-    color:#94A3B8;
+    color:var(--light-gray);
 
 }
 
 
-/* ---------- TOP RIGHT ---------- */
+/* ==========================================
+        TOP RIGHT
+========================================== */
 
 .top-right{
 
@@ -324,14 +316,15 @@ button{
 }
 
 
-/* ---------- NEW ADMISSION BUTTON ---------- */
+/* ==========================================
+        ADD BUTTON
+========================================== */
 
 .add-btn{
 
     display:flex;
 
     align-items:center;
-
     justify-content:center;
 
     gap:10px;
@@ -340,30 +333,31 @@ button{
 
     background:var(--primary);
 
-    color:#fff;
+    color:#FFFFFF;
 
     padding:13px 22px;
 
     border-radius:12px;
 
-    cursor:pointer;
-
     font-size:14px;
 
     font-weight:600;
 
-    transition:.3s;
-
     box-shadow:
         0 10px 20px rgba(37,99,235,.25);
+
+    transition:.3s;
 
 }
 
 .add-btn:hover{
 
-    background:#1D4ED8;
+    background:var(--primary-dark);
 
     transform:translateY(-2px);
+
+    box-shadow:
+        0 12px 25px rgba(37,99,235,.32);
 
 }
 
@@ -375,7 +369,7 @@ button{
 
 
 /* ==========================================
-            PAGE HEADER
+        PAGE HEADER
 ========================================== */
 
 .page-header{
@@ -386,13 +380,15 @@ button{
 
 .page-header h1{
 
-    font-size:30px;
-
     color:var(--secondary);
 
-    margin-bottom:8px;
+    font-size:30px;
+
+    line-height:1.3;
 
     font-weight:700;
+
+    margin-bottom:8px;
 
 }
 
@@ -402,11 +398,13 @@ button{
 
     font-size:15px;
 
+    line-height:1.6;
+
 }
 
 
 /* ==========================================
-            STATS GRID
+        STATS GRID
 ========================================== */
 
 .stats-grid{
@@ -414,7 +412,7 @@ button{
     display:grid;
 
     grid-template-columns:
-        repeat(4,1fr);
+        repeat(4,minmax(0,1fr));
 
     gap:22px;
 
@@ -423,9 +421,13 @@ button{
 }
 
 
-/* ---------- STAT CARD ---------- */
+/* ==========================================
+        STAT CARD
+========================================== */
 
 .stat-card{
+
+    min-height:105px;
 
     background:var(--white);
 
@@ -447,7 +449,7 @@ button{
 
 .stat-card:hover{
 
-    transform:translateY(-5px);
+    transform:translateY(-4px);
 
     box-shadow:
         0 15px 35px rgba(0,0,0,.10);
@@ -455,7 +457,9 @@ button{
 }
 
 
-/* ---------- STAT ICON ---------- */
+/* ==========================================
+        STAT ICON
+========================================== */
 
 .stat-icon{
 
@@ -466,54 +470,49 @@ button{
 
     display:flex;
 
+    align-items:center;
     justify-content:center;
 
-    align-items:center;
+    color:#FFFFFF;
 
-    color:#fff;
-
-    font-size:22px;
+    font-size:21px;
 
     flex-shrink:0;
 
 }
 
 .stat-icon.blue{
-
     background:#2563EB;
-
-}
-
-.stat-icon.green{
-
-    background:#22C55E;
-
 }
 
 .stat-icon.orange{
-
     background:#F59E0B;
+}
 
+.stat-icon.green{
+    background:#22C55E;
 }
 
 .stat-icon.red{
-
     background:#EF4444;
-
 }
 
 
-/* ---------- STAT TEXT ---------- */
+/* ==========================================
+        STAT TEXT
+========================================== */
 
 .stat-card h2{
 
-    font-size:27px;
-
     color:var(--secondary);
 
-    margin-bottom:4px;
+    font-size:27px;
+
+    line-height:1.2;
 
     font-weight:700;
+
+    margin-bottom:5px;
 
 }
 
@@ -521,16 +520,20 @@ button{
 
     color:var(--gray);
 
-    font-size:14px;
+    font-size:13px;
+
+    line-height:1.4;
 
 }
 
 
 /* ==========================================
-            FILTER CARD
+        FILTER CARD
 ========================================== */
 
 .filter-card{
+
+    width:100%;
 
     background:var(--white);
 
@@ -548,12 +551,14 @@ button{
 
     justify-content:space-between;
 
-    gap:20px;
+    gap:25px;
 
 }
 
 
-/* ---------- FILTER LEFT ---------- */
+/* ==========================================
+        FILTER LEFT
+========================================== */
 
 .filter-left{
 
@@ -563,12 +568,14 @@ button{
 
     gap:20px;
 
-    flex-wrap:wrap;
+    flex:1;
 
 }
 
 
-/* ---------- FILTER GROUP ---------- */
+/* ==========================================
+        FILTER GROUP
+========================================== */
 
 .filter-group{
 
@@ -593,27 +600,29 @@ button{
 }
 
 
-/* ---------- SELECT ---------- */
+/* ==========================================
+        SELECT
+========================================== */
 
 .filter-group select{
 
     width:100%;
 
-    padding:11px 38px 11px 13px;
+    height:44px;
+
+    padding:0 38px 0 13px;
 
     border:1px solid var(--border);
 
     border-radius:10px;
 
-    background:#fff;
+    background:#FFFFFF;
 
     color:var(--text);
 
-    font-size:13px;
-
-    font-family:inherit;
-
     outline:none;
+
+    font-size:13px;
 
     cursor:pointer;
 
@@ -637,9 +646,13 @@ button{
 }
 
 
-/* ---------- RESET BUTTON ---------- */
+/* ==========================================
+        RESET BUTTON
+========================================== */
 
 .reset-btn{
+
+    height:44px;
 
     display:flex;
 
@@ -649,13 +662,13 @@ button{
 
     gap:8px;
 
-    padding:11px 18px;
+    padding:0 18px;
 
     border:1px solid var(--border);
 
     border-radius:10px;
 
-    background:#fff;
+    background:#FFFFFF;
 
     color:var(--gray);
 
@@ -663,21 +676,19 @@ button{
 
     font-weight:600;
 
-    cursor:pointer;
+    white-space:nowrap;
 
     transition:.3s;
-
-    white-space:nowrap;
 
 }
 
 .reset-btn:hover{
 
-    border-color:var(--primary);
-
     color:var(--primary);
 
     background:#EFF6FF;
+
+    border-color:#BFDBFE;
 
 }
 
@@ -689,10 +700,12 @@ button{
 
 
 /* ==========================================
-            DASHBOARD CARD
+        DASHBOARD CARD
 ========================================== */
 
 .dashboard-card{
+
+    width:100%;
 
     background:var(--white);
 
@@ -708,16 +721,18 @@ button{
 
 
 /* ==========================================
-            SECTION HEADER
+        SECTION HEADER
 ========================================== */
 
 .section-header{
 
     display:flex;
 
+    align-items:center;
+
     justify-content:space-between;
 
-    align-items:center;
+    gap:20px;
 
     margin-bottom:25px;
 
@@ -725,9 +740,11 @@ button{
 
 .section-header h2{
 
+    color:var(--secondary);
+
     font-size:22px;
 
-    color:var(--secondary);
+    font-weight:600;
 
     margin-bottom:5px;
 
@@ -749,19 +766,21 @@ button{
 
     font-weight:600;
 
+    white-space:nowrap;
+
     transition:.3s;
 
 }
 
 .section-header a:hover{
 
-    color:#1D4ED8;
+    color:var(--primary-dark);
 
 }
 
 
 /* ==========================================
-            ADMISSION TABLE
+        ADMISSION TABLE
 ========================================== */
 
 .admission-table{
@@ -775,7 +794,9 @@ button{
 }
 
 
-/* ---------- TABLE HEAD ---------- */
+/* ==========================================
+        TABLE HEADER
+========================================== */
 
 .admission-table thead{
 
@@ -791,9 +812,11 @@ button{
 
     color:var(--gray);
 
-    font-size:14px;
+    font-size:13px;
 
     font-weight:600;
+
+    white-space:nowrap;
 
     border-bottom:
         1px solid var(--border);
@@ -801,20 +824,22 @@ button{
 }
 
 
-/* ---------- TABLE BODY ---------- */
+/* ==========================================
+        TABLE BODY
+========================================== */
 
 .admission-table td{
 
     padding:18px 16px;
 
-    border-bottom:
-        1px solid #EDF2F7;
+    color:var(--text);
+
+    font-size:13px;
 
     vertical-align:middle;
 
-    color:var(--text);
-
-    font-size:14px;
+    border-bottom:
+        1px solid #EDF2F7;
 
 }
 
@@ -830,32 +855,40 @@ button{
 
 }
 
+.admission-table tbody tr:last-child td{
 
-/* ==========================================
-            APPLICATION ID
-========================================== */
-
-.application-id{
-
-    color:var(--primary);
-
-    font-size:13px;
-
-    font-weight:600;
-
-    background:#EFF6FF;
-
-    padding:7px 11px;
-
-    border-radius:8px;
-
-    display:inline-block;
+    border-bottom:none;
 
 }
 
 
 /* ==========================================
-            APPLICANT INFO
+        APPLICATION ID
+========================================== */
+
+.application-id{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    padding:7px 11px;
+
+    border-radius:8px;
+
+    background:#EFF6FF;
+
+    color:var(--primary);
+
+    font-size:12px;
+
+    font-weight:600;
+
+}
+
+
+/* ==========================================
+        APPLICANT INFO
 ========================================== */
 
 .applicant-info{
@@ -864,15 +897,16 @@ button{
 
     align-items:center;
 
-    gap:14px;
+    gap:13px;
+
+    min-width:230px;
 
 }
 
 .applicant-info img{
 
-    width:48px;
-
-    height:48px;
+    width:46px;
+    height:46px;
 
     border-radius:50%;
 
@@ -880,38 +914,44 @@ button{
 
     flex-shrink:0;
 
+    border:2px solid #EFF6FF;
+
 }
 
 .applicant-info h4{
 
     color:var(--secondary);
 
-    font-size:15px;
-
-    margin-bottom:4px;
+    font-size:14px;
 
     font-weight:600;
+
+    margin-bottom:3px;
+
+    white-space:nowrap;
 
 }
 
 .applicant-info span{
 
+    display:block;
+
     color:var(--gray);
 
-    font-size:13px;
+    font-size:12px;
 
 }
 
 
 /* ==========================================
-            COURSE NAME
+        COURSE NAME
 ========================================== */
 
 .course-name{
 
     color:var(--text);
 
-    font-size:14px;
+    font-size:13px;
 
     font-weight:500;
 
@@ -919,7 +959,7 @@ button{
 
 
 /* ==========================================
-            STATUS BADGES
+        STATUS
 ========================================== */
 
 .status{
@@ -930,11 +970,13 @@ button{
 
     justify-content:center;
 
-    padding:7px 16px;
+    min-width:82px;
+
+    padding:7px 14px;
 
     border-radius:50px;
 
-    font-size:13px;
+    font-size:12px;
 
     font-weight:600;
 
@@ -975,7 +1017,7 @@ button{
 
 
 /* ==========================================
-            ACTION BUTTONS
+        ACTION BUTTONS
 ========================================== */
 
 .action-buttons{
@@ -984,34 +1026,34 @@ button{
 
     align-items:center;
 
-    gap:10px;
+    gap:8px;
 
 }
 
 .action-buttons button{
 
-    width:38px;
+    width:36px;
+    height:36px;
 
-    height:38px;
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
 
     border:none;
 
     border-radius:10px;
 
-    cursor:pointer;
-
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
+    font-size:13px;
 
     transition:.3s;
 
 }
 
 
-/* ---------- VIEW ---------- */
+/* ==========================================
+        VIEW BUTTON
+========================================== */
 
 .view-btn{
 
@@ -1025,12 +1067,16 @@ button{
 
     background:#2563EB;
 
-    color:#fff;
+    color:#FFFFFF;
+
+    transform:translateY(-2px);
 
 }
 
 
-/* ---------- APPROVE ---------- */
+/* ==========================================
+        APPROVE BUTTON
+========================================== */
 
 .approve-btn{
 
@@ -1044,12 +1090,16 @@ button{
 
     background:#16A34A;
 
-    color:#fff;
+    color:#FFFFFF;
+
+    transform:translateY(-2px);
 
 }
 
 
-/* ---------- REJECT ---------- */
+/* ==========================================
+        REJECT BUTTON
+========================================== */
 
 .reject-btn{
 
@@ -1063,12 +1113,16 @@ button{
 
     background:#DC2626;
 
-    color:#fff;
+    color:#FFFFFF;
+
+    transform:translateY(-2px);
 
 }
 
 
-/* ---------- EDIT ---------- */
+/* ==========================================
+        EDIT BUTTON
+========================================== */
 
 .edit-btn{
 
@@ -1082,24 +1136,26 @@ button{
 
     background:#D97706;
 
-    color:#fff;
+    color:#FFFFFF;
+
+    transform:translateY(-2px);
 
 }
 
 
 /* ==========================================
-            TABLE PAGINATION
+        PAGINATION
 ========================================== */
 
 .table-pagination{
 
     display:flex;
 
-    justify-content:flex-end;
-
     align-items:center;
 
-    gap:10px;
+    justify-content:flex-end;
+
+    gap:9px;
 
     margin-top:25px;
 
@@ -1108,18 +1164,22 @@ button{
 .table-pagination button{
 
     width:40px;
-
     height:40px;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
 
     border:1px solid var(--border);
 
-    background:#fff;
+    background:#FFFFFF;
+
+    color:var(--secondary);
 
     border-radius:10px;
 
-    cursor:pointer;
-
-    color:var(--secondary);
+    font-size:13px;
 
     transition:.3s;
 
@@ -1129,17 +1189,17 @@ button{
 
     background:var(--primary);
 
-    color:#fff;
+    color:#FFFFFF;
 
     border-color:var(--primary);
 
 }
 
-.table-pagination .active-page{
+.table-pagination button.active-page{
 
     background:var(--primary);
 
-    color:#fff;
+    color:#FFFFFF;
 
     border-color:var(--primary);
 
@@ -1147,7 +1207,7 @@ button{
 
 
 /* ==========================================
-            RESPONSIVE
+        RESPONSIVE — 1200px
 ========================================== */
 
 @media(max-width:1200px){
@@ -1155,15 +1215,21 @@ button{
     .stats-grid{
 
         grid-template-columns:
-            repeat(2,1fr);
+            repeat(2,minmax(0,1fr));
 
     }
 
     .filter-card{
 
-        align-items:flex-start;
+        align-items:stretch;
 
         flex-direction:column;
+
+    }
+
+    .filter-left{
+
+        width:100%;
 
     }
 
@@ -1175,6 +1241,10 @@ button{
 
 }
 
+
+/* ==========================================
+        RESPONSIVE — 992px
+========================================== */
 
 @media(max-width:992px){
 
@@ -1202,7 +1272,7 @@ button{
 
     .filter-left{
 
-        width:100%;
+        flex-wrap:wrap;
 
     }
 
@@ -1210,12 +1280,16 @@ button{
 
         flex:1;
 
-        min-width:160px;
+        min-width:170px;
 
     }
 
 }
 
+
+/* ==========================================
+        RESPONSIVE — 768px
+========================================== */
 
 @media(max-width:768px){
 
@@ -1223,9 +1297,7 @@ button{
 
         left:-220px;
 
-        transition:.3s;
-
-        z-index:999;
+        transition:left .3s ease;
 
     }
 
@@ -1249,7 +1321,7 @@ button{
 
         flex-direction:column;
 
-        align-items:flex-start;
+        align-items:stretch;
 
         gap:18px;
 
@@ -1271,7 +1343,11 @@ button{
 
         width:100%;
 
-        justify-content:center;
+    }
+
+    .page-header h1{
+
+        font-size:26px;
 
     }
 
@@ -1281,25 +1357,21 @@ button{
 
     }
 
-    .filter-card{
-
-        padding:18px;
-
-    }
-
     .filter-left{
+
+        width:100%;
 
         flex-direction:column;
 
-        align-items:stretch;
-
-        width:100%;
+        gap:15px;
 
     }
 
     .filter-group{
 
         width:100%;
+
+        min-width:0;
 
     }
 
@@ -1309,15 +1381,15 @@ button{
 
     }
 
-    .page-header h1{
-
-        font-size:26px;
-
-    }
-
     .dashboard-card{
 
         padding:18px;
+
+    }
+
+    .section-header{
+
+        align-items:flex-start;
 
     }
 
@@ -1330,11 +1402,50 @@ button{
 }
 
 
+/* ==========================================
+        RESPONSIVE — 500px
+========================================== */
+
 @media(max-width:500px){
+
+    .main-content{
+
+        padding:15px;
+
+    }
+
+    .page-header{
+
+        margin-bottom:22px;
+
+    }
+
+    .page-header h1{
+
+        font-size:23px;
+
+    }
+
+    .page-header p{
+
+        font-size:13px;
+
+    }
 
     .stat-card{
 
         padding:18px;
+
+    }
+
+    .stat-icon{
+
+        width:50px;
+        height:50px;
+
+        border-radius:14px;
+
+        font-size:19px;
 
     }
 
@@ -1344,23 +1455,17 @@ button{
 
     }
 
-    .stat-icon{
-
-        width:50px;
-
-        height:50px;
-
-        font-size:19px;
-
-    }
-
     .section-header{
 
         flex-direction:column;
 
-        align-items:flex-start;
-
         gap:10px;
+
+    }
+
+    .section-header h2{
+
+        font-size:19px;
 
     }
 
@@ -1373,20 +1478,19 @@ button{
     .applicant-info img{
 
         width:40px;
-
         height:40px;
 
     }
 
     .applicant-info h4{
 
-        font-size:14px;
+        font-size:13px;
 
     }
 
     .applicant-info span{
 
-        font-size:12px;
+        font-size:11px;
 
     }
 
@@ -1394,13 +1498,12 @@ button{
 
 
 /* ==========================================
-            CUSTOM SCROLLBAR
+        CUSTOM SCROLLBAR
 ========================================== */
 
 ::-webkit-scrollbar{
 
     width:8px;
-
     height:8px;
 
 }

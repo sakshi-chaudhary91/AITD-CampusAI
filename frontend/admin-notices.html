@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Notices | AITD CampusAI Admin</title>
+
+<link rel="stylesheet" href="css/admin-notices.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+</head>
+
+<body>
+
+<div class="dashboard">
+
+    <!-- ================= SIDEBAR ================= -->
+
+    <aside class="sidebar">
+
+        <div>
+
+            <div class="sidebar-logo">
+
+                <img src="assets/logo.png">
+
+                <h2>CampusAI</h2>
+
+            </div>
+
+            <nav class="sidebar-nav">
+
+                <a href="admin-dashboard.html">
+
+                    <i class="fa-solid fa-house"></i>
+
+                    Dashboard
+
+                </a>
+
+                <a  href="admin-students.html">
+
+                    <i class="fas fa-users"></i>
+
+                    Students
+
+                </a>
+
+                <a href="admin-admission.html">
+
+                    <i class="fas fa-user-plus"></i>
+
+                    Admissions
+
+                </a>
+
+                <a href="admin-courses.html">
+
+                    <i class="fas fa-book-open"></i>
+
+                    Courses
+
+                </a>
+
+                <a class="active" href="admin-notices.html">
+
+                    <i class="fas fa-bullhorn"></i>
+
+                    Notices
+
+                </a>
+
+                <a href="admin-scholarships.html">
+
+                    <i class="fas fa-graduation-cap"></i>
+
+                    Scholarships
+
+                </a>
+
+                <a href="admin-pdf-upload.html">
+
+                    <i class="fas fa-file-pdf"></i>
+
+                    PDF Upload
+
+                </a>
+
+                <a href="admin-knowledge-base.html">
+
+                    <i class="fas fa-database"></i>
+
+                    Knowledge Base
+
+                </a>
+                <a href="#" class="menu-item">
+                    <i class="fas fa-robot"></i>
+                    <span>AI Chat Logs</span>
+                </a>
+
+                <a href="admin-settings.html">
+
+                    <i class="fas fa-gear"></i>
+
+                    Settings
+
+                </a>
+
+            </nav>
+
+        </div>
+
+        <div class="sidebar-bottom">
+
+            <button>
+
+                <i class="fas fa-right-from-bracket"></i>
+
+                Logout
+
+            </button>
+
+        </div>
+
+    </aside>
+
+    <!-- ================= MAIN CONTENT ================= -->
+
+    <main class="main-content">
+
+
+        <!-- ================= TOPBAR ================= -->
+
+        <div class="topbar">
+
+            <div class="search-box">
+
+                <i class="fa-solid fa-magnifying-glass"></i>
+
+                <input
+                    type="text"
+                    placeholder="Search notices..."
+                >
+
+            </div>
+
+
+            <div class="top-right">
+
+                <button class="add-btn">
+
+                    <i class="fa-solid fa-plus"></i>
+
+                    Create Notice
+
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- ================= PAGE HEADER ================= -->
+
+        <div class="page-header">
+
+            <h1>Notice Management</h1>
+
+            <p>
+                Create, publish and manage important campus notices.
+            </p>
+
+        </div>
+
+
+        <!-- ================= STATS ================= -->
+
+        <div class="stats-grid">
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon blue">
+
+                    <i class="fa-solid fa-bullhorn"></i>
+
+                </div>
+
+                <div>
+
+                    <h2>48</h2>
+
+                    <p>Total Notices</p>
+
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon green">
+
+                    <i class="fa-solid fa-circle-check"></i>
+
+                </div>
+
+                <div>
+
+                    <h2>36</h2>
+
+                    <p>Published</p>
+
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon orange">
+
+                    <i class="fa-solid fa-clock"></i>
+
+                </div>
+
+                <div>
+
+                    <h2>7</h2>
+
+                    <p>Scheduled</p>
+
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon purple">
+
+                    <i class="fa-solid fa-file-pen"></i>
+
+                </div>
+
+                <div>
+
+                    <h2>5</h2>
+
+                    <p>Drafts</p>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+        <!-- ================= FILTERS ================= -->
+
+        <div class="filter-card">
+
+            <div class="filter-left">
+
+
+                <div class="filter-group">
+
+                    <label>Category</label>
+
+                    <select>
+
+                        <option value="all">All Categories</option>
+
+                        <option value="academic">Academic</option>
+
+                        <option value="exam">Examination</option>
+
+                        <option value="event">Events</option>
+
+                        <option value="placement">Placement</option>
+
+                        <option value="general">General</option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="filter-group">
+
+                    <label>Status</label>
+
+                    <select>
+
+                        <option value="all">All Status</option>
+
+                        <option value="published">Published</option>
+
+                        <option value="scheduled">Scheduled</option>
+
+                        <option value="draft">Draft</option>
+
+                    </select>
+
+                </div>
+
+
+                <button class="reset-btn">
+
+                    <i class="fa-solid fa-rotate-left"></i>
+
+                    Reset
+
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- ================= NOTICE LIST ================= -->
+
+        <div class="dashboard-card">
+
+
+            <div class="section-header">
+
+                <div>
+
+                    <h2>All Notices</h2>
+
+                    <p>Manage recently created campus announcements.</p>
+
+                </div>
+
+                <a href="#">View All</a>
+
+            </div>
+
+
+            <!-- ================= NOTICE TABLE ================= -->
+
+            <table class="notice-table">
+
+                <thead>
+
+                    <tr>
+
+                        <th>ID</th>
+
+                        <th>Notice</th>
+
+                        <th>Category</th>
+
+                        <th>Published By</th>
+
+                        <th>Date</th>
+
+                        <th>Status</th>
+
+                        <th>Actions</th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody>
+
+
+                    <!-- NOTICE 1 -->
+
+                    <tr>
+
+                        <td>
+
+                            <span class="notice-id">
+
+                                NT001
+
+                            </span>
+
+                        </td>
+
+
+                        <td>
+
+                            <div class="notice-info">
+
+                                <div class="notice-icon blue">
+
+                                    <i class="fa-solid fa-file-lines"></i>
+
+                                </div>
+
+                                <div>
+
+                                    <h4>
+
+                                        Semester Examination Schedule
+
+                                    </h4>
+
+                                    <span>
+
+                                        End semester examination timetable released.
+
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+                        </td>
+
+
+                        <td>
+
+                            <span class="category academic">
+
+                                Academic
+
+                            </span>
+
+                        </td>
+
+
+                        <td>
+
+                            Admin Office
+
+                        </td>
+
+
+                        <td>
+
+                            28 Aug 2026
+
+                        </td>
+
+
+                        <td>
+
+                            <span class="status published">
+
+                                Published
+
+                            </span>
+
+                        </td>
+
+
+                        <td>
+
+                            <div class="action-buttons">
+
+                                <button class="view-btn">
+
+                                    <i class="fa-solid fa-eye"></i>
+
+                                </button>
+
+                                <button class="edit-btn">
+
+                                    <i class="fa-solid fa-pen"></i>
+
+                                </button>
+
+                                <button class="delete-btn">
+
+                                    <i class="fa-solid fa-trash"></i>
+
+                                </button>
+
+                            </div>
+
+                        </td>
+
+                    </tr>
+
+
+                    <!-- NOTICE 2 -->
+
+                    <tr>
+
+                        <td>
+
+                            <span class="notice-id">
+
+                                NT002
+
+                            </span>
+
+                        </td>
+
+
+                        <td>
+
+                            <div class="notice-info">
+
+                                <div class="notice-icon orange">
+
+                                    <i class="fa-solid fa-calendar-days"></i>
+
+                                </div>
+
+                                <div>
+
+                                    <h4>
+
+                                        Campus Placement Drive
+
+                                    </h4>
+
+                                    <span>
+
+                                        Registration open for upcoming placement drive.
+
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+                        </td>
+
+
+                        <td>
+
+                            <span class="category placement">
+
+                                Placement
+
+                            </span>
+
+                        </td>
+
+
+                        <td>
+
+                            Placement Cell
+
+                        </td>
+
+
+                        <td>
+
+                            27 Aug 2026
+
+                        </td>
+
+
+                        <td>
+
+                            <span class="status published">
+
+                                Published
+
+                            </span>
+
+                        </td>
+
+
+                        <td>
+
+                            <div class="action-buttons">
+
+                                <button class="view-btn">
+
+                                    <i class="fa-solid fa-eye"></i>
+
+                                </button>
+
+                                <button class="edit-btn">
+
+                                    <i class="fa-solid fa-pen"></i>
+
+                                </button>
+
+                                <button class="delete-btn">
+
+                                    <i class="fa-solid fa-trash"></i>
+
+                                </button>
+
+                            </div>
+
+                        </td>
+
+                    </tr>
+
+
+                    <!-- NOTICE 3 -->
+
+                    <tr>
+
+                        <td>
+
+                            <span class="notice-id">
+
+                                NT003
+
+                            </span>
+
+                        </td>
+
+
+                        <td>
+
+                            <div class="notice-info">
+
+                                <div class="notice-icon purple">
+
+                                    <i class="fa-solid fa-trophy"></i>
+
+                                </div>
+
+                                <div>
+
+                                    <h4>
+
+                                        Annual Sports Meet 2026
+
+                                    </h4>
+
+                                    <span>
+
+                                        Student registrations are now open.
+
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+                        </td>
+
+
+                        <td>
+
+                            <span class="category event">
+
+                                Events
+
+                            </span>
+
+                        </td>
+
+
+                        <td>
+
+                            Student Affairs
+
+                        </td>
+
+
+                        <td>
+
+                            26 Aug 2026
+
+                        </td>
+
+
+                        <td>
+
+                            <span class="status scheduled">
+
+                                Scheduled
+
+                            </span>
+
+                        </td>
+
+
+                        <td>
+
+                            <div class="action-buttons">
+
+                                <button class="view-btn">
+
+                                    <i class="fa-solid fa-eye"></i>
+
+                                </button>
+
+                                <button class="edit-btn">
+
+                                    <i class="fa-solid fa-pen"></i>
+
+                                </button>
+
+                                <button class="delete-btn">
+
+                                    <i class="fa-solid fa-trash"></i>
+
+                                </button>
+
+                            </div>
+
+                        </td>
+
+                    </tr>
+
+
+                    <!-- NOTICE 4 -->
+
+                    <tr>
+
+                        <td>
+
+                            <span class="notice-id">
+
+                                NT004
+
+                            </span>
+
+                        </td>
+
+
+                        <td>
+
+                            <div class="notice-info">
+
+                                <div class="notice-icon green">
+
+                                    <i class="fa-solid fa-building"></i>
+
+                                </div>
+
+                                <div>
+
+                                    <h4>
+
+                                        Hostel Maintenance Notice
+
+                                    </h4>
+
+                                    <span>
+
+                                        Scheduled maintenance for hostel facilities.
+
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+                        </td>
+
+
+                        <td>
+
+                            <span class="category general">
+
+                                General
+
+                            </span>
+
+                        </td>
+
+
+                        <td>
+
+                            Admin Office
+
+                        </td>
+
+
+                        <td>
+
+                            25 Aug 2026
+
+                        </td>
+
+
+                        <td>
+
+                            <span class="status draft">
+
+                                Draft
+
+                            </span>
+
+                        </td>
+
+
+                        <td>
+
+                            <div class="action-buttons">
+
+                                <button class="view-btn">
+
+                                    <i class="fa-solid fa-eye"></i>
+
+                                </button>
+
+                                <button class="edit-btn">
+
+                                    <i class="fa-solid fa-pen"></i>
+
+                                </button>
+
+                                <button class="delete-btn">
+
+                                    <i class="fa-solid fa-trash"></i>
+
+                                </button>
+
+                            </div>
+
+                        </td>
+
+                    </tr>
+
+
+                </tbody>
+
+            </table>
+
+
+            <!-- ================= PAGINATION ================= -->
+
+            <div class="table-pagination">
+
+                <button>
+
+                    <i class="fa-solid fa-angle-left"></i>
+
+                </button>
+
+                <button class="active-page">
+
+                    1
+
+                </button>
+
+                <button>
+
+                    2
+
+                </button>
+
+                <button>
+
+                    3
+
+                </button>
+
+                <button>
+
+                    <i class="fa-solid fa-angle-right"></i>
+
+                </button>
+
+            </div>
+
+
+        </div>
+
+
+    </main>
+
+</div>
+
+
+<script src="js/admin-notices.js"></script>
+
+</body>
+
+</html>

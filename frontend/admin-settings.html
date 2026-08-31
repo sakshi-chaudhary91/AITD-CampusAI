@@ -1,0 +1,1100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Settings | AITD CampusAI Admin</title>
+
+<link rel="stylesheet" href="css/admin-settings.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+</head>
+
+<body>
+
+<!-- ================= SIDEBAR ================= -->
+
+    <aside class="sidebar">
+
+        <div>
+
+            <div class="sidebar-logo">
+
+                <img src="assets/logo.png">
+
+                <h2>CampusAI</h2>
+
+            </div>
+
+            <nav class="sidebar-nav">
+
+                <a href="admin-dashboard.html">
+
+                    <i class="fa-solid fa-house"></i>
+
+                    Dashboard
+
+                </a>
+
+                <a  href="admin-students.html">
+
+                    <i class="fas fa-users"></i>
+
+                    Students
+
+                </a>
+
+                <a href="admin-admission.html">
+
+                    <i class="fas fa-user-plus"></i>
+
+                    Admissions
+
+                </a>
+
+                <a href="admin-courses.html">
+
+                    <i class="fas fa-book-open"></i>
+
+                    Courses
+
+                </a>
+
+                <a href="admin-notices.html">
+
+                    <i class="fas fa-bullhorn"></i>
+
+                    Notices
+
+                </a>
+
+                <a href="admin-scholarships.html">
+
+                    <i class="fas fa-graduation-cap"></i>
+
+                    Scholarships
+
+                </a>
+
+                <a href="admin-pdf-upload.html">
+
+                    <i class="fas fa-file-pdf"></i>
+
+                    PDF Upload
+
+                </a>
+
+                <a href="admin-knowledge-base.html">
+
+                    <i class="fas fa-database"></i>
+
+                    Knowledge Base
+
+                </a>
+                <a href="#" class="menu-item">
+                    <i class="fas fa-robot"></i>
+                    <span>AI Chat Logs</span>
+                </a>
+
+                <a class="active" href="admin-settings.html">
+
+                    <i class="fas fa-gear"></i>
+
+                    Settings
+
+                </a>
+
+            </nav>
+
+        </div>
+
+        <div class="sidebar-bottom">
+
+            <button>
+
+                <i class="fas fa-right-from-bracket"></i>
+
+                Logout
+
+            </button>
+
+        </div>
+
+    </aside>
+
+
+<!-- ================= MAIN CONTENT ================= -->
+
+<main class="main-content">
+
+
+    <!-- ================= TOPBAR ================= -->
+
+    <div class="topbar">
+
+        <div class="search-box">
+
+            <i class="fa-solid fa-magnifying-glass"></i>
+
+            <input
+                type="text"
+                placeholder="Search settings..."
+            >
+
+        </div>
+
+
+        <div class="top-right">
+
+            <button class="save-top-btn">
+
+                <i class="fa-solid fa-floppy-disk"></i>
+
+                Save Changes
+
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= PAGE HEADER ================= -->
+
+    <div class="page-header">
+
+        <h1>Admin Settings</h1>
+
+        <p>
+            Manage your CampusAI administrator account and system preferences.
+        </p>
+
+    </div>
+
+
+    <!-- ================= SETTINGS LAYOUT ================= -->
+
+    <div class="settings-layout">
+
+
+        <!-- ================= SETTINGS MENU ================= -->
+
+        <div class="dashboard-card settings-menu">
+
+            <h3>Settings</h3>
+
+
+            <button
+                class="settings-tab active"
+                data-target="profile-section"
+            >
+
+                <i class="fa-solid fa-user"></i>
+
+                Profile
+
+            </button>
+
+
+            <button
+                class="settings-tab"
+                data-target="general-section"
+            >
+
+                <i class="fa-solid fa-sliders"></i>
+
+                General
+
+            </button>
+
+
+            <button
+                class="settings-tab"
+                data-target="security-section"
+            >
+
+                <i class="fa-solid fa-shield-halved"></i>
+
+                Security
+
+            </button>
+
+
+            <button
+                class="settings-tab"
+                data-target="notification-section"
+            >
+
+                <i class="fa-solid fa-bell"></i>
+
+                Notifications
+
+            </button>
+
+
+            <button
+                class="settings-tab"
+                data-target="chatbot-section"
+            >
+
+                <i class="fa-solid fa-robot"></i>
+
+                Chatbot
+
+            </button>
+
+
+            <button
+                class="settings-tab"
+                data-target="system-section"
+            >
+
+                <i class="fa-solid fa-server"></i>
+
+                System
+
+            </button>
+
+        </div>
+
+
+        <!-- ================= SETTINGS CONTENT ================= -->
+
+        <div class="settings-content">
+
+
+            <!-- ==========================================
+                    PROFILE SECTION
+            ========================================== -->
+
+            <div
+                class="dashboard-card settings-section active"
+                id="profile-section"
+            >
+
+                <div class="section-header">
+
+                    <div>
+
+                        <h2>Administrator Profile</h2>
+
+                        <p>
+                            Update your personal administrator information.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="profile-settings">
+
+
+                    <div class="profile-avatar">
+
+                        <img
+                            src="assets/profile.png"
+                            alt="Admin Profile"
+                        >
+
+                        <button class="avatar-btn">
+
+                            <i class="fa-solid fa-camera"></i>
+
+                        </button>
+
+                    </div>
+
+
+                    <div class="form-grid">
+
+
+                        <div class="form-group">
+
+                            <label>Full Name</label>
+
+                            <input
+                                type="text"
+                                value="CampusAI Administrator"
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label>Email Address</label>
+
+                            <input
+                                type="email"
+                                value="admin@aitd.ac.in"
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label>Phone Number</label>
+
+                            <input
+                                type="tel"
+                                value="+91 9876543210"
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label>Role</label>
+
+                            <input
+                                type="text"
+                                value="Super Administrator"
+                                readonly
+                            >
+
+                        </div>
+
+
+                        <div class="form-group full-width">
+
+                            <label>About</label>
+
+                            <textarea
+                                placeholder="Write something about the administrator..."
+                            >Administrator of AITD CampusAI system.</textarea>
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+
+                <div class="settings-actions">
+
+                    <button class="secondary-btn">
+
+                        Cancel
+
+                    </button>
+
+
+                    <button class="primary-btn">
+
+                        <i class="fa-solid fa-check"></i>
+
+                        Update Profile
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- ==========================================
+                    GENERAL SECTION
+            ========================================== -->
+
+            <div
+                class="dashboard-card settings-section"
+                id="general-section"
+            >
+
+                <div class="section-header">
+
+                    <div>
+
+                        <h2>General Settings</h2>
+
+                        <p>
+                            Configure basic CampusAI system information.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-grid">
+
+
+                    <div class="form-group">
+
+                        <label>Institute Name</label>
+
+                        <input
+                            type="text"
+                            value="Dr. Ambedkar Institute of Technology for Divyangjan"
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>System Name</label>
+
+                        <input
+                            type="text"
+                            value="AITD CampusAI"
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>Admin Email</label>
+
+                        <input
+                            type="email"
+                            value="admin@aitd.ac.in"
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>Academic Session</label>
+
+                        <input
+                            type="text"
+                            value="2026 - 2027"
+                        >
+
+                    </div>
+
+
+                    <div class="form-group full-width">
+
+                        <label>Institute Address</label>
+
+                        <textarea>Kanpur, Uttar Pradesh, India</textarea>
+
+                    </div>
+
+
+                </div>
+
+
+                <div class="settings-actions">
+
+                    <button class="secondary-btn">
+
+                        Cancel
+
+                    </button>
+
+
+                    <button class="primary-btn">
+
+                        <i class="fa-solid fa-check"></i>
+
+                        Save General Settings
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- ==========================================
+                    SECURITY SECTION
+            ========================================== -->
+
+            <div
+                class="dashboard-card settings-section"
+                id="security-section"
+            >
+
+                <div class="section-header">
+
+                    <div>
+
+                        <h2>Security Settings</h2>
+
+                        <p>
+                            Manage administrator password and account security.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-grid">
+
+
+                    <div class="form-group full-width">
+
+                        <label>Current Password</label>
+
+                        <input
+                            type="password"
+                            placeholder="Enter current password"
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>New Password</label>
+
+                        <input
+                            type="password"
+                            placeholder="Enter new password"
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>Confirm Password</label>
+
+                        <input
+                            type="password"
+                            placeholder="Confirm new password"
+                        >
+
+                    </div>
+
+
+                </div>
+
+
+                <div class="security-warning">
+
+                    <i class="fa-solid fa-triangle-exclamation"></i>
+
+                    <div>
+
+                        <strong>Security Notice</strong>
+
+                        <p>
+                            Use a strong password containing uppercase,
+                            lowercase, numbers and special characters.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="settings-actions">
+
+                    <button class="secondary-btn">
+
+                        Cancel
+
+                    </button>
+
+
+                    <button class="primary-btn">
+
+                        <i class="fa-solid fa-lock"></i>
+
+                        Change Password
+
+                    </button>
+
+                </div>
+
+            </div>
+
+            <!-- ==========================================
+                    NOTIFICATION SECTION
+            ========================================== -->
+
+            <div
+                class="dashboard-card settings-section"
+                id="notification-section"
+            >
+
+                <div class="section-header">
+
+                    <div>
+
+                        <h2>Notification Settings</h2>
+
+                        <p>
+                            Control which notifications you receive from CampusAI.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="setting-option">
+
+                    <div>
+
+                        <h4>New Admission Alerts</h4>
+
+                        <p>
+                            Receive notifications whenever a new admission
+                            application is submitted.
+                        </p>
+
+                    </div>
+
+
+                    <label class="switch">
+
+                        <input
+                            type="checkbox"
+                            checked
+                        >
+
+                        <span class="slider"></span>
+
+                    </label>
+
+                </div>
+
+
+                <div class="setting-option">
+
+                    <div>
+
+                        <h4>Student Registration Alerts</h4>
+
+                        <p>
+                            Get notified when a new student registers
+                            on the CampusAI platform.
+                        </p>
+
+                    </div>
+
+
+                    <label class="switch">
+
+                        <input
+                            type="checkbox"
+                            checked
+                        >
+
+                        <span class="slider"></span>
+
+                    </label>
+
+                </div>
+
+
+                <div class="setting-option">
+
+                    <div>
+
+                        <h4>Notice Updates</h4>
+
+                        <p>
+                            Receive alerts when notices are created
+                            or updated.
+                        </p>
+
+                    </div>
+
+
+                    <label class="switch">
+
+                        <input
+                            type="checkbox"
+                            checked
+                        >
+
+                        <span class="slider"></span>
+
+                    </label>
+
+                </div>
+
+
+                <div class="setting-option">
+
+                    <div>
+
+                        <h4>System Notifications</h4>
+
+                        <p>
+                            Receive important system and maintenance alerts.
+                        </p>
+
+                    </div>
+
+
+                    <label class="switch">
+
+                        <input
+                            type="checkbox"
+                            checked
+                        >
+
+                        <span class="slider"></span>
+
+                    </label>
+
+                </div>
+
+
+                <div class="settings-actions">
+
+                    <button class="secondary-btn">
+
+                        Cancel
+
+                    </button>
+
+
+                    <button class="primary-btn">
+
+                        <i class="fa-solid fa-check"></i>
+
+                        Save Notifications
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- ==========================================
+                    CHATBOT SECTION
+            ========================================== -->
+
+            <div
+                class="dashboard-card settings-section"
+                id="chatbot-section"
+            >
+
+                <div class="section-header">
+
+                    <div>
+
+                        <h2>Chatbot Settings</h2>
+
+                        <p>
+                            Configure the CampusAI chatbot behavior.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-grid">
+
+
+                    <div class="form-group">
+
+                        <label>Chatbot Name</label>
+
+                        <input
+                            type="text"
+                            value="CampusAI Assistant"
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>Welcome Message</label>
+
+                        <input
+                            type="text"
+                            value="Hello! How can I help you today?"
+                        >
+
+                    </div>
+
+
+                    <div class="form-group full-width chatbot-message">
+
+                        <label>Fallback Message</label>
+
+                        <textarea>I'm sorry, I couldn't find the answer to your question. Please contact the administration office for further assistance.</textarea>
+
+                    </div>
+
+                </div>
+
+
+                <div class="setting-option">
+
+                    <div>
+
+                        <h4>Enable Chatbot</h4>
+
+                        <p>
+                            Allow students and visitors to use the
+                            CampusAI chatbot.
+                        </p>
+
+                    </div>
+
+
+                    <label class="switch">
+
+                        <input
+                            type="checkbox"
+                            checked
+                        >
+
+                        <span class="slider"></span>
+
+                    </label>
+
+                </div>
+
+
+                <div class="setting-option">
+
+                    <div>
+
+                        <h4>Knowledge Base Access</h4>
+
+                        <p>
+                            Allow the chatbot to retrieve information
+                            from the uploaded knowledge base.
+                        </p>
+
+                    </div>
+
+
+                    <label class="switch">
+
+                        <input
+                            type="checkbox"
+                            checked
+                        >
+
+                        <span class="slider"></span>
+
+                    </label>
+
+                </div>
+
+
+                <div class="settings-actions">
+
+                    <button class="secondary-btn">
+
+                        Cancel
+
+                    </button>
+
+
+                    <button class="primary-btn">
+
+                        <i class="fa-solid fa-check"></i>
+
+                        Save Chatbot Settings
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- ==========================================
+                    SYSTEM SECTION
+            ========================================== -->
+
+            <div
+                class="dashboard-card settings-section"
+                id="system-section"
+            >
+
+                <div class="section-header">
+
+                    <div>
+
+                        <h2>System Information</h2>
+
+                        <p>
+                            Monitor the current CampusAI system status.
+                        </p>
+
+                    </div>
+
+
+                    <span class="system-status">
+
+                        <i class="fa-solid fa-circle"></i>
+
+                        System Online
+
+                    </span>
+
+                </div>
+
+
+                <div class="system-grid">
+
+
+                    <div class="system-card">
+
+                        <div class="system-icon blue">
+
+                            <i class="fa-solid fa-server"></i>
+
+                        </div>
+
+                        <div>
+
+                            <h4>Backend Server</h4>
+
+                            <span class="online">
+                                Online
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="system-card">
+
+                        <div class="system-icon green">
+
+                            <i class="fa-solid fa-database"></i>
+
+                        </div>
+
+                        <div>
+
+                            <h4>Database</h4>
+
+                            <span class="online">
+                                Connected
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="system-card">
+
+                        <div class="system-icon purple">
+
+                            <i class="fa-solid fa-brain"></i>
+
+                        </div>
+
+                        <div>
+
+                            <h4>AI Service</h4>
+
+                            <span class="online">
+                                Operational
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="system-card">
+
+                        <div class="system-icon orange">
+
+                            <i class="fa-solid fa-hard-drive"></i>
+
+                        </div>
+
+                        <div>
+
+                            <h4>Storage</h4>
+
+                            <span class="online">
+                                Healthy
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="system-info">
+
+
+                    <div>
+
+                        <span>System Version</span>
+
+                        <strong>CampusAI v1.0.0</strong>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>Environment</span>
+
+                        <strong>Production</strong>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>Last Updated</span>
+
+                        <strong>31 August 2026</strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="settings-actions">
+
+                    <button class="danger-outline-btn">
+
+                        <i class="fa-solid fa-power-off"></i>
+
+                        System Maintenance
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+</main>
+
+</div>
+
+
+<script src="js/admin-settings.js"></script>
+
+</body>
+
+</html>

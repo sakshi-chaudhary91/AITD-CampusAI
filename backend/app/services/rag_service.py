@@ -7,6 +7,7 @@ from app.services.gemini_service import get_gemini_response
 
 
 def retrieve_context(question: str):
+
     index, chunks = load_index()
 
     query_embedding = create_embeddings([question])[0]
@@ -15,12 +16,17 @@ def retrieve_context(question: str):
         index,
         query_embedding,
         chunks,
-        top_k=3
+        top_k=4
     )
 
     return "\n\n".join(results)
 
 
 def ask_question(question: str):
+
     context = retrieve_context(question)
-    return get_gemini_response(context, question)
+
+    return get_gemini_response(
+        context,
+        question
+    )

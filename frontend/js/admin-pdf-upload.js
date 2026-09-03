@@ -1,109 +1,589 @@
-/* ==========================================
-        AITD CAMPUSAI
-        ADMIN PDF UPLOAD
-========================================== */
+document.addEventListener("DOMContentLoaded", () => {
 
-document.addEventListener("DOMContentLoaded", function () {
+    // ===============================
+    // DOM ELEMENTS
+    // ===============================
 
+    const uploadArea = document.getElementById("uploadArea");
+    const browseBtn = document.getElementById("browseBtn");
+    const pdfInput = document.getElementById("pdfInput");
 
-    /* ======================================
-            ELEMENTS
-    ====================================== */
+    const selectedFile = document.getElementById("selectedFile");
+    const fileName = document.getElementById("fileName");
+    const fileSize = document.getElementById("fileSize");
+    const removeFile = document.getElementById("removeFile");
 
-    const uploadArea =
-        document.getElementById("uploadArea");
+    const documentTitle = document.getElementById("documentTitle");
+    const documentCategory = document.getElementById("documentCategory");
 
-    const browseBtn =
-        document.getElementById("browseBtn");
+    const processPdf = document.getElementById("processPdf");
+    const cancelUpload = document.getElementById("cancelUpload");
 
-    const pdfInput =
-        document.getElementById("pdfInput");
+    const tableBody = document.querySelector(".pdf-table tbody");
+    const searchInput = document.querySelector(".search-box input");
 
-    const selectedFile =
-        document.getElementById("selectedFile");
+    const statValues =
+        document.querySelectorAll(".stats-grid .stat-card h2");
 
-    const fileName =
-        document.getElementById("fileName");
+    const BACKEND_URL = "http://127.0.0.1:8000";
 
-    const fileSize =
-        document.getElementById("fileSize");
+    const MAX_FILE_SIZE = 20 * 1024 * 1024;
 
-    const removeFile =
-        document.getElementById("removeFile");
-
-    const documentTitle =
-        document.getElementById("documentTitle");
-
-    const documentCategory =
-        document.getElementById("documentCategory");
-
-    const processPdf =
-        document.getElementById("processPdf");
-
-    const cancelUpload =
-        document.getElementById("cancelUpload");
-
-    const searchInput =
-        document.querySelector(".search-box input");
-
-    const uploadTopBtn =
-        document.querySelector(".upload-top-btn");
-
-    const tableBody =
-        document.querySelector(".pdf-table tbody");
+    let currentFile = null;
 
 
-    /* ======================================
-            MAX FILE SIZE
-            20 MB
-    ====================================== */
+    // ===============================
+    // INITIAL LOAD
+    // ===============================
 
-    const MAX_FILE_SIZE =
-        20 * 1024 * 1024;
+    loadDocuments();
+    loadStats();
 
 
-    /* ======================================
-            FORMAT FILE SIZE
-    ====================================== */
+    // ===============================
+    // LOAD DOCUMENTS
+    // ===============================
 
-    function formatFileSize(bytes) {
+    async function loadDocuments() {
 
-        if (bytes < 1024 * 1024) {
+        try {
 
-            return (
-                (bytes / 1024).toFixed(1) +
-                " KB"
+            const response = await fetch(
+                `${BACKEND_URL}/upload/`
+            );
+
+            if (!response.ok) {
+
+                throw new Error(
+                    "Failed to load documents."
+                );
+
+            }
+
+            const documents = await response.json();
+
+            renderDocuments(documents);
+
+        } catch (error) {
+
+            console.error(
+                "Error loading documents:",
+                error
+            );
+
+            if (tableBody) {
+
+                tableBody.innerHTML = `
+                    <tr>
+                        <td colspan="6" style="text-align:center;">
+                            Failed to load documents.
+                        </td>
+                    </tr>
+                `;
+
+            }
+
+        }
+
+    }
+
+
+    // ===============================
+    // LOAD STATS
+    // ===============================
+
+    async function loadStats() {
+
+        try {
+
+            const response = await fetch(
+                `${BACKEND_URL}/upload/stats`
+            );
+
+            if (!response.ok) {
+
+                throw new Error(
+                    "Failed to load PDF statistics."
+                );
+
+            }
+
+            const stats = await response.json();
+
+            updateStats(stats);
+
+        } catch (error) {
+
+            console.error(
+                "Error loading stats:",
+                error
             );
 
         }
 
-        return (
-            (bytes / (1024 * 1024)).toFixed(2) +
-            " MB"
+    }
+
+
+    // ===============================
+    // UPDATE STATS
+    // ===============================
+
+    function updateStats(stats) {
+
+        if (!statValues || statValues.length < 4) {
+
+            return;
+
+        }
+
+
+        // Total PDFs
+        statValues[0].textContent =
+            stats.total_pdfs;
+
+
+        // Processed
+        statValues[1].textContent =
+            stats.processed;
+
+
+        // Processing
+        statValues[2].textContent =
+            stats.processing;
+
+
+        // Storage
+        statValues[3].textContent =
+            formatStorage(
+                stats.storage_bytes
+            );
+
+    }
+
+
+    // ===============================
+    // FORMAT STORAGE
+    // ===============================
+
+    function formatStorage(bytes) {
+
+        if (!bytes || bytes <= 0) {
+
+            return "0 MB";
+
+        }
+
+
+        const mb = bytes / (1024 * 1024);
+
+
+        if (mb < 1024) {
+
+            return `${mb.toFixed(1)} MB`;
+
+        }
+
+
+        const gb = mb / 1024;
+
+        return `${gb.toFixed(1)} GB`;
+
+    }
+
+
+    // ===============================
+    // RENDER DOCUMENTS
+    // ===============================
+
+    function renderDocuments(documents) {
+
+        if (!tableBody) {
+
+            return;
+
+        }
+
+
+        tableBody.innerHTML = "";
+
+
+        if (!documents || documents.length === 0) {
+
+            tableBody.innerHTML = `
+                <tr>
+                    <td colspan="6" style="text-align:center;">
+                        No documents uploaded yet.
+                    </td>
+                </tr>
+            `;
+
+            return;
+
+        }
+
+
+        documents.forEach(document => {
+
+            addDocumentRow(document);
+
+        });
+
+    }
+
+
+    // ===============================
+    // ADD DOCUMENT ROW
+    // ===============================
+
+    function addDocumentRow(doc) {
+
+    const row = document.createElement("tr");
+
+    const status =
+        doc.status || "Processing";
+
+    const statusClass =
+        status.toLowerCase();
+
+    const category =
+        doc.category || "general";
+
+    const categoryClass =
+        category.toLowerCase();
+
+    const iconClass =
+        getDocumentIconClass(category);
+
+    row.innerHTML = `
+
+        <td>
+            <div class="document-info">
+
+                <div class="document-icon ${iconClass}">
+                    <i class="fa-solid fa-file-pdf"></i>
+                </div>
+
+                <div>
+                    <h4>
+                        ${escapeHTML(doc.title)}
+                    </h4>
+
+                    <span>
+                        ${escapeHTML(doc.filename)}
+                    </span>
+                </div>
+
+            </div>
+        </td>
+
+        <td>
+            <span class="category ${categoryClass}">
+                ${formatCategory(category)}
+            </span>
+        </td>
+
+        <td>
+            ${formatFileSize(doc.file_size)}
+        </td>
+
+        <td>
+            ${formatDate(doc.uploaded_at)}
+        </td>
+
+        <td>
+            ${getStatusHTML(status)}
+        </td>
+
+        <td>
+            <div class="action-buttons">
+
+                <button
+                    class="view-btn"
+                    title="View"
+                    data-id="${doc.id}"
+                >
+                    <i class="fa-solid fa-eye"></i>
+                </button>
+
+                <button
+                    class="delete-btn"
+                    title="Delete"
+                    data-id="${doc.id}"
+                >
+                    <i class="fa-solid fa-trash"></i>
+                </button>
+
+            </div>
+        </td>
+
+    `;
+
+    tableBody.appendChild(row);
+}
+
+
+    // ===============================
+    // DOCUMENT ICON COLOR
+    // ===============================
+
+    function getDocumentIconClass(category) {
+
+        switch (category.toLowerCase()) {
+
+            case "admission":
+                return "red";
+
+            case "academic":
+                return "blue";
+
+            case "scholarship":
+                return "purple";
+
+            case "notice":
+                return "blue";
+
+            default:
+                return "red";
+
+        }
+
+    }
+
+
+    // ===============================
+    // FORMAT CATEGORY
+    // ===============================
+
+    function formatCategory(category) {
+
+        if (!category) {
+
+            return "General";
+
+        }
+
+
+        return category.charAt(0).toUpperCase() +
+            category.slice(1);
+
+    }
+
+
+    // ===============================
+    // STATUS HTML
+    // ===============================
+
+    function getStatusHTML(status) {
+
+        const normalized =
+            status.toLowerCase();
+
+
+        if (normalized === "processed") {
+
+            return `
+                <span class="status processed">
+
+                    <i class="fa-solid fa-circle-check"></i>
+
+                    Processed
+
+                </span>
+            `;
+
+        }
+
+
+        if (normalized === "processing") {
+
+            return `
+                <span class="status processing">
+
+                    <i class="fa-solid fa-spinner"></i>
+
+                    Processing
+
+                </span>
+            `;
+
+        }
+
+
+        if (normalized === "failed") {
+
+            return `
+                <span class="status failed">
+
+                    <i class="fa-solid fa-circle-xmark"></i>
+
+                    Failed
+
+                </span>
+            `;
+
+        }
+
+
+        return `
+            <span class="status">
+
+                ${escapeHTML(status)}
+
+            </span>
+        `;
+
+    }
+
+
+    // ===============================
+    // FORMAT DATE
+    // ===============================
+
+    function formatDate(dateString) {
+
+        if (!dateString) {
+
+            return "-";
+
+        }
+
+
+        const date = new Date(dateString);
+
+
+        if (isNaN(date.getTime())) {
+
+            return "-";
+
+        }
+
+
+        return date.toLocaleDateString(
+            "en-GB",
+            {
+                day: "2-digit",
+                month: "short",
+                year: "numeric"
+            }
         );
 
     }
 
 
-    /* ======================================
-            SHOW SELECTED FILE
-    ====================================== */
+    // ===============================
+    // FORMAT FILE SIZE
+    // ===============================
 
-    function showSelectedFile(file) {
+    function formatFileSize(bytes) {
 
-        if (!file) return;
+        if (!bytes || bytes <= 0) {
 
+            return "0 B";
 
-        /* ---------- CHECK PDF ---------- */
-
-        const isPDF =
-            file.type === "application/pdf" ||
-            file.name.toLowerCase().endsWith(".pdf");
+        }
 
 
-        if (!isPDF) {
+        if (bytes < 1024) {
 
-            alert("Please select a PDF file only.");
+            return `${bytes} B`;
+
+        }
+
+
+        if (bytes < 1024 * 1024) {
+
+            return `${(bytes / 1024).toFixed(1)} KB`;
+
+        }
+
+
+        if (bytes < 1024 * 1024 * 1024) {
+
+            return `${(bytes / (1024 * 1024)).toFixed(1)} MB`;
+
+        }
+
+
+        return `${(
+            bytes / (1024 * 1024 * 1024)
+        ).toFixed(1)} GB`;
+
+    }
+
+
+    // ===============================
+    // ESCAPE HTML
+    // ===============================
+
+    function escapeHTML(value) {
+
+        const div =
+            document.createElement("div");
+
+        div.textContent =
+            value ?? "";
+
+        return div.innerHTML;
+
+    }
+
+
+    // ===============================
+    // BROWSE BUTTON
+    // ===============================
+
+    if (browseBtn) {
+
+        browseBtn.addEventListener(
+            "click",
+            () => {
+
+                pdfInput.click();
+
+            }
+        );
+
+    }
+
+
+    // ===============================
+    // FILE INPUT
+    // ===============================
+
+    if (pdfInput) {
+
+        pdfInput.addEventListener(
+            "change",
+            () => {
+
+                if (pdfInput.files.length > 0) {
+
+                    handleFile(
+                        pdfInput.files[0]
+                    );
+
+                }
+
+            }
+        );
+
+    }
+
+
+    // ===============================
+    // HANDLE FILE
+    // ===============================
+
+    function handleFile(file) {
+
+        if (
+            file.type !== "application/pdf" &&
+            !file.name.toLowerCase().endsWith(".pdf")
+        ) {
+
+            alert(
+                "Please select a PDF file."
+            );
 
             clearFile();
 
@@ -111,8 +591,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
         }
 
-
-        /* ---------- CHECK SIZE ---------- */
 
         if (file.size > MAX_FILE_SIZE) {
 
@@ -127,36 +605,78 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
 
-        /* ---------- UPDATE UI ---------- */
-
-        fileName.textContent =
-            file.name;
-
-        fileSize.textContent =
-            formatFileSize(file.size);
+        currentFile = file;
 
 
-        selectedFile.style.display =
-            "flex";
+        if (fileName) {
+
+            fileName.textContent =
+                file.name;
+
+        }
 
 
-        uploadArea.style.display =
-            "none";
+        if (fileSize) {
+
+            fileSize.textContent =
+                formatFileSize(file.size);
+
+        }
+
+
+        if (selectedFile) {
+
+            selectedFile.style.display =
+                "flex";
+
+        }
 
     }
 
 
-    /* ======================================
-            CLEAR FILE
-    ====================================== */
+    // ===============================
+    // REMOVE FILE
+    // ===============================
+
+    if (removeFile) {
+
+        removeFile.addEventListener(
+            "click",
+            () => {
+
+                clearFile();
+
+            }
+        );
+
+    }
+
 
     function clearFile() {
+
+        currentFile = null;
+
 
         if (pdfInput) {
 
             pdfInput.value = "";
 
         }
+
+
+        if (fileName) {
+
+            fileName.textContent = "";
+
+        }
+
+
+        if (fileSize) {
+
+            fileSize.textContent = "";
+
+        }
+
 
         if (selectedFile) {
 
@@ -165,88 +685,23 @@ document.addEventListener("DOMContentLoaded", function () {
 
         }
 
-        if (uploadArea) {
-
-            uploadArea.style.display =
-                "flex";
-
-        }
-
     }
 
 
-    /* ======================================
-            BROWSE BUTTON
-    ====================================== */
-
-    if (browseBtn && pdfInput) {
-
-        browseBtn.addEventListener(
-            "click",
-            function () {
-
-                pdfInput.click();
-
-            }
-        );
-
-    }
-
-
-    /* ======================================
-            FILE INPUT CHANGE
-    ====================================== */
-
-    if (pdfInput) {
-
-        pdfInput.addEventListener(
-            "change",
-            function () {
-
-                const file =
-                    this.files[0];
-
-                showSelectedFile(file);
-
-            }
-        );
-
-    }
-
-
-    /* ======================================
-            REMOVE FILE
-    ====================================== */
-
-    if (removeFile) {
-
-        removeFile.addEventListener(
-            "click",
-            function () {
-
-                clearFile();
-
-            }
-        );
-
-    }
-
-
-    /* ======================================
-            DRAG & DROP
-    ====================================== */
+    // ===============================
+    // DRAG & DROP
+    // ===============================
 
     if (uploadArea) {
 
-
         uploadArea.addEventListener(
             "dragover",
-            function (event) {
+            (event) => {
 
                 event.preventDefault();
 
                 uploadArea.classList.add(
-                    "drag-active"
+                    "drag-over"
                 );
 
             }
@@ -255,10 +710,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
         uploadArea.addEventListener(
             "dragleave",
-            function () {
+            () => {
 
                 uploadArea.classList.remove(
-                    "drag-active"
+                    "drag-over"
                 );
 
             }
@@ -267,97 +722,24 @@ document.addEventListener("DOMContentLoaded", function () {
 
         uploadArea.addEventListener(
             "drop",
-            function (event) {
+            (event) => {
 
                 event.preventDefault();
 
                 uploadArea.classList.remove(
-                    "drag-active"
+                    "drag-over"
                 );
 
 
-                const file =
-                    event.dataTransfer.files[0];
+                const files =
+                    event.dataTransfer.files;
 
 
-                if (!file) return;
+                if (files.length > 0) {
 
-
-                if (pdfInput) {
-
-                    try {
-
-                        const dataTransfer =
-                            new DataTransfer();
-
-                        dataTransfer.items.add(file);
-
-                        pdfInput.files =
-                            dataTransfer.files;
-
-                    } catch (error) {
-
-                        console.log(
-                            "File input assignment unavailable."
-                        );
-
-                    }
-
-                }
-
-
-                showSelectedFile(file);
-
-            }
-        );
-
-    }
-
-
-    /* ======================================
-            TOP UPLOAD BUTTON
-    ====================================== */
-
-    if (uploadTopBtn) {
-
-        uploadTopBtn.addEventListener(
-            "click",
-            function () {
-
-                document.querySelector(
-                    ".upload-card"
-                ).scrollIntoView({
-                    behavior: "smooth",
-                    block: "start"
-                });
-
-            }
-        );
-
-    }
-
-
-    /* ======================================
-            CANCEL UPLOAD
-    ====================================== */
-
-    if (cancelUpload) {
-
-        cancelUpload.addEventListener(
-            "click",
-            function () {
-
-                clearFile();
-
-                if (documentTitle) {
-
-                    documentTitle.value = "";
-
-                }
-
-                if (documentCategory) {
-
-                    documentCategory.selectedIndex = 0;
+                    handleFile(
+                        files[0]
+                    );
 
                 }
 
@@ -367,27 +749,20 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 
-    /* ======================================
-            PROCESS PDF
-    ====================================== */
+    // ===============================
+    // PROCESS PDF
+    // ===============================
 
     if (processPdf) {
 
         processPdf.addEventListener(
             "click",
-            function () {
+            async () => {
 
-
-                /* ---------- FILE CHECK ---------- */
-
-                if (
-                    !pdfInput ||
-                    !pdfInput.files ||
-                    !pdfInput.files.length
-                ) {
+                if (!currentFile) {
 
                     alert(
-                        "Please select a PDF file first."
+                        "Please select a PDF file."
                     );
 
                     return;
@@ -395,15 +770,14 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
 
 
-                /* ---------- TITLE CHECK ---------- */
+                const title =
+                    documentTitle.value.trim();
 
-                if (
-                    documentTitle &&
-                    !documentTitle.value.trim()
-                ) {
+
+                if (!title) {
 
                     alert(
-                        "Please enter the document title."
+                        "Please enter document title."
                     );
 
                     documentTitle.focus();
@@ -413,15 +787,14 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
 
 
-                /* ---------- CATEGORY CHECK ---------- */
+                const category =
+                    documentCategory.value;
 
-                if (
-                    documentCategory &&
-                    !documentCategory.value
-                ) {
+
+                if (!category) {
 
                     alert(
-                        "Please select a document category."
+                        "Please select a category."
                     );
 
                     documentCategory.focus();
@@ -431,64 +804,111 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
 
 
-                /* ---------- PROCESSING STATE ---------- */
-
-                const originalText =
-                    processPdf.innerHTML;
-
-
                 processPdf.disabled = true;
 
-                processPdf.innerHTML =
-                    '<i class="fa-solid fa-spinner fa-spin"></i> Processing...';
+
+                const originalText =
+                    processPdf.textContent;
 
 
-                /*
-                    FRONTEND DEMO ONLY
-
-                    Later this button will send
-                    the PDF to FastAPI backend.
-                */
-
-                setTimeout(
-                    function () {
-
-                        processPdf.disabled =
-                            false;
-
-                        processPdf.innerHTML =
-                            originalText;
+                processPdf.textContent =
+                    "Processing...";
 
 
-                        alert(
-                            "PDF uploaded successfully. Backend processing will be connected later."
+                const formData =
+                    new FormData();
+
+
+                formData.append(
+                    "file",
+                    currentFile
+                );
+
+
+                formData.append(
+                    "title",
+                    title
+                );
+
+
+                formData.append(
+                    "category",
+                    category
+                );
+
+
+                try {
+
+                    const response =
+                        await fetch(
+                            `${BACKEND_URL}/upload/`,
+                            {
+                                method: "POST",
+                                body: formData
+                            }
                         );
 
 
-                        addDocumentToTable();
+                    const data =
+                        await response.json();
 
 
-                        clearFile();
+                    if (!response.ok) {
+
+                        throw new Error(
+                            data.detail ||
+                            "PDF upload failed."
+                        );
+
+                    }
 
 
-                        if (documentTitle) {
-
-                            documentTitle.value =
-                                "";
-
-                        }
+                    alert(
+                        "PDF uploaded and processed successfully."
+                    );
 
 
-                        if (documentCategory) {
+                    // Refresh table
+                    await loadDocuments();
 
-                            documentCategory.selectedIndex =
-                                0;
 
-                        }
+                    // Refresh statistics
+                    await loadStats();
 
-                    },
-                    1200
-                );
+
+                    // Clear form
+                    clearFile();
+
+
+                    documentTitle.value = "";
+
+                    documentCategory.value = "";
+
+
+                } catch (error) {
+
+                    console.error(
+                        "Upload error:",
+                        error
+                    );
+
+
+                    alert(
+                        "PDF upload failed.\n\n" +
+                        error.message
+                    );
+
+
+                } finally {
+
+                    processPdf.disabled =
+                        false;
+
+
+                    processPdf.textContent =
+                        originalText;
+
+                }
 
             }
         );
@@ -496,323 +916,163 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 
-    /* ======================================
-            ADD DOCUMENT TO TABLE
-    ====================================== */
+    // ===============================
+    // CANCEL
+    // ===============================
 
-    function addDocumentToTable() {
+    if (cancelUpload) {
 
-        if (!tableBody) return;
+        cancelUpload.addEventListener(
+            "click",
+            () => {
 
+                clearFile();
 
-        const file =
-            pdfInput.files[0];
+                documentTitle.value = "";
 
+                documentCategory.value = "";
 
-        if (!file) return;
-
-
-        const title =
-            documentTitle.value.trim();
-
-
-        const category =
-            documentCategory.value;
-
-
-        const categoryText =
-            documentCategory.options[
-                documentCategory.selectedIndex
-            ].text;
-
-
-        const row =
-            document.createElement("tr");
-
-
-        row.innerHTML = `
-
-            <td>
-
-                <div class="document-info">
-
-                    <div class="document-icon red">
-
-                        <i class="fa-solid fa-file-pdf"></i>
-
-                    </div>
-
-                    <div>
-
-                        <h4>
-                            ${escapeHTML(title)}
-                        </h4>
-
-                        <span>
-                            ${escapeHTML(file.name)}
-                        </span>
-
-                    </div>
-
-                </div>
-
-            </td>
-
-
-            <td>
-
-                <span class="category ${getCategoryClass(category)}">
-
-                    ${escapeHTML(categoryText)}
-
-                </span>
-
-            </td>
-
-
-            <td>
-
-                ${formatFileSize(file.size)}
-
-            </td>
-
-
-            <td>
-
-                Today
-
-            </td>
-
-
-            <td>
-
-                <span class="status processed">
-
-                    <i class="fa-solid fa-circle-check"></i>
-
-                    Processed
-
-                </span>
-
-            </td>
-
-
-            <td>
-
-                <div class="action-buttons">
-
-                    <button
-                        class="view-btn"
-                        type="button"
-                        title="View"
-                    >
-
-                        <i class="fa-solid fa-eye"></i>
-
-                    </button>
-
-
-                    <button
-                        class="delete-btn"
-                        type="button"
-                        title="Delete"
-                    >
-
-                        <i class="fa-solid fa-trash"></i>
-
-                    </button>
-
-                </div>
-
-            </td>
-
-        `;
-
-
-        tableBody.prepend(row);
-
-
-        attachRowActions(row);
+            }
+        );
 
     }
 
 
-    /* ======================================
-            CATEGORY CLASS
-    ====================================== */
+    // ===============================
+    // TABLE ACTIONS
+    // ===============================
 
-    function getCategoryClass(category) {
+    if (tableBody) {
 
-        if (category === "academic") {
+        tableBody.addEventListener(
+            "click",
+            (event) => {
 
-            return "academic";
-
-        }
-
-        if (category === "scholarship") {
-
-            return "scholarship";
-
-        }
-
-        return "admission";
-
-    }
+                const viewButton =
+                    event.target.closest(
+                        ".view-btn"
+                    );
 
 
-    /* ======================================
-            ESCAPE HTML
-    ====================================== */
-
-    function escapeHTML(value) {
-
-        const div =
-            document.createElement("div");
-
-        div.textContent =
-            value;
-
-        return div.innerHTML;
-
-    }
+                const deleteButton =
+                    event.target.closest(
+                        ".delete-btn"
+                    );
 
 
-    /* ======================================
-            ROW ACTIONS
-    ====================================== */
+                // ===========================
+                // VIEW
+                // ===========================
 
-    function attachRowActions(row) {
+                if (viewButton) {
 
-
-        const viewButton =
-            row.querySelector(".view-btn");
-
-
-        const deleteButton =
-            row.querySelector(".delete-btn");
+                    const row =
+                        viewButton.closest("tr");
 
 
-        /* ---------- VIEW ---------- */
+                    if (!row) {
 
-        if (viewButton) {
-
-            viewButton.addEventListener(
-                "click",
-                function () {
-
-                    const name =
-                        row.querySelector(
-                            ".document-info h4"
-                        );
-
-
-                    if (name) {
-
-                        alert(
-                            "Opening: " +
-                            name.textContent.trim()
-                        );
+                        return;
 
                     }
 
-                }
-            );
 
-        }
-
-
-        /* ---------- DELETE ---------- */
-
-        if (deleteButton) {
-
-            deleteButton.addEventListener(
-                "click",
-                function () {
-
-                    const name =
+                    const title =
                         row.querySelector(
                             ".document-info h4"
-                        );
+                        )?.textContent ||
+                        "Document";
 
 
-                    const documentName =
-                        name
-                            ? name.textContent.trim()
-                            : "this document";
+                    alert(
+                        `Document: ${title}`
+                    );
+
+                }
 
 
-                    const confirmed =
+                // ===========================
+                // DELETE
+                // ===========================
+
+                if (deleteButton) {
+
+                    const row =
+                        deleteButton.closest("tr");
+
+
+                    if (!row) {
+
+                        return;
+
+                    }
+
+
+                    const confirmDelete =
                         confirm(
-                            "Are you sure you want to delete " +
-                            documentName +
-                            "?"
+                            "Are you sure you want to delete this document?"
                         );
 
 
-                    if (confirmed) {
+                    if (confirmDelete) {
 
+                        // UI only for now
                         row.remove();
 
                     }
 
                 }
-            );
 
-        }
-
-    }
-
-
-    /* ======================================
-            EXISTING TABLE ACTIONS
-    ====================================== */
-
-    if (tableBody) {
-
-        const rows =
-            tableBody.querySelectorAll("tr");
-
-
-        rows.forEach(function (row) {
-
-            attachRowActions(row);
-
-        });
+            }
+        );
 
     }
 
 
-    /* ======================================
-            SEARCH TABLE
-    ====================================== */
+    // ===============================
+    // SEARCH
+    // ===============================
 
     if (searchInput && tableBody) {
 
         searchInput.addEventListener(
             "input",
-            function () {
+            () => {
 
-                const value =
-                    this.value
+                const searchTerm =
+                    searchInput.value
                         .toLowerCase()
                         .trim();
 
 
                 const rows =
-                    tableBody.querySelectorAll("tr");
+                    tableBody.querySelectorAll(
+                        "tr"
+                    );
 
 
-                rows.forEach(function (row) {
+                rows.forEach(row => {
 
                     const text =
                         row.textContent
                             .toLowerCase();
 
 
-                    row.style.display =
-                        text.includes(value)
-                            ? ""
-                            : "none";
+                    if (
+                        text.includes(
+                            searchTerm
+                        )
+                    ) {
+
+                        row.style.display =
+                            "";
+
+                    } else {
+
+                        row.style.display =
+                            "none";
+
+                    }
 
                 });
 
@@ -820,59 +1080,5 @@ document.addEventListener("DOMContentLoaded", function () {
         );
 
     }
-
-
-    /* ======================================
-            PAGINATION
-    ====================================== */
-
-    const paginationButtons =
-        document.querySelectorAll(
-            ".table-pagination button"
-        );
-
-
-    paginationButtons.forEach(
-        function (button) {
-
-            button.addEventListener(
-                "click",
-                function () {
-
-
-                    const arrow =
-                        this.querySelector(
-                            ".fa-angle-left, .fa-angle-right"
-                        );
-
-
-                    if (arrow) {
-
-                        return;
-
-                    }
-
-
-                    paginationButtons.forEach(
-                        function (btn) {
-
-                            btn.classList.remove(
-                                "active-page"
-                            );
-
-                        }
-                    );
-
-
-                    this.classList.add(
-                        "active-page"
-                    );
-
-                }
-            );
-
-        }
-    );
-
 
 });

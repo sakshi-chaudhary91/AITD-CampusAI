@@ -16,7 +16,7 @@ body{
 }
 
 /* ===========================
-   DASHBOARD LAYOUT
+   COURSES LAYOUT
 =========================== */
 
 .dashboard{
@@ -31,11 +31,9 @@ body{
 .sidebar{
 
     width:260px;
-
     height:100vh;
 
     position:fixed;
-
     left:0;
     top:0;
 
@@ -44,9 +42,10 @@ body{
     padding:25px 18px;
 
     display:flex;
-
     flex-direction:column;
-
+    justify-content:space-between;
+    color:#fff;
+    overflow-y:auto;
 }
 
 .sidebar-logo{
@@ -190,7 +189,7 @@ body{
 .search-box i{
     color:#2563EB;
     font-size:18px;
-}
+} 
 
 .search-box input{
     width:100%;

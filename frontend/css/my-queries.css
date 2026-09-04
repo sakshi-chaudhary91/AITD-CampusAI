@@ -43,16 +43,18 @@ body{
     height:100vh;
 
     position:fixed;
-    top:0;
     left:0;
+    top:0;
 
     background:#0B1F3A;
-    color:#fff;
 
     padding:25px 18px;
 
     display:flex;
     flex-direction:column;
+    justify-content:space-between;
+    color:#fff;
+    overflow-y:auto;
 
 }
 

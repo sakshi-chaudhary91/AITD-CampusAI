@@ -1,68 +1,170 @@
 document.addEventListener("DOMContentLoaded", function () {
 
+    const BACKEND_URL = "http://127.0.0.1:8000";
+
+    let admissions = [];
+    let currentPage = 1;
+    const rowsPerPage = 10;
+
+
     /* ==========================================
-            SEARCH
+            ELEMENTS
     ========================================== */
 
-    const searchInput = document.querySelector(".search-box input");
-    const tableRows = document.querySelectorAll(".admission-table tbody tr");
+    const searchInput =
+        document.querySelector("#admissionSearch");
 
-    if (searchInput) {
-        searchInput.addEventListener("input", function () {
+    const statusFilter =
+        document.querySelector("#statusFilter");
 
-            const searchValue = this.value.toLowerCase().trim();
+    const courseFilter =
+        document.querySelector("#courseFilter");
 
-            tableRows.forEach(function (row) {
+    const yearFilter =
+        document.querySelector("#yearFilter");
 
-                const rowText = row.textContent.toLowerCase();
+    const resetButton =
+        document.querySelector("#resetFilters");
 
-                row.style.display =
-                    rowText.includes(searchValue) ? "" : "none";
+    const tableBody =
+        document.querySelector("#admissionTableBody");
 
-            });
-        });
+    const newAdmissionButton =
+        document.querySelector("#newAdmissionBtn");
+
+    const viewAllButton =
+        document.querySelector("#viewAllAdmissions");
+
+    const totalAdmissions =
+        document.querySelector("#totalAdmissions");
+
+    const pendingAdmissions =
+        document.querySelector("#pendingAdmissions");
+
+    const approvedAdmissions =
+        document.querySelector("#approvedAdmissions");
+
+    const rejectedAdmissions =
+        document.querySelector("#rejectedAdmissions");
+
+    const prevPageButton =
+        document.querySelector("#prevPage");
+
+    const nextPageButton =
+        document.querySelector("#nextPage");
+
+    const paginationContainer =
+        document.querySelector(".table-pagination");
+
+    const logoutButton =
+        document.querySelector(".sidebar-bottom button");
+
+
+    /* ==========================================
+            LOAD ADMISSIONS
+    ========================================== */
+
+    async function loadAdmissions() {
+
+        try {
+
+            tableBody.innerHTML = `
+                <tr>
+                    <td colspan="6" style="text-align:center;">
+                        Loading admissions...
+                    </td>
+                </tr>
+            `;
+
+            const response = await fetch(
+                `${BACKEND_URL}/admissions/`
+            );
+
+            if (!response.ok) {
+                throw new Error(
+                    "Failed to load admissions."
+                );
+            }
+
+            admissions = await response.json();
+
+            updateStats();
+
+            currentPage = 1;
+
+            displayAdmissions();
+
+        } catch (error) {
+
+            console.error(
+                "Admission loading error:",
+                error
+            );
+
+            tableBody.innerHTML = `
+                <tr>
+                    <td colspan="6" style="text-align:center;">
+                        Failed to load admissions.
+                    </td>
+                </tr>
+            `;
+
+        }
+
     }
 
 
     /* ==========================================
-            STATUS FILTER
+            UPDATE STATS
     ========================================== */
 
-    const statusFilter = document.querySelector("#statusFilter");
+    function updateStats() {
 
-    if (statusFilter) {
+        const total = admissions.length;
 
-        statusFilter.addEventListener("change", function () {
+        const pending = admissions.filter(
+            admission =>
+                admission.status &&
+                admission.status.toLowerCase() === "pending"
+        ).length;
 
-            applyFilters();
+        const approved = admissions.filter(
+            admission =>
+                admission.status &&
+                admission.status.toLowerCase() === "approved"
+        ).length;
 
-        });
+        const rejected = admissions.filter(
+            admission =>
+                admission.status &&
+                admission.status.toLowerCase() === "rejected"
+        ).length;
+
+
+        if (totalAdmissions) {
+            totalAdmissions.textContent = total;
+        }
+
+        if (pendingAdmissions) {
+            pendingAdmissions.textContent = pending;
+        }
+
+        if (approvedAdmissions) {
+            approvedAdmissions.textContent = approved;
+        }
+
+        if (rejectedAdmissions) {
+            rejectedAdmissions.textContent = rejected;
+        }
 
     }
 
 
     /* ==========================================
-            COURSE FILTER
+            FILTER ADMISSIONS
     ========================================== */
 
-    const courseFilter = document.querySelector("#courseFilter");
-
-    if (courseFilter) {
-
-        courseFilter.addEventListener("change", function () {
-
-            applyFilters();
-
-        });
-
-    }
-
-
-    /* ==========================================
-            APPLY FILTERS
-    ========================================== */
-
-    function applyFilters() {
+    function getFilteredAdmissions() {
 
         const searchValue = searchInput
             ? searchInput.value.toLowerCase().trim()
@@ -76,363 +178,1269 @@ document.addEventListener("DOMContentLoaded", function () {
             ? courseFilter.value.toLowerCase()
             : "all";
 
+        const selectedYear = yearFilter
+            ? yearFilter.value.toLowerCase()
+            : "all";
 
-        tableRows.forEach(function (row) {
 
-            const rowText = row.textContent.toLowerCase();
+        return admissions.filter(function (admission) {
 
-            const statusElement = row.querySelector(".status");
+            const name =
+                admission.applicant_name || "";
 
-            const rowStatus = statusElement
-                ? statusElement.textContent.toLowerCase().trim()
-                : "";
+            const email =
+                admission.email || "";
+
+            const course =
+                admission.course || "";
+
+            const year =
+                admission.admission_year || "";
+
+            const status =
+                admission.status || "";
+
+
+            const searchableText = (
+                name +
+                " " +
+                email +
+                " " +
+                course +
+                " " +
+                year +
+                " " +
+                status +
+                " " +
+                admission.id
+            ).toLowerCase();
+
 
             const searchMatch =
-                rowText.includes(searchValue);
+                searchableText.includes(searchValue);
+
 
             const statusMatch =
                 selectedStatus === "all" ||
                 selectedStatus === "" ||
-                rowStatus === selectedStatus;
+                status.toLowerCase() === selectedStatus;
 
-            const courseMatch =
-                selectedCourse === "all" ||
-                selectedCourse === "" ||
-                rowText.includes(selectedCourse);
 
+            let courseMatch = true;
 
             if (
-                searchMatch &&
-                statusMatch &&
-                courseMatch
+                selectedCourse !== "all" &&
+                selectedCourse !== ""
             ) {
 
-                row.style.display = "";
+                const courseText =
+                    course.toLowerCase();
 
-            } else {
+                if (selectedCourse === "aiml") {
 
-                row.style.display = "none";
+                    courseMatch =
+                        courseText.includes("ai") ||
+                        courseText.includes("ml");
+
+                } else if (selectedCourse === "cse") {
+
+                    courseMatch =
+                        courseText.includes("computer") ||
+                        courseText.includes("cse");
+
+                } else if (selectedCourse === "ece") {
+
+                    courseMatch =
+                        courseText.includes("electronics") ||
+                        courseText.includes("communication") ||
+                        courseText.includes("ece");
+
+                } else if (selectedCourse === "it") {
+
+                    courseMatch =
+                        courseText.includes("information") ||
+                        courseText.includes("technology") ||
+                        courseText.includes("it");
+
+                } else {
+
+                    courseMatch =
+                        courseText === selectedCourse;
+
+                }
 
             }
+
+
+            let yearMatch = true;
+
+            if (
+                selectedYear !== "all" &&
+                selectedYear !== ""
+            ) {
+
+                yearMatch =
+                    year.includes(selectedYear);
+
+            }
+
+
+            return (
+                searchMatch &&
+                statusMatch &&
+                courseMatch &&
+                yearMatch
+            );
 
         });
 
     }
+
+
+    /* ==========================================
+            DISPLAY ADMISSIONS
+    ========================================== */
+
+    function displayAdmissions() {
+
+        const filteredAdmissions =
+            getFilteredAdmissions();
+
+
+        const totalPages =
+            Math.max(
+                1,
+                Math.ceil(
+                    filteredAdmissions.length /
+                    rowsPerPage
+                )
+            );
+
+
+        if (currentPage > totalPages) {
+            currentPage = totalPages;
+        }
+
+
+        const startIndex =
+            (currentPage - 1) * rowsPerPage;
+
+        const endIndex =
+            startIndex + rowsPerPage;
+
+
+        const pageAdmissions =
+            filteredAdmissions.slice(
+                startIndex,
+                endIndex
+            );
+
+
+        tableBody.innerHTML = "";
+
+
+        if (pageAdmissions.length === 0) {
+
+            tableBody.innerHTML = `
+                <tr>
+                    <td colspan="6" style="text-align:center;">
+                        No admission applications found.
+                    </td>
+                </tr>
+            `;
+
+            updatePagination(
+                filteredAdmissions.length
+            );
+
+            return;
+        }
+
+
+        pageAdmissions.forEach(function (admission) {
+
+            addAdmissionRow(admission);
+
+        });
+
+
+        updatePagination(
+            filteredAdmissions.length
+        );
+
+    }
+
+
+    /* ==========================================
+            ADD ADMISSION ROW
+    ========================================== */
+
+    function addAdmissionRow(admission) {
+
+        const row =
+            document.createElement("tr");
+
+
+        const status =
+            admission.status || "Pending";
+
+        const statusClass =
+            status.toLowerCase();
+
+
+        const course =
+            admission.course || "N/A";
+
+        const applicantName =
+            admission.applicant_name ||
+            "Applicant";
+
+        const email =
+            admission.email ||
+            "N/A";
+
+        const year =
+            admission.admission_year ||
+            "N/A";
+
+
+        row.dataset.id =
+            admission.id;
+
+
+        row.innerHTML = `
+
+            <td>
+
+                <span class="application-id">
+                    ADM${String(admission.id).padStart(3, "0")}
+                </span>
+
+            </td>
+
+
+            <td>
+
+                <div class="applicant-info">
+
+                    <img
+                        src="assets/profile.png"
+                        alt="Applicant"
+                    >
+
+                    <div>
+
+                        <h4>
+                            ${escapeHtml(applicantName)}
+                        </h4>
+
+                        <span>
+                            ${escapeHtml(email)}
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </td>
+
+
+            <td>
+
+                <span class="course-name">
+                    ${escapeHtml(course)}
+                </span>
+
+            </td>
+
+
+            <td>
+                ${escapeHtml(year)}
+            </td>
+
+
+            <td>
+
+                <span class="status ${statusClass}">
+                    ${escapeHtml(status)}
+                </span>
+
+            </td>
+
+
+            <td>
+
+                <div class="action-buttons">
+
+                    <button
+                        class="view-btn"
+                        title="View Application"
+                    >
+                        <i class="fa-solid fa-eye"></i>
+                    </button>
+
+
+                    ${
+                        statusClass === "pending"
+                        ?
+                        `
+                        <button
+                            class="approve-btn"
+                            title="Approve"
+                        >
+                            <i class="fa-solid fa-check"></i>
+                        </button>
+
+                        <button
+                            class="reject-btn"
+                            title="Reject"
+                        >
+                            <i class="fa-solid fa-xmark"></i>
+                        </button>
+                        `
+                        :
+                        `
+                        <button
+                            class="edit-btn"
+                            title="Edit"
+                        >
+                            <i class="fa-solid fa-pen"></i>
+                        </button>
+                        `
+                    }
+
+                </div>
+
+            </td>
+
+        `;
+
+
+        tableBody.appendChild(row);
+
+    }
+
+
+    /* ==========================================
+            ESCAPE HTML
+    ========================================== */
+
+    function escapeHtml(value) {
+
+        const div =
+            document.createElement("div");
+
+        div.textContent =
+            String(value);
+
+        return div.innerHTML;
+
+    }
+
+
+    /* ==========================================
+            TABLE CLICK HANDLER
+    ========================================== */
+
+    tableBody.addEventListener(
+        "click",
+        async function (event) {
+
+            const button =
+                event.target.closest("button");
+
+            if (!button) return;
+
+
+            const row =
+                button.closest("tr");
+
+            if (!row) return;
+
+
+            const admissionId =
+                Number(row.dataset.id);
+
+
+            const admission =
+                admissions.find(
+                    item =>
+                        item.id === admissionId
+                );
+
+
+            if (!admission) return;
+
+
+            /* VIEW */
+
+            if (
+                button.classList.contains(
+                    "view-btn"
+                )
+            ) {
+
+                viewAdmission(admission);
+
+            }
+
+
+            /* APPROVE */
+
+            else if (
+                button.classList.contains(
+                    "approve-btn"
+                )
+            ) {
+
+                await changeStatus(
+                    admission,
+                    "Approved"
+                );
+
+            }
+
+
+            /* REJECT */
+
+            else if (
+                button.classList.contains(
+                    "reject-btn"
+                )
+            ) {
+
+                await changeStatus(
+                    admission,
+                    "Rejected"
+                );
+
+            }
+
+
+            /* EDIT */
+
+            else if (
+                button.classList.contains(
+                    "edit-btn"
+                )
+            ) {
+
+                await editAdmission(
+                    admission
+                );
+
+            }
+
+        }
+    );
+
+
+    /* ==========================================
+            VIEW ADMISSION
+    ========================================== */
+
+    function viewAdmission(admission) {
+
+        const applicationId =
+            `ADM${String(admission.id).padStart(3, "0")}`;
+
+
+        alert(
+            "Application Details\n\n" +
+
+            "Application ID: " +
+            applicationId +
+
+            "\nApplicant: " +
+            (admission.applicant_name || "N/A") +
+
+            "\nEmail: " +
+            (admission.email || "N/A") +
+
+            "\nCourse: " +
+            (admission.course || "N/A") +
+
+            "\nAdmission Year: " +
+            (admission.admission_year || "N/A") +
+
+            "\nStatus: " +
+            (admission.status || "Pending")
+        );
+
+    }
+
+
+    /* ==========================================
+            CHANGE STATUS
+    ========================================== */
+
+    async function changeStatus(
+        admission,
+        newStatus
+    ) {
+
+        const name =
+            admission.applicant_name ||
+            "this applicant";
+
+
+        const confirmed =
+            confirm(
+                `${newStatus} admission application of ${name}?`
+            );
+
+
+        if (!confirmed) return;
+
+
+        try {
+
+            const response =
+                await fetch(
+                    `${BACKEND_URL}/admissions/${admission.id}/status?status=${encodeURIComponent(newStatus)}`,
+                    {
+                        method: "PATCH"
+                    }
+                );
+
+
+            if (!response.ok) {
+
+                const errorData =
+                    await response.json()
+                    .catch(() => null);
+
+                throw new Error(
+                    errorData?.detail ||
+                    "Failed to update admission status."
+                );
+
+            }
+
+
+            const updatedAdmission =
+                await response.json();
+
+
+            const index =
+                admissions.findIndex(
+                    item =>
+                        item.id === admission.id
+                );
+
+
+            if (index !== -1) {
+
+                admissions[index] =
+                    updatedAdmission;
+
+            }
+
+
+            updateStats();
+
+            displayAdmissions();
+
+
+        } catch (error) {
+
+            console.error(
+                "Status update error:",
+                error
+            );
+
+            alert(
+                "Failed to update status.\n\n" +
+                error.message
+            );
+
+        }
+
+    }
+
+
+    /* ==========================================
+            EDIT ADMISSION
+    ========================================== */
+
+    async function editAdmission(
+        admission
+    ) {
+
+        const name =
+            prompt(
+                "Applicant Name:",
+                admission.applicant_name || ""
+            );
+
+
+        if (name === null) return;
+
+
+        const email =
+            prompt(
+                "Email:",
+                admission.email || ""
+            );
+
+
+        if (email === null) return;
+
+
+        const course =
+            prompt(
+                "Course:",
+                admission.course || ""
+            );
+
+
+        if (course === null) return;
+
+
+        const year =
+            prompt(
+                "Admission Year:",
+                admission.admission_year || "2026-27"
+            );
+
+
+        if (year === null) return;
+
+
+        const status =
+            prompt(
+                "Status (Pending / Approved / Rejected):",
+                admission.status || "Pending"
+            );
+
+
+        if (status === null) return;
+
+
+        const normalizedStatus =
+            normalizeStatus(status);
+
+
+        if (!normalizedStatus) {
+
+            alert(
+                "Invalid status.\n\n" +
+                "Use: Pending, Approved or Rejected."
+            );
+
+            return;
+
+        }
+
+
+        const data = {
+
+            applicant_name:
+                name.trim(),
+
+            email:
+                email.trim(),
+
+            course:
+                course.trim(),
+
+            admission_year:
+                year.trim(),
+
+            status:
+                normalizedStatus
+
+        };
+
+
+        try {
+
+            const response =
+                await fetch(
+                    `${BACKEND_URL}/admissions/${admission.id}`,
+                    {
+                        method: "PUT",
+
+                        headers: {
+                            "Content-Type":
+                                "application/json"
+                        },
+
+                        body:
+                            JSON.stringify(data)
+                    }
+                );
+
+
+            if (!response.ok) {
+
+                const errorData =
+                    await response.json()
+                    .catch(() => null);
+
+                throw new Error(
+                    errorData?.detail ||
+                    "Failed to update admission."
+                );
+
+            }
+
+
+            const updatedAdmission =
+                await response.json();
+
+
+            const index =
+                admissions.findIndex(
+                    item =>
+                        item.id === admission.id
+                );
+
+
+            if (index !== -1) {
+
+                admissions[index] =
+                    updatedAdmission;
+
+            }
+
+
+            updateStats();
+
+            displayAdmissions();
+
+
+        } catch (error) {
+
+            console.error(
+                "Edit admission error:",
+                error
+            );
+
+            alert(
+                "Failed to update admission.\n\n" +
+                error.message
+            );
+
+        }
+
+    }
+
+
+    /* ==========================================
+            NORMALIZE STATUS
+    ========================================== */
+
+    function normalizeStatus(status) {
+
+        const value =
+            status.trim().toLowerCase();
+
+
+        if (value === "pending") {
+            return "Pending";
+        }
+
+        if (value === "approved") {
+            return "Approved";
+        }
+
+        if (value === "rejected") {
+            return "Rejected";
+        }
+
+        return null;
+
+    }
+
+
+    /* ==========================================
+            NEW ADMISSION
+    ========================================== */
+
+    if (newAdmissionButton) {
+
+        newAdmissionButton.addEventListener(
+            "click",
+            async function () {
+
+                const name =
+                    prompt(
+                        "Applicant Name:"
+                    );
+
+
+                if (
+                    name === null ||
+                    name.trim() === ""
+                ) {
+                    return;
+                }
+
+
+                const email =
+                    prompt(
+                        "Applicant Email:"
+                    );
+
+
+                if (
+                    email === null ||
+                    email.trim() === ""
+                ) {
+                    return;
+                }
+
+
+                const course =
+                    prompt(
+                        "Course:"
+                    );
+
+
+                if (
+                    course === null ||
+                    course.trim() === ""
+                ) {
+                    return;
+                }
+
+
+                const year =
+                    prompt(
+                        "Admission Year:",
+                        "2026-27"
+                    );
+
+
+                if (
+                    year === null ||
+                    year.trim() === ""
+                ) {
+                    return;
+                }
+
+
+                const data = {
+
+                    applicant_name:
+                        name.trim(),
+
+                    email:
+                        email.trim(),
+
+                    course:
+                        course.trim(),
+
+                    admission_year:
+                        year.trim(),
+
+                    status:
+                        "Pending"
+
+                };
+
+
+                try {
+
+                    const response =
+                        await fetch(
+                            `${BACKEND_URL}/admissions/`,
+                            {
+                                method: "POST",
+
+                                headers: {
+                                    "Content-Type":
+                                        "application/json"
+                                },
+
+                                body:
+                                    JSON.stringify(data)
+                            }
+                        );
+
+
+                    if (!response.ok) {
+
+                        const errorData =
+                            await response.json()
+                            .catch(() => null);
+
+                        throw new Error(
+                            errorData?.detail ||
+                            "Failed to create admission."
+                        );
+
+                    }
+
+
+                    const newAdmission =
+                        await response.json();
+
+
+                    admissions.unshift(
+                        newAdmission
+                    );
+
+
+                    updateStats();
+
+                    currentPage = 1;
+
+                    displayAdmissions();
+
+
+                    alert(
+                        "Admission application created successfully."
+                    );
+
+
+                } catch (error) {
+
+                    console.error(
+                        "Create admission error:",
+                        error
+                    );
+
+                    alert(
+                        "Failed to create admission.\n\n" +
+                        error.message
+                    );
+
+                }
+
+            }
+        );
+
+    }
+
+
+    /* ==========================================
+            SEARCH
+    ========================================== */
+
+    if (searchInput) {
+
+        searchInput.addEventListener(
+            "input",
+            function () {
+
+                currentPage = 1;
+
+                displayAdmissions();
+
+            }
+        );
+
+    }
+
+
+    /* ==========================================
+            FILTERS
+    ========================================== */
+
+    [
+        statusFilter,
+        courseFilter,
+        yearFilter
+    ].forEach(function (filter) {
+
+        if (filter) {
+
+            filter.addEventListener(
+                "change",
+                function () {
+
+                    currentPage = 1;
+
+                    displayAdmissions();
+
+                }
+            );
+
+        }
+
+    });
 
 
     /* ==========================================
             RESET FILTERS
     ========================================== */
 
-    const resetButton = document.querySelector(".reset-btn");
-
     if (resetButton) {
 
-        resetButton.addEventListener("click", function () {
+        resetButton.addEventListener(
+            "click",
+            function () {
 
-            if (searchInput) {
-                searchInput.value = "";
+                if (searchInput) {
+                    searchInput.value = "";
+                }
+
+                if (statusFilter) {
+                    statusFilter.value = "all";
+                }
+
+                if (courseFilter) {
+                    courseFilter.value = "all";
+                }
+
+                if (yearFilter) {
+                    yearFilter.value = "all";
+                }
+
+                currentPage = 1;
+
+                displayAdmissions();
+
             }
-
-            if (statusFilter) {
-                statusFilter.value = "all";
-            }
-
-            if (courseFilter) {
-                courseFilter.value = "all";
-            }
-
-            tableRows.forEach(function (row) {
-
-                row.style.display = "";
-
-            });
-
-        });
+        );
 
     }
 
 
     /* ==========================================
-            VIEW APPLICATION
+            VIEW ALL
     ========================================== */
 
-    const viewButtons = document.querySelectorAll(".view-btn");
+    if (viewAllButton) {
 
-    viewButtons.forEach(function (button) {
+        viewAllButton.addEventListener(
+            "click",
+            function (event) {
 
-        button.addEventListener("click", function () {
+                event.preventDefault();
 
-            const row = this.closest("tr");
+                if (searchInput) {
+                    searchInput.value = "";
+                }
 
-            if (!row) return;
+                if (statusFilter) {
+                    statusFilter.value = "all";
+                }
 
-            const nameElement =
-                row.querySelector(".applicant-info h4");
+                if (courseFilter) {
+                    courseFilter.value = "all";
+                }
 
-            const idElement =
-                row.querySelector(".application-id");
+                if (yearFilter) {
+                    yearFilter.value = "all";
+                }
 
-            const name = nameElement
-                ? nameElement.textContent.trim()
-                : "Applicant";
+                currentPage = 1;
 
-            const applicationId = idElement
-                ? idElement.textContent.trim()
-                : "N/A";
-
-            alert(
-                "Application Details\n\n" +
-                "Application ID: " +
-                applicationId +
-                "\nApplicant: " +
-                name
-            );
-
-        });
-
-    });
-
-
-    /* ==========================================
-            APPROVE APPLICATION
-    ========================================== */
-
-    const approveButtons =
-        document.querySelectorAll(".approve-btn");
-
-    approveButtons.forEach(function (button) {
-
-        button.addEventListener("click", function () {
-
-            const row = this.closest("tr");
-
-            if (!row) return;
-
-            const nameElement =
-                row.querySelector(".applicant-info h4");
-
-            const statusElement =
-                row.querySelector(".status");
-
-            const name = nameElement
-                ? nameElement.textContent.trim()
-                : "this applicant";
-
-
-            const confirmed = confirm(
-                "Approve admission application of " +
-                name +
-                "?"
-            );
-
-
-            if (!confirmed) return;
-
-
-            if (statusElement) {
-
-                statusElement.textContent = "Approved";
-
-                statusElement.classList.remove(
-                    "pending",
-                    "rejected"
-                );
-
-                statusElement.classList.add(
-                    "approved"
-                );
+                displayAdmissions();
 
             }
+        );
 
-
-            /* Hide approve button */
-
-            this.style.display = "none";
-
-
-            /* Show reject button if present */
-
-            const rejectButton =
-                row.querySelector(".reject-btn");
-
-            if (rejectButton) {
-                rejectButton.style.display = "flex";
-            }
-
-        });
-
-    });
-
-
-    /* ==========================================
-            REJECT APPLICATION
-    ========================================== */
-
-    const rejectButtons =
-        document.querySelectorAll(".reject-btn");
-
-    rejectButtons.forEach(function (button) {
-
-        button.addEventListener("click", function () {
-
-            const row = this.closest("tr");
-
-            if (!row) return;
-
-            const nameElement =
-                row.querySelector(".applicant-info h4");
-
-            const statusElement =
-                row.querySelector(".status");
-
-            const name = nameElement
-                ? nameElement.textContent.trim()
-                : "this applicant";
-
-
-            const confirmed = confirm(
-                "Reject admission application of " +
-                name +
-                "?"
-            );
-
-
-            if (!confirmed) return;
-
-
-            if (statusElement) {
-
-                statusElement.textContent = "Rejected";
-
-                statusElement.classList.remove(
-                    "pending",
-                    "approved"
-                );
-
-                statusElement.classList.add(
-                    "rejected"
-                );
-
-            }
-
-
-            /* Hide reject button */
-
-            this.style.display = "none";
-
-
-            /* Show approve button */
-
-            const approveButton =
-                row.querySelector(".approve-btn");
-
-            if (approveButton) {
-                approveButton.style.display = "flex";
-            }
-
-        });
-
-    });
-
-
-    /* ==========================================
-            EDIT APPLICATION
-    ========================================== */
-
-    const editButtons =
-        document.querySelectorAll(".edit-btn");
-
-    editButtons.forEach(function (button) {
-
-        button.addEventListener("click", function () {
-
-            const row = this.closest("tr");
-
-            if (!row) return;
-
-            const nameElement =
-                row.querySelector(".applicant-info h4");
-
-            const name = nameElement
-                ? nameElement.textContent.trim()
-                : "Applicant";
-
-            alert(
-                "Edit Application\n\n" +
-                "Applicant: " +
-                name
-            );
-
-        });
-
-    });
+    }
 
 
     /* ==========================================
             PAGINATION
     ========================================== */
 
-    const paginationButtons =
-        document.querySelectorAll(
-            ".table-pagination button"
-        );
+    function updatePagination(totalItems) {
+
+        if (!paginationContainer) return;
 
 
-    paginationButtons.forEach(function (button) {
+        const totalPages =
+            Math.max(
+                1,
+                Math.ceil(
+                    totalItems /
+                    rowsPerPage
+                )
+            );
 
-        button.addEventListener("click", function () {
 
-            const isArrow =
-                this.querySelector(".fa-angle-left") ||
-                this.querySelector(".fa-angle-right");
+        paginationContainer
+            .querySelectorAll(
+                ".page-number"
+            )
+            .forEach(
+                button =>
+                    button.remove()
+            );
 
 
-            if (isArrow) {
-                return;
+        const activeArrowButtons =
+            paginationContainer.querySelectorAll(
+                "#prevPage, #nextPage"
+            );
+
+
+        const nextButton =
+            paginationContainer.querySelector(
+                "#nextPage"
+            );
+
+
+        for (
+            let page = 1;
+            page <= totalPages;
+            page++
+        ) {
+
+            const button =
+                document.createElement("button");
+
+
+            button.className =
+                "page-number";
+
+
+            if (page === currentPage) {
+                button.classList.add(
+                    "active-page"
+                );
             }
 
 
-            paginationButtons.forEach(function (btn) {
-
-                btn.classList.remove("active-page");
-
-            });
+            button.textContent =
+                page;
 
 
-            this.classList.add("active-page");
+            button.addEventListener(
+                "click",
+                function () {
 
-        });
+                    currentPage = page;
 
-    });
+                    displayAdmissions();
+
+                }
+            );
+
+
+            if (nextButton) {
+
+                paginationContainer.insertBefore(
+                    button,
+                    nextButton
+                );
+
+            } else {
+
+                paginationContainer.appendChild(
+                    button
+                );
+
+            }
+
+        }
+
+
+        if (prevPageButton) {
+
+            prevPageButton.disabled =
+                currentPage === 1;
+
+        }
+
+
+        if (nextPageButton) {
+
+            nextPageButton.disabled =
+                currentPage === totalPages;
+
+        }
+
+    }
+
+
+    if (prevPageButton) {
+
+        prevPageButton.addEventListener(
+            "click",
+            function () {
+
+                if (currentPage > 1) {
+
+                    currentPage--;
+
+                    displayAdmissions();
+
+                }
+
+            }
+        );
+
+    }
+
+
+    if (nextPageButton) {
+
+        nextPageButton.addEventListener(
+            "click",
+            function () {
+
+                const filteredAdmissions =
+                    getFilteredAdmissions();
+
+
+                const totalPages =
+                    Math.max(
+                        1,
+                        Math.ceil(
+                            filteredAdmissions.length /
+                            rowsPerPage
+                        )
+                    );
+
+
+                if (
+                    currentPage <
+                    totalPages
+                ) {
+
+                    currentPage++;
+
+                    displayAdmissions();
+
+                }
+
+            }
+        );
+
+    }
 
 
     /* ==========================================
             LOGOUT
     ========================================== */
 
-    const logoutButton =
-        document.querySelector(".sidebar-bottom button");
-
-
     if (logoutButton) {
 
-        logoutButton.addEventListener("click", function () {
+        logoutButton.addEventListener(
+            "click",
+            function () {
 
-            const confirmed = confirm(
-                "Are you sure you want to logout?"
-            );
+                const confirmed =
+                    confirm(
+                        "Are you sure you want to logout?"
+                    );
 
 
-            if (confirmed) {
+                if (confirmed) {
 
-                window.location.href =
-                    "admin-login.html";
+                    window.location.href =
+                        "admin-login.html";
+
+                }
 
             }
-
-        });
+        );
 
     }
+
+
+    /* ==========================================
+            INITIAL LOAD
+    ========================================== */
+
+    loadAdmissions();
 
 });
